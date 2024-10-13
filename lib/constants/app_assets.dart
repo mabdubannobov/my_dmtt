@@ -39,7 +39,6 @@ class AppImages extends AssetsFolder {
   String get walk3 => '$basePath/walkthrough-3.png';
 
   String get userImage => '$basePath/user.png';
-
   String get offer => '$basePath/offer.png';
 
   String get categorySabzavot => '$basePath/sabzavot.png';
@@ -53,4 +52,8 @@ class AppImages extends AssetsFolder {
 
   String get productTomato => '$basePath/tomato.png';
   String get productMeat => '$basePath/frozen-meat.png';
+
+  String get acceptedOrder => '$basePath/accepted-order.png';
+  String get completedOrder => '$basePath/completed-order.png';
+  String get rejectedOrder => '$basePath/rejected-order.png';
 }
