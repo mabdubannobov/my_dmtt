@@ -24,6 +24,10 @@ class AppIcons extends AssetsFolder {
   String get documentActive => '$basePath/ic-document-filled.svg';
   String get bagActive => '$basePath/ic-bag-filled.svg';
   String get profileActive => '$basePath/ic-profile-filled.svg';
+
+  String get notification => '$basePath/ic-notification.svg';
+  String get scan => '$basePath/ic-scan.svg';
+  String get search => '$basePath/ic-search.svg';
 }
 
 class AppImages extends AssetsFolder {
@@ -33,4 +37,17 @@ class AppImages extends AssetsFolder {
   String get walk1 => '$basePath/walkthrough-1.png';
   String get walk2 => '$basePath/walkthrough-2.png';
   String get walk3 => '$basePath/walkthrough-3.png';
+
+  String get userImage => '$basePath/user.png';
+
+  String get offer => '$basePath/offer.png';
+
+  String get categorySabzavot => '$basePath/sabzavot.png';
+  String get categoryUn => '$basePath/un.png';
+  String get categoryDon => '$basePath/don.png';
+  String get categoryMeat => '$basePath/meat.png';
+  String get categoryPotato => '$basePath/potato.png';
+  String get categoryMilk => '$basePath/milk.png';
+  String get categoryApple => '$basePath/apple.png';
+  String get categoryOthers => '$basePath/other.png';
 }
