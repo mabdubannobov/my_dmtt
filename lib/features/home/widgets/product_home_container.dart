@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+
+import '../../../constants/app_colors.dart';
+import '../../../constants/app_text_styles.dart';
+
+class ProductHomeContainer extends StatelessWidget {
+  const ProductHomeContainer({
+    super.key,
+    required this.productImage,
+    required this.productTitle,
+    required this.productQuantity,
+    required this.productSeller,
+  });
+
+  final String productImage;
+  final String productTitle;
+  final double productQuantity;
+  final String productSeller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 337,
+      width: 220,
+      padding: const EdgeInsets.fromLTRB(14, 14, 14, 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(28),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF04060F).withOpacity(0.05),
+            spreadRadius: 0,
+            blurRadius: 60,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            width: 192,
+            height: 192,
+            productImage,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            productTitle,
+            style: AppTextStyles.boldStyle.copyWith(
+              fontSize: 20,
+              color: AppColors.greyscaleLight,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            "Qoldiqda - $productQuantity kg",
+            style: AppTextStyles.mediumStyle.copyWith(
+              fontSize: 12,
+              color: AppColors.greyscaleLight.shade700,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            productSeller,
+            style: AppTextStyles.boldStyle.copyWith(
+              fontSize: 20,
+              color: AppColors.primaryLight,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

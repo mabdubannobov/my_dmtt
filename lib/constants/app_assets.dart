@@ -50,4 +50,7 @@ class AppImages extends AssetsFolder {
   String get categoryMilk => '$basePath/milk.png';
   String get categoryApple => '$basePath/apple.png';
   String get categoryOthers => '$basePath/other.png';
+
+  String get productTomato => '$basePath/tomato.png';
+  String get productMeat => '$basePath/frozen-meat.png';
 }

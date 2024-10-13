@@ -5,6 +5,7 @@ import 'package:my_dmtt/constants/labels.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/action_button.dart';
+import '../widgets/product_home_container.dart';
 import '../widgets/product_search.dart';
 import '../widgets/section_title.dart';
 
@@ -128,10 +129,58 @@ class _HomeScreenState extends State<HomeScreen> {
           const SectionTitle(
             title: "Mahsulotlar 👌",
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return Container();
-            }),
+          SliverToBoxAdapter(
+            child: Container(
+              height: 369,
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                scrollDirection: Axis.horizontal,
+                children: [
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productTomato,
+                    productTitle: "Pomidor",
+                    productQuantity: 43,
+                    productSeller: "Abdusalom Yuk...",
+                  ),
+                  const SizedBox(width: 16),
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productMeat,
+                    productTitle: "Mol go'shti",
+                    productQuantity: 130,
+                    productSeller: "Chorvador F/X",
+                  ),
+                  const SizedBox(width: 16),
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productTomato,
+                    productTitle: "Pomidor",
+                    productQuantity: 43,
+                    productSeller: "Abdusalom Yuk...",
+                  ),
+                  const SizedBox(width: 16),
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productMeat,
+                    productTitle: "Mol go'shti",
+                    productQuantity: 130,
+                    productSeller: "Chorvador F/X",
+                  ),
+                  const SizedBox(width: 16),
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productTomato,
+                    productTitle: "Pomidor",
+                    productQuantity: 43,
+                    productSeller: "Abdusalom Yuk...",
+                  ),
+                  const SizedBox(width: 16),
+                  ProductHomeContainer(
+                    productImage: AppAssets.images.productMeat,
+                    productTitle: "Mol go'shti",
+                    productQuantity: 130,
+                    productSeller: "Chorvador F/X",
+                  ),
+                  const SizedBox(width: 16),
+                ],
+              ),
+            ),
           ),
         ],
       ),
