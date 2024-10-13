@@ -82,7 +82,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               indicatorColor: AppColors.primaryLight,
               dividerColor: AppColors.greyscaleLight.shade200,
               unselectedLabelColor: AppColors.greyscaleLight.shade500,
-              labelStyle: AppTextStyles.semiBoldStyle.copyWith(fontSize: 18),
+              labelStyle: AppTextStyles.semiBoldStyle.copyWith(fontSize: 16),
               overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
                 return states.contains(WidgetState.focused) ? null : Colors.transparent;
               }),

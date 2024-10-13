@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             delegate: SliverChildListDelegate([
               Container(
                 margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-                height: 164,
+                height: 180,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(36),
                   image: DecorationImage(
