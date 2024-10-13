@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/labels.dart';
+import 'package:my_dmtt/constants/app_assets.dart';
 
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_text_styles.dart';
 import '../widgets/action_button.dart';
-import '../widgets/product_home_container.dart';
-import '../widgets/product_search.dart';
 import '../widgets/section_title.dart';
+import '../widgets/product_search.dart';
+import '../widgets/persistent_header.dart';
+import '../../../constants/app_colors.dart';
+import '../widgets/product_home_container.dart';
+import '../../../constants/app_text_styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
-        physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
         scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             delegate: SliverChildListDelegate([
               Container(
                 margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-                height: 180,
+                height: 164,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(36),
                   image: DecorationImage(
@@ -130,90 +131,29 @@ class _HomeScreenState extends State<HomeScreen> {
             title: "Mahsulotlar 👌",
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: 369,
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: ListView.separated(
+                itemCount: 3,
+                clipBehavior: Clip.none,
                 scrollDirection: Axis.horizontal,
-                children: [
-                  ProductHomeContainer(
+                itemBuilder: (context, index) {
+                  return ProductHomeContainer(
                     productImage: AppAssets.images.productTomato,
                     productTitle: "Pomidor",
                     productQuantity: 43,
                     productSeller: "Abdusalom Yuk...",
-                  ),
-                  const SizedBox(width: 16),
-                  ProductHomeContainer(
-                    productImage: AppAssets.images.productMeat,
-                    productTitle: "Mol go'shti",
-                    productQuantity: 130,
-                    productSeller: "Chorvador F/X",
-                  ),
-                  const SizedBox(width: 16),
-                  ProductHomeContainer(
-                    productImage: AppAssets.images.productTomato,
-                    productTitle: "Pomidor",
-                    productQuantity: 43,
-                    productSeller: "Abdusalom Yuk...",
-                  ),
-                  const SizedBox(width: 16),
-                  ProductHomeContainer(
-                    productImage: AppAssets.images.productMeat,
-                    productTitle: "Mol go'shti",
-                    productQuantity: 130,
-                    productSeller: "Chorvador F/X",
-                  ),
-                  const SizedBox(width: 16),
-                  ProductHomeContainer(
-                    productImage: AppAssets.images.productTomato,
-                    productTitle: "Pomidor",
-                    productQuantity: 43,
-                    productSeller: "Abdusalom Yuk...",
-                  ),
-                  const SizedBox(width: 16),
-                  ProductHomeContainer(
-                    productImage: AppAssets.images.productMeat,
-                    productTitle: "Mol go'shti",
-                    productQuantity: 130,
-                    productSeller: "Chorvador F/X",
-                  ),
-                  const SizedBox(width: 16),
-                ],
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(width: 16);
+                },
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               ),
             ),
           ),
         ],
       ),
     );
-  }
-}
-
-class PersistentHeader extends SliverPersistentHeaderDelegate {
-  final Widget widget;
-
-  PersistentHeader({required this.widget});
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(
-      width: double.infinity,
-      height: 80.0,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        color: Colors.white,
-        child: Center(child: widget),
-      ),
-    );
-  }
-
-  @override
-  double get maxExtent => 80.0;
-
-  @override
-  double get minExtent => 80.0;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
   }
 }
