@@ -36,14 +36,14 @@ List<Widget> mainScreenPages = [
 ];
 
 List<String> categoryImages = [
-  "🥬",
-  "🍞",
-  "🍚",
-  "🍖",
-  "🥔",
-  "🥛",
-  "🍏",
-  "🍙",
+  AppAssets.images.categorySabzavot,
+  AppAssets.images.categoryUn,
+  AppAssets.images.categoryDon,
+  AppAssets.images.categoryMeat,
+  AppAssets.images.categoryPotato,
+  AppAssets.images.categoryMilk,
+  AppAssets.images.categoryApple,
+  AppAssets.images.categoryOthers,
 ];
 
 List<String> categoryNames = [
