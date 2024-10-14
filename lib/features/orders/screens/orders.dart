@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_dmtt/features/orders/widgets/active_order.dart';
 import 'package:my_dmtt/features/orders/widgets/completed_order.dart';
 import 'package:my_dmtt/features/orders/widgets/rejected_order.dart';
 
+import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 
@@ -36,7 +38,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: AppBar(
             backgroundColor: Colors.white,
-            // leading: SvgPicture.asset(AppAssets.icons.logo),
+            leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
             leadingWidth: 28,
             title: const Align(
               alignment: Alignment.centerLeft,

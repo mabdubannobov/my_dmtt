@@ -28,6 +28,10 @@ class AppIcons extends AssetsFolder {
   String get notification => '$basePath/ic-notification.svg';
   String get scan => '$basePath/ic-scan.svg';
   String get search => '$basePath/ic-search.svg';
+
+  String get appBarLogo => '$basePath/appbar-logo.svg';
+
+  String get edit => '$basePath/ic-edit.svg';
 }
 
 class AppImages extends AssetsFolder {
