@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+            padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
             sliver: SliverAppBar(
               floating: false,
               expandedHeight: 56,
@@ -62,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               actions: [
                 ActionButton(icon: AppAssets.icons.scan),
-                const SizedBox(width: 8),
+                const SizedBox(width: 16),
                 ActionButton(icon: AppAssets.icons.notification),
               ],
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             sliver: SliverPersistentHeader(
               pinned: true,
               delegate: PersistentHeader(
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+                margin: const EdgeInsets.fromLTRB(24, 12, 24, 24),
                 height: 180,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(36),
@@ -95,20 +95,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 mainAxisSpacing: 24,
-                crossAxisSpacing: 20.5,
+                // crossAxisSpacing: 20.5,
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Column(
                     children: [
                       Image.asset(
-                        width: 34,
-                        height: 44,
+                        width: 48,
+                        height: 58,
                         categoryImages[index],
                       ),
                       Text(
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 separatorBuilder: (context, index) {
                   return const SizedBox(width: 16);
                 },
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               ),
             ),
           ),
