@@ -100,16 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 mainAxisSpacing: 24,
-                crossAxisSpacing: 20.5,
+                // crossAxisSpacing: 20.5,
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Column(
                     children: [
-                      Image.asset(
-                        width: 34,
-                        height: 44,
+                      Text(
                         categoryImages[index],
+                        style: AppTextStyles.boldStyle.copyWith(fontSize: 48),
                       ),
                       Text(
                         categoryNames[index],
