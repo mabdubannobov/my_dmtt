@@ -37,6 +37,7 @@ class AppIcons extends AssetsFolder {
 class AppImages extends AssetsFolder {
   AppImages() : super('assets/images');
 
+  String get welcomeBg => '$basePath/welcome-background.png';
   String get walk1 => '$basePath/walkthrough-1.png';
   String get walk2 => '$basePath/walkthrough-2.png';
   String get walk3 => '$basePath/walkthrough-3.png';
