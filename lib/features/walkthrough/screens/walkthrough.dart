@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/app_text_styles.dart';
+import 'package:my_dmtt/features/main_screen.dart';
 import 'package:my_dmtt/features/walkthrough/widgets/carousel_item.dart';
 
 class WalkthroughScreen extends StatefulWidget {
@@ -68,10 +69,12 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
             const SizedBox(height: 80),
             TextButton(
               onPressed: () {
-                _pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeIn,
-                );
+                _currentPage == 2
+                    ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainScreen()))
+                    : _pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
