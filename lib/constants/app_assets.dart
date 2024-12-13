@@ -30,6 +30,7 @@ class AppIcons extends AssetsFolder {
   String get search => '$basePath/ic-search.svg';
 
   String get appBarLogo => '$basePath/appbar-logo.svg';
+  String get loading => '$basePath/loading.svg';
 
   String get edit => '$basePath/ic-edit.svg';
 }
@@ -41,6 +42,7 @@ class AppImages extends AssetsFolder {
   String get walk1 => '$basePath/walkthrough-1.png';
   String get walk2 => '$basePath/walkthrough-2.png';
   String get walk3 => '$basePath/walkthrough-3.png';
+  String get welcomeHi => '$basePath/welcome-hi.png';
 
   String get userImage => '$basePath/user.png';
   String get offer => '$basePath/offer.png';

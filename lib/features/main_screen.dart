@@ -18,13 +18,15 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        onPageChanged: (index) {
-          setState(() {});
-        },
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: mainScreenPages,
+      body: SafeArea(
+        child: PageView(
+          onPageChanged: (index) {
+            setState(() {});
+          },
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: mainScreenPages,
+        ),
       ),
       bottomNavigationBar: Theme(
         data: ThemeData(

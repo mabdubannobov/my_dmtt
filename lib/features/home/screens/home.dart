@@ -20,140 +20,138 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
-            sliver: SliverAppBar(
-              floating: false,
-              expandedHeight: 56,
-              backgroundColor: Colors.white,
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
-                  width: 48,
-                  height: 48,
-                  AppAssets.images.userImage,
+    return CustomScrollView(
+      scrollDirection: Axis.vertical,
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
+          sliver: SliverAppBar(
+            floating: false,
+            expandedHeight: 56,
+            backgroundColor: Colors.white,
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.asset(
+                width: 48,
+                height: 48,
+                AppAssets.images.userImage,
+              ),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Diyorbek Isroilov",
+                  style: AppTextStyles.regularStyle.copyWith(
+                    color: AppColors.greyscaleLight.shade600,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Diyorbek Isroilov",
-                    style: AppTextStyles.regularStyle.copyWith(
-                      color: AppColors.greyscaleLight.shade600,
-                      fontSize: 16,
-                    ),
+                Text(
+                  "1-DMTT, Toshloq",
+                  style: AppTextStyles.boldStyle.copyWith(
+                    color: AppColors.greyscaleLight.shade900,
+                    fontSize: 20,
+                    height: 1.2,
                   ),
-                  Text(
-                    "1-DMTT, Toshloq",
-                    style: AppTextStyles.boldStyle.copyWith(
-                      color: AppColors.greyscaleLight.shade900,
-                      fontSize: 20,
-                      height: 1.2,
-                    ),
-                  ),
-                ],
-              ),
-              actions: [
-                ActionButton(icon: AppAssets.icons.scan),
-                const SizedBox(width: 16),
-                ActionButton(icon: AppAssets.icons.notification),
+                ),
               ],
             ),
+            actions: [
+              ActionButton(icon: AppAssets.icons.scan),
+              const SizedBox(width: 16),
+              ActionButton(icon: AppAssets.icons.notification),
+            ],
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            sliver: SliverPersistentHeader(
-              pinned: true,
-              delegate: PersistentHeader(
-                widget: const ProductSearch(),
-              ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          sliver: SliverPersistentHeader(
+            pinned: true,
+            delegate: PersistentHeader(
+              widget: const ProductSearch(),
             ),
           ),
-          const SectionTitle(
-            title: "Yangiliklar 🔥",
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Container(
-                margin: const EdgeInsets.fromLTRB(24, 12, 24, 24),
-                height: 180,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(36),
-                  image: DecorationImage(
-                    image: AssetImage(AppAssets.images.offer),
-                    fit: BoxFit.fill,
-                  ),
+        ),
+        const SectionTitle(
+          title: "Yangiliklar 🔥",
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Container(
+              margin: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+              height: 180,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(36),
+                image: DecorationImage(
+                  image: AssetImage(AppAssets.images.offer),
+                  fit: BoxFit.fill,
                 ),
               ),
-            ]),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: 24,
-                // crossAxisSpacing: 20.5,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Image.asset(
-                        width: 48,
-                        height: 58,
-                        categoryImages[index],
+            ),
+          ]),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+          sliver: SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              mainAxisSpacing: 24,
+              // crossAxisSpacing: 20.5,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Column(
+                  children: [
+                    Image.asset(
+                      width: 48,
+                      height: 58,
+                      categoryImages[index],
+                    ),
+                    Text(
+                      categoryNames[index],
+                      style: AppTextStyles.boldStyle.copyWith(
+                        fontSize: 16,
+                        height: 1.4,
+                        letterSpacing: 0.2,
+                        color: AppColors.greyscaleLight,
                       ),
-                      Text(
-                        categoryNames[index],
-                        style: AppTextStyles.boldStyle.copyWith(
-                          fontSize: 16,
-                          height: 1.4,
-                          letterSpacing: 0.2,
-                          color: AppColors.greyscaleLight,
-                        ),
-                      ),
-                    ],
-                  );
-                },
-                childCount: 8,
-              ),
+                    ),
+                  ],
+                );
+              },
+              childCount: 8,
             ),
           ),
-          const SectionTitle(
-            title: "Mahsulotlar 👌",
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 369,
-              child: ListView.separated(
-                itemCount: 3,
-                clipBehavior: Clip.none,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return ProductHomeContainer(
-                    productImage: AppAssets.images.productTomato,
-                    productTitle: "Pomidor",
-                    productQuantity: 43,
-                    productSeller: "Abdusalom Yuk...",
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(width: 16);
-                },
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              ),
+        ),
+        const SectionTitle(
+          title: "Mahsulotlar 👌",
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 369,
+            child: ListView.separated(
+              itemCount: 3,
+              clipBehavior: Clip.none,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return ProductHomeContainer(
+                  productImage: AppAssets.images.productTomato,
+                  productTitle: "Pomidor",
+                  productQuantity: 43,
+                  productSeller: "Abdusalom Yuk...",
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(width: 16);
+              },
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
