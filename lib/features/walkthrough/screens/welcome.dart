@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/app_text_styles.dart';
@@ -9,6 +10,9 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.light,
+    ));
     return Scaffold(
       body: GestureDetector(
         onTap: () => Navigator.push(
@@ -32,18 +36,18 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Xush kelibsiz!",
-                      style: AppTextStyles.boldStyle.copyWith(fontSize: 48, color: AppColors.primaryLight),
+                      style: AppTextStyles.boldStyle.copyWith(fontSize: 40, color: AppColors.primaryLight),
                     ),
                     const SizedBox(width: 10),
                     Image.asset(
                       AppAssets.images.welcomeHi,
-                      width: 48,
+                      width: 40,
                     ),
                   ],
                 ),
                 Text(
                   "MyDMTT - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
-                  style: AppTextStyles.mediumStyle.copyWith(fontSize: 18, color: Colors.white),
+                  style: AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ],

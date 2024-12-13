@@ -28,13 +28,13 @@ class CarouselItem extends StatelessWidget {
           const Spacer(),
           Text(
             title,
-            style: AppTextStyles.boldStyle.copyWith(fontSize: 46, color: AppColors.primaryLight.shade400),
+            style: AppTextStyles.boldStyle.copyWith(fontSize: 40, color: AppColors.primaryLight.shade400),
           ),
           const SizedBox(height: 16),
           Text(
             description,
             style: AppTextStyles.mediumStyle.copyWith(
-              fontSize: 18,
+              fontSize: 17,
               color: AppColors.greyscaleLight,
             ),
             textAlign: TextAlign.center,

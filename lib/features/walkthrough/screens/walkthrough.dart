@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/app_text_styles.dart';
@@ -47,6 +48,9 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return Scaffold(
       body: SafeArea(
         child: Column(

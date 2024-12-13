@@ -12,10 +12,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.white,
-      statusBarColor: Colors.white,
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),

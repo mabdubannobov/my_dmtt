@@ -110,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 58,
                       categoryImages[index],
                     ),
+                    const SizedBox(height: 8),
                     Text(
                       categoryNames[index],
                       style: AppTextStyles.boldStyle.copyWith(
@@ -133,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SizedBox(
             height: 369,
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               itemCount: 3,
               clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,

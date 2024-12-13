@@ -47,12 +47,12 @@ List<String> categoryImages = [
 ];
 
 List<String> categoryNames = [
-  "Sabza..",
-  "Un ma..",
-  "Don m..",
+  "Sabzavot",
+  "Un mah..",
+  "Don ma..",
   "Go'sht",
-  "Poliz e..",
-  "Sut m..",
-  "Meval..",
+  "Poliz ek..",
+  "Sut ma..",
+  "Mevalar",
   "Boshqa",
 ];
