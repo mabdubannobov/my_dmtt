@@ -12,11 +12,11 @@ class HomeLoadingState extends HomeState {}
 class HomeLoadedState extends HomeState {
   final UserModel userModel;
   final DmttModel dmttModel;
-  final List<CompanyModel> companies;
+  final List<ProductModel> products;
   HomeLoadedState({
     required this.userModel,
     required this.dmttModel,
-    required this.companies,
+    required this.products,
   });
 }
 

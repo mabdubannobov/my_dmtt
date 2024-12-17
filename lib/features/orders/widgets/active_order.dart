@@ -27,7 +27,7 @@ class ActiveOrder extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF04060F).withOpacity(0.05),
+            color: const Color(0xFF04060F).withValues(alpha: 0.05),
             spreadRadius: 0,
             blurRadius: 60,
             offset: const Offset(0, 4),

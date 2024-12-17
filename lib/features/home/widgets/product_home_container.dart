@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/app_colors.dart';
@@ -10,12 +11,14 @@ class ProductHomeContainer extends StatelessWidget {
     required this.productTitle,
     required this.productQuantity,
     required this.productSeller,
+    required this.productMeasure,
   });
 
   final String productImage;
   final String productTitle;
   final double productQuantity;
   final String productSeller;
+  final String productMeasure;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class ProductHomeContainer extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF04060F).withOpacity(0.05),
+            color: const Color(0xFF04060F).withValues(alpha: 0.05),
             spreadRadius: 0,
             blurRadius: 60,
             offset: const Offset(0, 4),
@@ -38,10 +41,10 @@ class ProductHomeContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
+          CachedNetworkImage(
             width: 192,
             height: 192,
-            productImage,
+            imageUrl: productImage,
           ),
           const SizedBox(height: 12),
           Text(
@@ -50,10 +53,11 @@ class ProductHomeContainer extends StatelessWidget {
               fontSize: 20,
               color: AppColors.greyscaleLight,
             ),
+            softWrap: false,
           ),
           const SizedBox(height: 14),
           Text(
-            "Qoldiqda - $productQuantity kg",
+            "Qoldiqda - $productQuantity $productMeasure",
             style: AppTextStyles.mediumStyle.copyWith(
               fontSize: 12,
               color: AppColors.greyscaleLight.shade700,
@@ -66,6 +70,7 @@ class ProductHomeContainer extends StatelessWidget {
               fontSize: 20,
               color: AppColors.primaryLight,
             ),
+            softWrap: false,
           ),
         ],
       ),

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:my_dmtt/features/home/domain/data/home_service.dart';
+import 'package:my_dmtt/models/product_model.dart';
 
-import '../../../models/company_model.dart';
 import '../../../models/dmtt_model.dart';
 import '../../../models/user_model.dart';
 
@@ -19,13 +19,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         try {
           final UserModel userModel = await homeService.getUserData();
           final DmttModel dmttModel = await homeService.getDmttName();
-          final List<CompanyModel> companies = await homeService.getCompanies();
-
+          final List<ProductModel> products = await homeService.getProducts();
           emit(
             HomeLoadedState(
               userModel: userModel,
               dmttModel: dmttModel,
-              companies: companies,
+              products: products,
             ),
           );
         } catch (e) {

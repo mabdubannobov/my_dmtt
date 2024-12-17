@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   behavior: SnackBarBehavior.floating,
-                  backgroundColor: AppColors.error.withOpacity(0.2),
+                  backgroundColor: AppColors.error.withValues(alpha: 0.2),
                   elevation: 0,
                   content: Text(
                     'Login yoki parol xato kiritildi',

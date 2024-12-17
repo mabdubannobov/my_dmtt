@@ -3,16 +3,16 @@ import 'package:dio/dio.dart';
 
 import '../../../../constants/sharedprefrences.dart';
 import '../../../../constants/urls.dart';
-import '../../../../models/company_model.dart';
 import '../../../../models/dmtt_model.dart';
+import '../../../../models/product_model.dart';
 import '../../../../models/user_model.dart';
 
 class HomeService {
   final Dio dio = Dio(BaseOptions(baseUrl: baseURL));
   final String getuserData = '/profile';
   final String getDMTTName = '/users/dmtt';
-  final String companiesUrl = '/contracts/companies';
   final String orderUrl = '/orders/';
+  final String productsUrl = '/limit';
 
   // Future<void> postData(List<ProductModel> dataList) async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -81,10 +81,10 @@ class HomeService {
     }
   }
 
-  Future<List<CompanyModel>> getCompanies() async {
+  Future<List<ProductModel>> getProducts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final result = await dio.get(
-      companiesUrl,
+      "$productsUrl?company_id=2",
       options: Options(
         headers: {
           "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
@@ -93,10 +93,10 @@ class HomeService {
     );
 
     if (result.statusCode == 200) {
-      List<CompanyModel> allCompanies;
+      List<ProductModel> allProducts;
 
-      allCompanies = [for (final item in result.data) CompanyModel.fromJson(item)];
-      return allCompanies;
+      allProducts = [for (final item in result.data) ProductModel.fromJson(item)];
+      return allProducts;
     } else {
       throw Exception();
     }

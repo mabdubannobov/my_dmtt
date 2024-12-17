@@ -50,7 +50,7 @@ class _SignInFieldState extends State<SignInField> {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         filled: true,
-        fillColor: _isFocused ? AppColors.primaryLight.withOpacity(0.08) : AppColors.greyscaleLight.shade50,
+        fillColor: _isFocused ? AppColors.primaryLight.withValues(alpha: 0.08) : AppColors.greyscaleLight.shade50,
         prefixIconConstraints: const BoxConstraints(maxHeight: 20),
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 20, right: 12),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_dmtt/constants/labels.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
+import 'package:my_dmtt/models/product_model.dart';
 
-import '../../../models/company_model.dart';
 import '../../../models/dmtt_model.dart';
 import '../../../models/user_model.dart';
 import '../bloc/home_bloc.dart';
@@ -47,10 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
           district: 'Aniqlanmadi',
         );
         DmttModel dmttModel = DmttModel(name: '?');
+        List<ProductModel> products = [
+          ProductModel(
+            name: "Aniqlanmadi",
+            measure: "kg",
+            count: "1",
+            imageUrl: "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+          ),
+        ];
 
         if (state is HomeLoadedState) {
           userModel = state.userModel;
           dmttModel = state.dmttModel;
+          products = state.products;
         }
 
         return CustomScrollView(
@@ -168,15 +177,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 369,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: 3,
+                  itemCount: products.length,
                   clipBehavior: Clip.none,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ProductHomeContainer(
-                      productImage: AppAssets.images.productTomato,
-                      productTitle: "Pomidor",
-                      productQuantity: 43,
-                      productSeller: "Abdusalom Yuk...",
+                      productImage: products[index].imageUrl ??
+                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                      productTitle: products[index].name,
+                      productQuantity: double.parse(products[index].count!),
+                      productMeasure: products[index].measure,
+                      productSeller: "Zilolaxon Sarvinoz Sof Baraka MCHJ",
                     );
                   },
                   separatorBuilder: (context, index) {
