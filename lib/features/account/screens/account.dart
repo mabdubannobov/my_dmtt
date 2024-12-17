@@ -13,7 +13,7 @@ class AccountScreen extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: AppBar(
             backgroundColor: Colors.white,
             leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
@@ -26,7 +26,7 @@ class AccountScreen extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Row(
             children: [
               ClipRRect(

@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       physics: const BouncingScrollPhysics(),
       slivers: [
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
           sliver: SliverAppBar(
             floating: false,
             expandedHeight: 56,
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           sliver: SliverPersistentHeader(
             pinned: true,
             delegate: PersistentHeader(
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SliverList(
           delegate: SliverChildListDelegate([
             Container(
-              margin: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+              margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
               height: 180,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(36),
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ]),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
           sliver: SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
               separatorBuilder: (context, index) {
                 return const SizedBox(width: 16);
               },
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: const EdgeInsets.all(16),
             ),
           ),
         ),

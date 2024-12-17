@@ -35,7 +35,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: AppBar(
             backgroundColor: Colors.white,
             leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
@@ -72,7 +72,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Container(
             color: Colors.transparent,
             child: TabBar(
@@ -102,7 +102,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
             children: [
               Center(
                 child: ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                   itemCount: 1,
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 24);
@@ -118,7 +118,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               ),
               Center(
                 child: ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                   itemCount: 3,
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 24);
@@ -134,7 +134,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               ),
               Center(
                 child: ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                   itemCount: 3,
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 24);
