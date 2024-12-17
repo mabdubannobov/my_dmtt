@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/app_text_styles.dart';
-import 'package:my_dmtt/features/main_screen.dart';
+import 'package:my_dmtt/features/signin/screens/sign_in.dart';
 import 'package:my_dmtt/features/walkthrough/widgets/carousel_item.dart';
 
 class WalkthroughScreen extends StatefulWidget {
@@ -52,6 +52,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -74,10 +75,10 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
             TextButton(
               onPressed: () {
                 _currentPage == 2
-                    ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainScreen()))
+                    ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen()))
                     : _pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
+                        duration: const Duration(milliseconds: 250),
+                        curve: Curves.easeOut,
                       );
               },
               style: ButtonStyle(

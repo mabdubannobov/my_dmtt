@@ -14,6 +14,7 @@ class WelcomeScreen extends StatelessWidget {
       statusBarIconBrightness: Brightness.light,
     ));
     return Scaffold(
+      backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () => Navigator.push(
           context,

@@ -33,6 +33,10 @@ class AppIcons extends AssetsFolder {
   String get loading => '$basePath/loading.svg';
 
   String get edit => '$basePath/ic-edit.svg';
+
+  String get arrowLeft => '$basePath/ic-arrow-left.svg';
+  String get userField => '$basePath/ic-profile-field.svg';
+  String get passwordField => '$basePath/ic-lock-field.svg';
 }
 
 class AppImages extends AssetsFolder {
