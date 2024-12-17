@@ -7,6 +7,7 @@ import 'package:my_dmtt/features/walkthrough/screens/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/sharedprefrences.dart';
+import 'features/home/bloc/home_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MainApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => SignInBloc()),
+          BlocProvider(create: (context) => HomeBloc()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/sharedprefrences.dart';
-import '../constants/urs.dart';
+import '../constants/urls.dart';
 
 class LoginService {
   final Dio dio = Dio(BaseOptions(baseUrl: baseURL));

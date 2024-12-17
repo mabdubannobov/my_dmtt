@@ -1,0 +1,38 @@
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:my_dmtt/features/home/domain/data/home_service.dart';
+
+import '../../../models/company_model.dart';
+import '../../../models/dmtt_model.dart';
+import '../../../models/user_model.dart';
+
+part 'home_event.dart';
+part 'home_state.dart';
+
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final HomeService homeService = HomeService();
+  HomeBloc() : super(HomeState()) {
+    on<HomeEvent>((event, emit) {});
+    on<GetUSerDataEvent>(
+      (event, emit) async {
+        emit(HomeLoadingState());
+        try {
+          final UserModel userModel = await homeService.getUserData();
+          final DmttModel dmttModel = await homeService.getDmttName();
+          final List<CompanyModel> companies = await homeService.getCompanies();
+
+          emit(
+            HomeLoadedState(
+              userModel: userModel,
+              dmttModel: dmttModel,
+              companies: companies,
+            ),
+          );
+        } catch (e) {
+          // log('Error occurred during login: $e');
+          emit(HomeErrorState(message: e.toString()));
+        }
+      },
+    );
+  }
+}
