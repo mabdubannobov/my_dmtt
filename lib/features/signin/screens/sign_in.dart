@@ -64,16 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 16, 24, 48),
-                      child: GestureDetector(
-                        child: SvgPicture.asset(AppAssets.icons.arrowLeft),
-                      ),
-                    ),
-                  ],
-                ),
+                const SizedBox(height: 48),
                 SvgPicture.asset(
                   AppAssets.icons.appBarLogo,
                   width: 120,
@@ -95,6 +86,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     controller: userController,
                     icon: AppAssets.icons.userField,
                     hintText: 'Foydalanuvchi nomi',
+                    activeIcon: AppAssets.icons.userFieldActive,
+                    filledIcon: AppAssets.icons.userFieldFilled,
                   ),
                 ),
                 Padding(
@@ -103,6 +96,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     controller: passwordController,
                     icon: AppAssets.icons.passwordField,
                     hintText: 'Xavfsizlik paroli',
+                    activeIcon: AppAssets.icons.passwordFieldActive,
+                    filledIcon: AppAssets.icons.passwordFieldFilled,
                   ),
                 ),
                 TextButton(

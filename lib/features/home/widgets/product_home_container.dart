@@ -10,22 +10,19 @@ class ProductHomeContainer extends StatelessWidget {
     required this.productImage,
     required this.productTitle,
     required this.productQuantity,
-    required this.productSeller,
     required this.productMeasure,
   });
 
   final String productImage;
   final String productTitle;
   final double productQuantity;
-  final String productSeller;
   final String productMeasure;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 337,
-      width: 220,
-      padding: const EdgeInsets.fromLTRB(14, 14, 14, 16),
+      width: 210,
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
         color: Colors.white,
@@ -41,10 +38,11 @@ class ProductHomeContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CachedNetworkImage(
-            width: 192,
-            height: 192,
-            imageUrl: productImage,
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: CachedNetworkImage(
+              imageUrl: productImage,
+            ),
           ),
           const SizedBox(height: 12),
           Text(
@@ -59,19 +57,11 @@ class ProductHomeContainer extends StatelessWidget {
           Text(
             "Qoldiqda - $productQuantity $productMeasure",
             style: AppTextStyles.mediumStyle.copyWith(
-              fontSize: 12,
+              fontSize: 14,
               color: AppColors.greyscaleLight.shade700,
             ),
           ),
           const SizedBox(height: 14),
-          Text(
-            productSeller,
-            style: AppTextStyles.boldStyle.copyWith(
-              fontSize: 20,
-              color: AppColors.primaryLight,
-            ),
-            softWrap: false,
-          ),
         ],
       ),
     );

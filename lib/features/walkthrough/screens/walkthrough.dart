@@ -83,7 +83,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
-                fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
+                fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
                 padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 16)),
               ),
               child: Text(

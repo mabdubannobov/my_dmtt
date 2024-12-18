@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 369,
+                height: 315,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemCount: products.length,
@@ -187,7 +187,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       productTitle: products[index].name,
                       productQuantity: double.parse(products[index].count!),
                       productMeasure: products[index].measure,
-                      productSeller: "Zilolaxon Sarvinoz Sof Baraka MCHJ",
                     );
                   },
                   separatorBuilder: (context, index) {
