@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_dmtt/features/main_screen.dart';
+import 'package:my_dmtt/features/orders/bloc/bloc/orders_bloc.dart';
 import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
 import 'package:my_dmtt/features/walkthrough/screens/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,6 +39,7 @@ class MainApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => SignInBloc()),
           BlocProvider(create: (context) => HomeBloc()),
+          BlocProvider(create: (context) => OrdersBloc()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

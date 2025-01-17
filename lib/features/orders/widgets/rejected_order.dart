@@ -58,7 +58,7 @@ class RejectedOrder extends StatelessWidget {
               ),
               const SizedBox(height: 14),
               Text(
-                '$itemsCount ta mahsulot | $orderDate',
+                '$itemsCount ta mahsulot | ${DateTime.parse(orderDate).day}.${DateTime.parse(orderDate).month}.${DateTime.parse(orderDate).year}',
                 style: AppTextStyles.mediumStyle.copyWith(
                   color: AppColors.greyscaleLight.shade700,
                   fontSize: 14,
