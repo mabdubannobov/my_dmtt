@@ -11,6 +11,7 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../../../models/order_model.dart';
 import '../bloc/bloc/orders_bloc.dart';
+import '../widgets/empty_order.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
@@ -124,54 +125,66 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Center(
-                    child: ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-                      itemCount: activeOrders.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const SizedBox(height: 24);
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return ActiveOrder(
-                          idOrder: activeOrders[index].id,
-                          itemsCount: activeOrders[index].items.length,
-                          orderDate: activeOrders[index].orderDate,
-                        );
-                      },
-                    ),
-                  ),
-                  Center(
-                    child: ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-                      itemCount: acceptedOrders.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const SizedBox(height: 24);
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return CompletedOrder(
-                          idOrder: acceptedOrders[index].id,
-                          itemsCount: acceptedOrders[index].items.length,
-                          orderDate: acceptedOrders[index].orderDate,
-                        );
-                      },
-                    ),
-                  ),
-                  Center(
-                    child: ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-                      itemCount: rejectedOrders.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const SizedBox(height: 24);
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return RejectedOrder(
-                          idOrder: rejectedOrders[index].id,
-                          itemsCount: rejectedOrders[index].items.length,
-                          orderDate: rejectedOrders[index].orderDate,
-                        );
-                      },
-                    ),
-                  ),
+                  activeOrders.isEmpty
+                      ? const EmptyOrder(
+                          orderTitle: "faol",
+                        )
+                      : Center(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            itemCount: activeOrders.length,
+                            separatorBuilder: (BuildContext context, int index) {
+                              return const SizedBox(height: 24);
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              return ActiveOrder(
+                                idOrder: activeOrders[index].id,
+                                itemsCount: activeOrders[index].items.length,
+                                orderDate: activeOrders[index].orderDate,
+                              );
+                            },
+                          ),
+                        ),
+                  acceptedOrders.isEmpty
+                      ? const EmptyOrder(
+                          orderTitle: "bajarilgan",
+                        )
+                      : Center(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            itemCount: acceptedOrders.length,
+                            separatorBuilder: (BuildContext context, int index) {
+                              return const SizedBox(height: 24);
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              return CompletedOrder(
+                                idOrder: acceptedOrders[index].id,
+                                itemsCount: acceptedOrders[index].items.length,
+                                orderDate: acceptedOrders[index].orderDate,
+                              );
+                            },
+                          ),
+                        ),
+                  rejectedOrders.isEmpty
+                      ? const EmptyOrder(
+                          orderTitle: "rad etilgan",
+                        )
+                      : Center(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            itemCount: rejectedOrders.length,
+                            separatorBuilder: (BuildContext context, int index) {
+                              return const SizedBox(height: 24);
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              return RejectedOrder(
+                                idOrder: rejectedOrders[index].id,
+                                itemsCount: rejectedOrders[index].items.length,
+                                orderDate: rejectedOrders[index].orderDate,
+                              );
+                            },
+                          ),
+                        ),
                 ],
               ),
             ),

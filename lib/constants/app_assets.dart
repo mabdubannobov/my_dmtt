@@ -72,4 +72,5 @@ class AppImages extends AssetsFolder {
   String get acceptedOrder => '$basePath/accepted-order.png';
   String get completedOrder => '$basePath/completed-order.png';
   String get rejectedOrder => '$basePath/rejected-order.png';
+  String get emptyOrder => '$basePath/empty-order.png';
 }
