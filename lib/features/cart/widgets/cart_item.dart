@@ -8,17 +8,21 @@ import '../../../constants/app_text_styles.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
+    required this.itemKey,
     required this.name,
     required this.count,
     required this.measure,
     required this.photoUrl,
+    required this.onDelete,
     super.key,
   });
 
+  final String itemKey;
   final String name;
   final double count;
   final String measure;
   final String photoUrl;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +67,10 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SvgPicture.asset(AppAssets.icons.delete),
+                GestureDetector(
+                  onTap: onDelete,
+                  child: SvgPicture.asset(AppAssets.icons.delete),
+                ),
                 SvgPicture.asset(AppAssets.icons.edit),
               ],
             ),

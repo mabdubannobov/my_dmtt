@@ -184,11 +184,14 @@ Future<void> storeData(
 ) async {
   final myDataBox = Hive.box<ProductModel>('productsBox');
 
-  await myDataBox.add(ProductModel(
-    name: name,
-    value: count,
-    companyId: companyId,
-    measure: measure,
-    imageUrl: imageUrl,
-  ));
+  await myDataBox.put(
+    name,
+    ProductModel(
+      name: name,
+      value: count,
+      companyId: companyId,
+      measure: measure,
+      imageUrl: imageUrl,
+    ),
+  );
 }
