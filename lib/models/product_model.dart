@@ -35,6 +35,15 @@ class ProductModel extends HiveObject {
     this.companyId,
   });
 
+  factory ProductModel.defaultModel() {
+    return ProductModel(
+      name: "None",
+      measure: "None",
+      count: "None",
+      imageUrl: "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+    );
+  }
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       name: json['name'],

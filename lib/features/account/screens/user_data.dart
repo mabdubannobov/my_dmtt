@@ -64,62 +64,53 @@ class _UserDataScreenState extends State<UserDataScreen> {
         ),
       ),
       body: SafeArea(
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: CachedNetworkImage(
-                      width: 100,
-                      height: 100,
-                      imageUrl:
-                          userData.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                    ),
-                  ),
-                  UserDataField(controller: userName),
-                  UserDataField(controller: userSurName),
-                  UserDataField(controller: userNumber),
-                  const Spacer(),
-                  TextButton(
-                    style: ButtonStyle(
-                      fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
-                      backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
-                    ),
-                    onPressed: () {
-                      final updatedUser = UserModel(
-                        firstName: userName.text,
-                        lastName: userSurName.text,
-                        phoneNumber: userNumber.text,
-                      );
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: CachedNetworkImage(
+                  width: 100,
+                  height: 100,
+                  imageUrl: userData.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                ),
+              ),
+              UserDataField(controller: userName),
+              UserDataField(controller: userSurName),
+              UserDataField(controller: userNumber),
+              const Spacer(),
+              TextButton(
+                style: ButtonStyle(
+                  fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
+                  backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
+                ),
+                onPressed: () {
+                  final updatedUser = UserModel(
+                    firstName: userName.text,
+                    lastName: userSurName.text,
+                    phoneNumber: userNumber.text,
+                  );
 
-                      context.read<AccountBloc>().add(UpdateUserDataEvent(userData: updatedUser));
-                      Navigator.pop(context, updatedUser);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Text(
-                        "Yangilash",
-                        style: AppTextStyles.boldStyle.copyWith(
-                          color: Colors.white,
-                          fontSize: 16,
-                          letterSpacing: 0.2,
-                          height: 1.4,
-                        ),
-                      ),
+                  context.read<AccountBloc>().add(UpdateUserDataEvent(userData: updatedUser));
+                  Navigator.pop(context, updatedUser);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    "Yangilash",
+                    style: AppTextStyles.boldStyle.copyWith(
+                      color: Colors.white,
+                      fontSize: 16,
+                      letterSpacing: 0.2,
+                      height: 1.4,
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-            if (context.watch<AccountBloc>().state is UpdateUserDataEvent)
-              const Center(
-                child: CircularProgressIndicator(),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

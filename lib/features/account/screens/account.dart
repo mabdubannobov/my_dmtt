@@ -30,7 +30,20 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AccountBloc, AccountState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AccountUpdatedState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "Ma'lumotlaringiz muvaffaqiyatli yangilandi!",
+                style: AppTextStyles.semiBoldStyle.copyWith(color: Colors.white),
+              ),
+              backgroundColor: AppColors.primaryLight,
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         if (state is AccountLoadingState) {
           return const Center(

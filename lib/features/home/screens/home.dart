@@ -34,34 +34,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is HomeErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+      },
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return const Center(
             child: CupertinoActivityIndicator(),
           );
         }
-
-        UserModel userModel = UserModel(
-          firstName: "?",
-          lastName: 'Aniqlanmadi',
-          district: 'Aniqlanmadi',
-        );
-        DmttModel dmttModel = DmttModel(name: '?');
-        List<ProductModel> products = [
-          ProductModel(
-            name: "Aniqlanmadi",
-            measure: "kg",
-            count: "1",
-            imageUrl: "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-          ),
-        ];
-
-        if (state is HomeLoadedState) {
-          userModel = state.userModel;
-          dmttModel = state.dmttModel;
-          products = state.products;
-        }
+        UserModel userModel = state is HomeLoadedState ? state.userModel : UserModel.defaultModel();
+        DmttModel dmttModel = state is HomeLoadedState ? state.dmttModel : DmttModel.defaultModel();
+        List<ProductModel> products = state is HomeLoadedState ? state.products : [ProductModel.defaultModel()];
 
         return CustomScrollView(
           scrollDirection: Axis.vertical,
@@ -76,8 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        userModel.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                    imageUrl: userModel.imageUrl!,
                   ),
                 ),
                 title: Column(
@@ -138,10 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 100,
                   mainAxisSpacing: 24,
-                  // crossAxisSpacing: 20.5,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: 0.8,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -185,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       productImage: products[index].imageUrl ??
                           "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                       productTitle: products[index].name,
-                      productQuantity: double.parse(products[index].count!),
+                      productQuantity: safeParseDouble(products[index].count),
                       productMeasure: products[index].measure,
                       companyId: 2,
                     );
@@ -202,4 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+}
+
+double safeParseDouble(String? value, [double fallback = 0.0]) {
+  return double.tryParse(value ?? '') ?? fallback;
 }

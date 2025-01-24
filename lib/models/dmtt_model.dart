@@ -13,6 +13,10 @@ class DmttModel {
     this.isActive,
   });
 
+  factory DmttModel.defaultModel() {
+    return DmttModel(name: "?");
+  }
+
   DmttModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     address = json['address'];

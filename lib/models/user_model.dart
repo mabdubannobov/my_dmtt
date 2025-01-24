@@ -15,6 +15,16 @@ class UserModel {
     this.imageUrl,
   });
 
+  factory UserModel.defaultModel() {
+    return UserModel(
+      firstName: "None",
+      lastName: "None",
+      district: "None",
+      imageUrl: "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+      phoneNumber: "+998000000000",
+    );
+  }
+
   UserModel.fromJson(Map<String, dynamic> json) {
     firstName = json['first_name'];
     lastName = json['last_name'];
