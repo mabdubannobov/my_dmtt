@@ -11,6 +11,7 @@ import 'package:my_dmtt/features/account/screens/user_data.dart';
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_text_styles.dart';
 import '../../../models/user_model.dart';
+import '../widgets/exit_bottom_sheet.dart';
 import '../widgets/settings_item.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -193,7 +194,14 @@ class _AccountScreenState extends State<AccountScreen> {
               leadingIcon: AppAssets.icons.logout,
               title: 'Chiqish',
               trailingIcon: const SizedBox.shrink(),
-              onTap: () {},
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const ExitBottomSheet();
+                  },
+                );
+              },
             )
           ],
         );
