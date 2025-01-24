@@ -14,7 +14,9 @@ class AccountLoadedState extends AccountState {
   AccountLoadedState({required this.userModel});
 }
 
-class AccountUpdateSuccessState extends AccountState {}
+class AccountUpdatingdState extends AccountState {}
+
+class AccountUpdatedState extends AccountState {}
 
 class AccountErrorState extends AccountState {
   final String message;

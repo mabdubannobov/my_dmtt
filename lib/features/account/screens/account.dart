@@ -65,13 +65,19 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                final updatedUser = await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => UserDataScreen(userData: userModel),
                   ),
                 );
+
+                if (updatedUser != null) {
+                  setState(() {
+                    userModel = updatedUser;
+                  });
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -84,6 +90,14 @@ class _AccountScreenState extends State<AccountScreen> {
                         height: 80,
                         imageUrl: userModel.imageUrl ??
                             "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) => const Icon(
+                          Icons.person,
+                          size: 80,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 20),
