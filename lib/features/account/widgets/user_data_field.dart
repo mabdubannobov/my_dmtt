@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:my_dmtt/constants/app_text_styles.dart';
+
+import '../../../constants/app_colors.dart';
+
+class UserDataField extends StatefulWidget {
+  const UserDataField({
+    super.key,
+    required this.controller,
+  });
+
+  final TextEditingController controller;
+
+  @override
+  State<UserDataField> createState() => _UserDataFieldState();
+}
+
+class _UserDataFieldState extends State<UserDataField> {
+  final FocusNode _focusNode = FocusNode();
+  bool _isFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      setState(() {
+        _isFocused = _focusNode.hasFocus;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: TextField(
+        controller: widget.controller,
+        focusNode: _focusNode,
+        style: AppTextStyles.semiBoldStyle.copyWith(
+          color: AppColors.greyscaleLight,
+          fontSize: 16,
+        ),
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          filled: true,
+          fillColor: _isFocused ? AppColors.primaryLight.withValues(alpha: 0.08) : AppColors.greyscaleLight.shade50,
+          suffixIconConstraints: const BoxConstraints(maxHeight: 20),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(width: 1, color: AppColors.primaryLight),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -22,5 +22,17 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         }
       },
     );
+
+    on<UpdateUserDataEvent>(
+      (event, emit) async {
+        emit(AccountLoadingState());
+        try {
+          await accountService.updateUserData(event.userData);
+          emit(AccountUpdateSuccessState());
+        } catch (e) {
+          emit(AccountErrorState(message: e.toString()));
+        }
+      },
+    );
   }
 }

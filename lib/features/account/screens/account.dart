@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
 import 'package:my_dmtt/features/account/screens/notifications.dart';
+import 'package:my_dmtt/features/account/screens/user_data.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_text_styles.dart';
@@ -63,38 +64,48 @@ class _AccountScreenState extends State<AccountScreen> {
                 titleTextStyle: AppTextStyles.titleStyle,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: CachedNetworkImage(
-                      width: 80,
-                      height: 80,
-                      imageUrl:
-                          userModel.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserDataScreen(userData: userModel),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: CachedNetworkImage(
+                        width: 80,
+                        height: 80,
+                        imageUrl: userModel.imageUrl ??
+                            "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${userModel.firstName} ${userModel.lastName}",
-                        style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
-                        style:
-                            AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  SvgPicture.asset(AppAssets.icons.edit),
-                ],
+                    const SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${userModel.firstName} ${userModel.lastName}",
+                          style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
+                          style: AppTextStyles.mediumStyle
+                              .copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    SizedBox(height: 80, child: SvgPicture.asset(AppAssets.icons.edit)),
+                  ],
+                ),
               ),
             ),
             Padding(

@@ -7,3 +7,8 @@ sealed class AccountEvent extends Equatable {
 }
 
 class GetUserDataEvent extends AccountEvent {}
+
+class UpdateUserDataEvent extends AccountEvent {
+  final UserModel userData;
+  const UpdateUserDataEvent({required this.userData});
+}

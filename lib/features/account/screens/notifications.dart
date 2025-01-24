@@ -36,7 +36,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(
             children: [
               Row(
