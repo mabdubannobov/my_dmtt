@@ -27,6 +27,7 @@ class AccountService {
         lastName: data['last_name'],
         district: data['district'],
         imageUrl: data['image_url'],
+        phoneNumber: data['phone_number'],
       );
     } else {
       throw Exception();

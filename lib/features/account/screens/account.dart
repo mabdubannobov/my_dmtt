@@ -41,6 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
           firstName: "?",
           lastName: 'Aniqlanmadi',
           district: 'Aniqlanmadi',
+          phoneNumber: "+998000000000",
         );
 
         if (state is AccountLoadedState) {
@@ -85,7 +86,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        "+998 (91) 650-66-26",
+                        "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
                         style:
                             AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
                       ),
