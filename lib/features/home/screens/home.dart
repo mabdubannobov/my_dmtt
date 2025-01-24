@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,10 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Colors.white,
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    width: 48,
-                    height: 48,
-                    AppAssets.images.userImage,
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        userModel.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                   ),
                 ),
                 title: Column(
@@ -174,8 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 153 + (MediaQuery.of(context).size.width / 2 - 24 - 48),
-                // height: 276,
+                height: 155 + (MediaQuery.of(context).size.width / 2 - 24 - 48),
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemCount: products.length,
