@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
+import 'package:my_dmtt/features/account/screens/notifications.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_text_styles.dart';
 import '../../../models/user_model.dart';
+import '../widgets/settings_item.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -95,12 +97,65 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Divider(
                 color: AppColors.greyscaleLight.shade200,
               ),
             ),
-            const ListTile()
+            SettingsItem(
+              leadingIcon: AppAssets.icons.calendar,
+              title: '"Aqlvoy" taomnomasi',
+              onTap: () {},
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.folder,
+              title: 'Sifat sertifikatlari',
+              onTap: () {},
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Divider(
+                color: AppColors.greyscaleLight.shade200,
+              ),
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.notification,
+              title: 'Bildirishnomalar',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsNotifications(),
+                  ),
+                );
+              },
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.language,
+              title: 'Ilova tili',
+              onTap: () {},
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.show,
+              title: 'Tungi rejim',
+              trailingIcon: Switch(
+                value: false,
+                onChanged: (value) {},
+                activeColor: Colors.white,
+                activeTrackColor: AppColors.primaryLight.shade500,
+                inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                trackOutlineWidth: const WidgetStatePropertyAll(0),
+                trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                inactiveThumbColor: Colors.white,
+              ),
+              onTap: () {},
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.logout,
+              title: 'Chiqish',
+              trailingIcon: const SizedBox.shrink(),
+              onTap: () {},
+            )
           ],
         );
       },
