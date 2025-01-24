@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_dmtt/constants/sharedprefrences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/app_colors.dart';
+import '../../signin/screens/sign_in.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
@@ -14,6 +17,16 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.remove(Shared.accessToken);
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const SignInScreen(),
+            ),
+            (Route route) => false);
+      },
       child: Container(
         width: 48,
         height: 48,
