@@ -52,6 +52,8 @@ class AppIcons extends AssetsFolder {
   String get language => '$basePath/ic-language.svg';
   String get show => '$basePath/ic-show.svg';
   String get logout => '$basePath/ic-logout.svg';
+
+  String get successCreateOrder => '$basePath/success-create-order.svg';
 }
 
 class AppImages extends AssetsFolder {
