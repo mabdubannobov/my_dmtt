@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
 import 'package:my_dmtt/features/home/widgets/empty_cart.dart';
 
 import '../../../constants/app_assets.dart';
@@ -17,7 +19,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  late Box myDataBox;
+  late Box<ProductModel> myDataBox;
 
   @override
   void initState() {
@@ -30,10 +32,9 @@ class _CartScreenState extends State<CartScreen> {
     setState(() {});
   }
 
-  // Future<void> _clearHiveBox() async {
-  //   await myDataBox.clear();
-  //   _getData();
-  // }
+  Future<void> _clearHiveBox() async {
+    await myDataBox.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +109,10 @@ class _CartScreenState extends State<CartScreen> {
                         fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
                         backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CartBloc>().add(CreateOrderEvent(products: myDataBox.values.toList()));
+                        _clearHiveBox();
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: Text(

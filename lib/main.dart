@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
+import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
 import 'package:my_dmtt/features/main_screen.dart';
 import 'package:my_dmtt/features/orders/bloc/bloc/orders_bloc.dart';
 import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
@@ -47,6 +48,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => OrdersBloc()),
           BlocProvider(create: (context) => AccountBloc()),
+          BlocProvider(create: (context) => CartBloc()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
