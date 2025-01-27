@@ -78,62 +78,68 @@ class _AccountScreenState extends State<AccountScreen> {
                 titleTextStyle: AppTextStyles.titleStyle,
               ),
             ),
-            GestureDetector(
-              onTap: () async {
-                final updatedUser = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => UserDataScreen(userData: userModel),
-                  ),
-                );
-
-                if (updatedUser != null) {
-                  setState(() {
-                    userModel = updatedUser;
-                  });
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: CachedNetworkImage(
-                        width: 80,
-                        height: 80,
-                        imageUrl: userModel.imageUrl ??
-                            "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (context, url, error) => const Icon(
-                          Icons.person,
-                          size: 80,
-                          color: Colors.grey,
-                        ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: CachedNetworkImage(
+                      width: 80,
+                      height: 80,
+                      imageUrl:
+                          userModel.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.person,
+                        size: 80,
+                        color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${userModel.firstName} ${userModel.lastName}",
-                          style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
+                  ),
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${userModel.firstName} ${userModel.lastName}",
+                        style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
+                        style:
+                            AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      final updatedUser = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserDataScreen(userData: userModel),
                         ),
-                        const SizedBox(height: 12),
-                        Text(
-                          "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
-                          style: AppTextStyles.mediumStyle
-                              .copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
-                        ),
-                      ],
+                      );
+
+                      if (updatedUser != null) {
+                        setState(() {
+                          userModel = updatedUser;
+                        });
+                      }
+                    },
+                    child: SvgPicture.asset(
+                      AppAssets.icons.edit,
+                      width: 24,
+                      height: 24,
                     ),
-                    const Spacer(),
-                    SizedBox(height: 80, child: SvgPicture.asset(AppAssets.icons.edit)),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(
@@ -169,6 +175,11 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                 );
               },
+            ),
+            SettingsItem(
+              leadingIcon: AppAssets.icons.security,
+              title: 'Xavfsizlik',
+              onTap: () {},
             ),
             SettingsItem(
               leadingIcon: AppAssets.icons.language,

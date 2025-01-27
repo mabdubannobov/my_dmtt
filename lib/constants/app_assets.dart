@@ -49,11 +49,14 @@ class AppIcons extends AssetsFolder {
   String get calendar => '$basePath/ic-calendar.svg';
   String get folder => '$basePath/ic-folder.svg';
   String get arrowRight => '$basePath/ic-arrow-right.svg';
+  String get security => '$basePath/ic-security.svg';
   String get language => '$basePath/ic-language.svg';
   String get show => '$basePath/ic-show.svg';
   String get logout => '$basePath/ic-logout.svg';
 
   String get successCreateOrder => '$basePath/success-create-order.svg';
+
+  String get wallet => '$basePath/ic-wallet.svg';
 }
 
 class AppImages extends AssetsFolder {

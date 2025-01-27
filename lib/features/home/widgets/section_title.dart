@@ -7,9 +7,11 @@ class SectionTitle extends StatelessWidget {
   const SectionTitle({
     super.key,
     required this.title,
+    required this.onTap,
   });
 
   final String title;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,18 @@ class SectionTitle extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Text(
-                "Hammasi",
-                style: AppTextStyles.boldStyle.copyWith(
-                  fontSize: 16,
-                  height: 1.4,
-                  letterSpacing: 0.2,
-                  color: AppColors.primaryLight,
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: onTap,
+                child: Text(
+                  "Hammasi",
+                  style: AppTextStyles.boldStyle.copyWith(
+                    fontSize: 16,
+                    height: 1.4,
+                    letterSpacing: 0.2,
+                    color: AppColors.primaryLight,
+                  ),
                 ),
               ),
             ],

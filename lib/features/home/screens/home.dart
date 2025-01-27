@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_dmtt/constants/labels.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
+import 'package:my_dmtt/features/home/screens/products_screen.dart';
 import 'package:my_dmtt/models/product_model.dart';
 
 import '../../../models/dmtt_model.dart';
@@ -104,8 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            const SectionTitle(
+            SectionTitle(
               title: "Yangiliklar 🔥",
+              onTap: () {},
             ),
             SliverList(
               delegate: SliverChildListDelegate([
@@ -157,8 +159,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            const SectionTitle(
+            SectionTitle(
               title: "Mahsulotlar 👌",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductsScreen(allProducts: products),
+                  ),
+                );
+              },
             ),
             SliverToBoxAdapter(
               child: SizedBox(
