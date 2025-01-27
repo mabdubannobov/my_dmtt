@@ -100,43 +100,48 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${userModel.firstName} ${userModel.lastName}",
-                        style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
-                        style:
-                            AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      final updatedUser = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => UserDataScreen(userData: userModel),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${userModel.firstName} ${userModel.lastName}",
+                          style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                      );
+                        const SizedBox(height: 12),
+                        Text(
+                          "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
+                          style: AppTextStyles.mediumStyle
+                              .copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                      highlightColor: Colors.transparent,
+                      onPressed: () async {
+                        final updatedUser = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UserDataScreen(userData: userModel),
+                          ),
+                        );
 
-                      if (updatedUser != null) {
-                        setState(() {
-                          userModel = updatedUser;
-                        });
-                      }
-                    },
-                    child: SvgPicture.asset(
-                      AppAssets.icons.edit,
-                      width: 24,
-                      height: 24,
+                        if (updatedUser != null) {
+                          setState(() {
+                            userModel = updatedUser;
+                          });
+                        }
+                      },
+                      icon: SvgPicture.asset(
+                        AppAssets.icons.edit,
+                        width: 24,
+                        height: 24,
+                      ),
                     ),
                   ),
                 ],
@@ -207,6 +212,13 @@ class _AccountScreenState extends State<AccountScreen> {
               trailingIcon: const SizedBox.shrink(),
               onTap: () {
                 showModalBottomSheet(
+                  backgroundColor: Colors.white,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(44),
+                    ),
+                  ),
+                  useSafeArea: true,
                   context: context,
                   builder: (context) {
                     return const ExitBottomSheet();

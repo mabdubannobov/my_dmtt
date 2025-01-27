@@ -22,32 +22,31 @@ class _ProductsScreenState extends State<ProductsScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         title: const Text("Mahsulotlar"),
         centerTitle: false,
-        leading: InkWell(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: SvgPicture.asset(AppAssets.icons.arrowLeft),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
+            highlightColor: Colors.transparent,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
           ),
         ),
-        leadingWidth: 44,
         titleTextStyle: AppTextStyles.boldStyle.copyWith(
           color: AppColors.greyscaleLight,
           fontSize: 24,
         ),
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
         itemCount: widget.allProducts.length,
         itemBuilder: (context, index) {
           ProductModel currentItem = widget.allProducts[index];
           return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.all(14),
             height: 124,
             decoration: BoxDecoration(

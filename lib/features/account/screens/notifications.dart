@@ -19,16 +19,16 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
         backgroundColor: Colors.white,
         title: const Text("Bildirishnomalar"),
         centerTitle: false,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: SvgPicture.asset(AppAssets.icons.arrowLeft),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
+            highlightColor: Colors.transparent,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
           ),
         ),
-        leadingWidth: 44,
         titleTextStyle: AppTextStyles.boldStyle.copyWith(
           color: AppColors.greyscaleLight,
           fontSize: 24,
