@@ -16,7 +16,6 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text("Bildirishnomalar"),
         centerTitle: false,
         leading: Padding(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:my_dmtt/constants/themes.dart';
+import 'package:my_dmtt/cubit/theme_cubit.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
 import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
 import 'package:my_dmtt/features/main_screen.dart';
@@ -41,7 +43,7 @@ class MainApp extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
     return BlocProvider(
-      create: (context) => SignInBloc(),
+      create: (context) => ThemeCubit(),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => SignInBloc()),
@@ -50,11 +52,15 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => AccountBloc()),
           BlocProvider(create: (context) => CartBloc()),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: home,
-          theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        ),
+        child: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: home,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: themeMode,
+          );
+        }),
       ),
     );
   }

@@ -62,14 +62,12 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
               child: AppBar(
-                backgroundColor: Colors.white,
                 leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
                 leadingWidth: 28,
                 title: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text('Buyurtmalar'),
                 ),
-                titleTextStyle: AppTextStyles.titleStyle,
                 actions: [
                   TextButton(
                     style: ButtonStyle(

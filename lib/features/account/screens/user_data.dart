@@ -45,7 +45,6 @@ class _UserDataScreenState extends State<UserDataScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text("Ma'lumotlarim"),
         centerTitle: false,
         leading: Padding(
@@ -57,10 +56,6 @@ class _UserDataScreenState extends State<UserDataScreen> {
             },
             icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
           ),
-        ),
-        titleTextStyle: AppTextStyles.boldStyle.copyWith(
-          color: AppColors.greyscaleLight,
-          fontSize: 24,
         ),
       ),
       body: SafeArea(

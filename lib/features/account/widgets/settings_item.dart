@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants/app_assets.dart';
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_text_styles.dart';
 
 class SettingsItem extends StatelessWidget {
   const SettingsItem({
@@ -31,20 +29,11 @@ class SettingsItem extends StatelessWidget {
       ),
       title: Row(
         children: [
-          Text(
-            title,
-            style: AppTextStyles.semiBoldStyle.copyWith(
-              fontSize: 18,
-              color: title == 'Chiqish' ? AppColors.error : AppColors.greyscaleLight.shade900,
-            ),
-          ),
+          Text(title, style: Theme.of(context).textTheme.bodyLarge),
           const Spacer(),
           Text(
             title == "Ilova tili" ? "O'zbek" : "",
-            style: AppTextStyles.semiBoldStyle.copyWith(
-              fontSize: 18,
-              color: AppColors.greyscaleLight.shade900,
-            ),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       ),

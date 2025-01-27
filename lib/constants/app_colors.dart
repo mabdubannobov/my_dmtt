@@ -10,6 +10,10 @@ abstract class AppColors {
   static const Color disabled = Color(0xFFD8D8D8);
   static const Color disabledButton = Color(0xFF29974D);
 
+  static const Color dark1 = Color(0xFF181A20);
+  static const Color dark2 = Color(0xFF1F222A);
+  static const Color dark3 = Color(0xFF35383F);
+
   static PrimaryColor primaryLight = const PrimaryColor(
     0xFF1BAC4B,
     <int, Color>{

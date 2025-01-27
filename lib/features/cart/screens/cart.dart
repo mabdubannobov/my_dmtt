@@ -44,14 +44,12 @@ class _CartScreenState extends State<CartScreen> {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: AppBar(
-            backgroundColor: Colors.white,
             leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
             leadingWidth: 28,
             title: const Align(
               alignment: Alignment.centerLeft,
               child: Text('Savat'),
             ),
-            titleTextStyle: AppTextStyles.titleStyle,
           ),
         ),
         BlocConsumer<CartBloc, CartState>(

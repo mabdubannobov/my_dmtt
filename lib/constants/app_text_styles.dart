@@ -12,7 +12,7 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
     letterSpacing: 0.2,
-    fontSize: 10,
+    fontSize: 12,
   );
   static TextStyle titleStyle = TextStyle(
     fontFamily: fontFamily,

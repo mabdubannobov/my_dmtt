@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
+import 'package:my_dmtt/cubit/theme_cubit.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
 import 'package:my_dmtt/features/account/screens/notifications.dart';
 import 'package:my_dmtt/features/account/screens/user_data.dart';
@@ -68,14 +69,12 @@ class _AccountScreenState extends State<AccountScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
               child: AppBar(
-                backgroundColor: Colors.white,
                 leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
                 leadingWidth: 28,
                 title: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text('Hisob'),
                 ),
-                titleTextStyle: AppTextStyles.titleStyle,
               ),
             ),
             Padding(
@@ -106,14 +105,13 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         Text(
                           "${userModel.firstName} ${userModel.lastName}",
-                          style: AppTextStyles.boldStyle.copyWith(fontSize: 20, color: AppColors.greyscaleLight),
+                          style: Theme.of(context).textTheme.headlineSmall,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 12),
                         Text(
                           "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
-                          style: AppTextStyles.mediumStyle
-                              .copyWith(fontSize: 16, color: AppColors.greyscaleLight.shade800),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -194,16 +192,20 @@ class _AccountScreenState extends State<AccountScreen> {
             SettingsItem(
               leadingIcon: AppAssets.icons.show,
               title: 'Tungi rejim',
-              trailingIcon: Switch(
-                value: false,
-                onChanged: (value) {},
-                activeColor: Colors.white,
-                activeTrackColor: AppColors.primaryLight.shade500,
-                inactiveTrackColor: AppColors.greyscaleLight.shade300,
-                trackOutlineWidth: const WidgetStatePropertyAll(0),
-                trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
-                inactiveThumbColor: Colors.white,
-              ),
+              trailingIcon: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
+                return Switch(
+                  value: themeMode == ThemeMode.dark,
+                  onChanged: (value) {
+                    context.read<ThemeCubit>().toggleTheme(value);
+                  },
+                  activeColor: Colors.white,
+                  activeTrackColor: AppColors.primaryLight.shade500,
+                  inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                  trackOutlineWidth: const WidgetStatePropertyAll(0),
+                  trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                  inactiveThumbColor: Colors.white,
+                );
+              }),
               onTap: () {},
             ),
             SettingsItem(
