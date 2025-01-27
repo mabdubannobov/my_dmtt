@@ -4,8 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:my_dmtt/models/product_model.dart';
 
 import '../../../constants/app_assets.dart';
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_text_styles.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({required this.allProducts, super.key});
@@ -19,10 +17,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
         title: const Text("Mahsulotlar"),
         centerTitle: false,
         leading: Padding(
@@ -32,12 +27,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
+            icon: SvgPicture.asset(
+              AppAssets.icons.arrowLeft,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
-        ),
-        titleTextStyle: AppTextStyles.boldStyle.copyWith(
-          color: AppColors.greyscaleLight,
-          fontSize: 24,
         ),
       ),
       body: ListView.builder(
@@ -51,7 +48,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             height: 124,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
-              color: Colors.white,
+              color: Theme.of(context).primaryColorLight,
               boxShadow: [
                 BoxShadow(
                   color: const Color(0xFF04060F).withValues(alpha: 0.05),
@@ -76,17 +73,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   children: [
                     Text(
                       currentItem.name,
-                      style: AppTextStyles.boldStyle.copyWith(
-                        fontSize: 20,
-                        color: AppColors.greyscaleLight,
-                      ),
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     Text(
                       "Qoldiq - ${currentItem.count} ${currentItem.measure}",
-                      style: AppTextStyles.mediumStyle.copyWith(
-                        fontSize: 14,
-                        color: AppColors.greyscaleLight.shade700,
-                      ),
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Row(
                       children: [
@@ -94,10 +85,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         const SizedBox(width: 6),
                         Text(
                           "1 500 so'm",
-                          style: AppTextStyles.mediumStyle.copyWith(
-                            fontSize: 14,
-                            color: AppColors.greyscaleLight.shade700,
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
                     )

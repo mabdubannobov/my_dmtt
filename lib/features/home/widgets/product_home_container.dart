@@ -39,7 +39,7 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).dialogBackgroundColor,
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(32),
               child: Column(
@@ -134,7 +134,7 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
         padding: const EdgeInsets.fromLTRB(14, 14, 14, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
-          color: Colors.white,
+          color: Theme.of(context).primaryColorLight,
           boxShadow: [
             BoxShadow(
               color: const Color(0xFF04060F).withValues(alpha: 0.05),
@@ -153,19 +153,13 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
             const SizedBox(height: 12),
             Text(
               widget.productTitle,
-              style: AppTextStyles.boldStyle.copyWith(
-                fontSize: 20,
-                color: AppColors.greyscaleLight,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
               softWrap: false,
             ),
             const SizedBox(height: 14),
             Text(
               "Qoldiq - ${widget.productQuantity} ${widget.productMeasure}",
-              style: AppTextStyles.mediumStyle.copyWith(
-                fontSize: 14,
-                color: AppColors.greyscaleLight.shade700,
-              ),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 14),
           ],

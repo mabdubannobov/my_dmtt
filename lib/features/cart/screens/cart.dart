@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
 import 'package:my_dmtt/features/cart/widgets/succees_order.dart';
-import 'package:my_dmtt/features/home/widgets/empty_cart.dart';
+import 'package:my_dmtt/features/cart/widgets/empty_cart.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -82,12 +82,9 @@ class _CartScreenState extends State<CartScreen> {
                                   onDelete: () => _deleteItem(key),
                                 ),
                                 if (index != box.length - 1)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                                    child: Divider(
-                                      color: AppColors.greyscaleLight.shade100,
-                                      thickness: 1.0,
-                                    ),
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 16),
+                                    child: Divider(),
                                   ),
                               ],
                             );
@@ -98,13 +95,14 @@ class _CartScreenState extends State<CartScreen> {
                         width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border(
-                              top: BorderSide(
-                                color: AppColors.greyscaleLight.shade100,
-                                width: 1.0,
-                              ),
-                            )),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          border: Border(
+                            top: BorderSide(
+                              color: Theme.of(context).dividerColor,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
                         child: TextButton(
                           style: ButtonStyle(
                             fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),

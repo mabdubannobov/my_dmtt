@@ -16,12 +16,12 @@ class ExitBottomSheet extends StatelessWidget {
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(44),
             topRight: Radius.circular(44),
           ),
-          color: Colors.white,
+          color: Theme.of(context).dialogBackgroundColor,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -39,10 +39,7 @@ class ExitBottomSheet extends StatelessWidget {
             ),
             Text(
               "Ilovani tark etmoqchimisiz?",
-              style: AppTextStyles.boldStyle.copyWith(
-                fontSize: 20,
-                color: AppColors.greyscaleLight,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 24),
             Row(

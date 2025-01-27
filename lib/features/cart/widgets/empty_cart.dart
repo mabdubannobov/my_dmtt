@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants/app_assets.dart';
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_text_styles.dart';
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({
@@ -24,10 +22,7 @@ class EmptyCart extends StatelessWidget {
           const SizedBox(height: 40),
           Text(
             "Bo'sh",
-            style: AppTextStyles.boldStyle.copyWith(
-              fontSize: 24,
-              color: AppColors.greyscaleLight,
-            ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(height: 12),
           Padding(
@@ -35,10 +30,7 @@ class EmptyCart extends StatelessWidget {
             child: Text(
               "Hozirda sizda hech qanday tanlangan mahsulotlar mavjud emas",
               textAlign: TextAlign.center,
-              style: AppTextStyles.regularStyle.copyWith(
-                fontSize: 18,
-                color: AppColors.greyscaleLight,
-              ),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           )
         ],

@@ -14,9 +14,7 @@ import '../widgets/action_button.dart';
 import '../widgets/section_title.dart';
 import '../widgets/product_search.dart';
 import '../widgets/persistent_header.dart';
-import '../../../constants/app_colors.dart';
 import '../widgets/product_home_container.dart';
-import '../../../constants/app_text_styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -61,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
               sliver: SliverAppBar(
                 floating: false,
                 expandedHeight: 56,
-                backgroundColor: Colors.white,
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: CachedNetworkImage(
@@ -74,18 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       "${userModel.firstName} ${userModel.lastName}",
-                      style: AppTextStyles.regularStyle.copyWith(
-                        color: AppColors.greyscaleLight.shade600,
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     Text(
                       "${dmttModel.name}, ${userModel.district}",
-                      style: AppTextStyles.boldStyle.copyWith(
-                        color: AppColors.greyscaleLight.shade900,
-                        fontSize: 20,
-                        height: 1.2,
-                      ),
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],
                 ),
@@ -145,12 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 8),
                         Text(
                           categoryNames[index],
-                          style: AppTextStyles.boldStyle.copyWith(
-                            fontSize: 16,
-                            height: 1.4,
-                            letterSpacing: 0.2,
-                            color: AppColors.greyscaleLight,
-                          ),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                       ],
                     );

@@ -145,11 +145,9 @@ class _AccountScreenState extends State<AccountScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Divider(
-                color: AppColors.greyscaleLight.shade200,
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Divider(),
             ),
             SettingsItem(
               leadingIcon: AppAssets.icons.calendar,
@@ -161,11 +159,9 @@ class _AccountScreenState extends State<AccountScreen> {
               title: 'Sifat sertifikatlari',
               onTap: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Divider(
-                color: AppColors.greyscaleLight.shade200,
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Divider(),
             ),
             SettingsItem(
               leadingIcon: AppAssets.icons.notification,
@@ -214,7 +210,7 @@ class _AccountScreenState extends State<AccountScreen> {
               trailingIcon: const SizedBox.shrink(),
               onTap: () {
                 showModalBottomSheet(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).dialogBackgroundColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(44),

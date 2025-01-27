@@ -26,6 +26,10 @@ class SettingsItem extends StatelessWidget {
         leadingIcon,
         width: 28,
         height: 28,
+        colorFilter: ColorFilter.mode(
+          Theme.of(context).primaryColor,
+          BlendMode.srcIn,
+        ),
       ),
       title: Row(
         children: [
@@ -37,7 +41,14 @@ class SettingsItem extends StatelessWidget {
           ),
         ],
       ),
-      trailing: trailingIcon ?? SvgPicture.asset(AppAssets.icons.arrowRight),
+      trailing: trailingIcon ??
+          SvgPicture.asset(
+            AppAssets.icons.arrowRight,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).primaryColor,
+              BlendMode.srcIn,
+            ),
+          ),
     );
   }
 }

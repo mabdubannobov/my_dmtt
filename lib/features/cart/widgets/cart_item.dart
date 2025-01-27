@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants/app_assets.dart';
@@ -46,9 +47,7 @@ class CartItem extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: AppTextStyles.boldStyle.copyWith(
-                    fontSize: 18,
-                  ),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 Text(
                   "$count $measure",

@@ -4,11 +4,16 @@ import 'package:my_dmtt/constants/app_colors.dart';
 import 'app_text_styles.dart';
 
 final ThemeData lightTheme = ThemeData(
+  primaryColor: AppColors.greyscaleLight,
+  primaryColorLight: Colors.white,
+  dividerColor: AppColors.greyscaleLight.shade200,
   fontFamily: 'Urbanist',
+  splashColor: Colors.transparent,
+  highlightColor: Colors.transparent,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
-    foregroundColor: Colors.white,
+    surfaceTintColor: Colors.white,
     titleTextStyle: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 24,
@@ -27,6 +32,11 @@ final ThemeData lightTheme = ThemeData(
     selectedItemColor: AppColors.primaryLight,
     unselectedItemColor: AppColors.greyscaleLight.shade500,
   ),
+  dividerTheme: DividerThemeData(
+    color: AppColors.greyscaleLight.shade200,
+    thickness: 1.0,
+  ),
+  dialogBackgroundColor: Colors.white,
   textTheme: TextTheme(
     bodyLarge: TextStyle(
       fontSize: 18,
@@ -41,10 +51,16 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w500,
       color: AppColors.greyscaleLight.shade800,
     ),
+    bodySmall: TextStyle(
+      fontSize: 14,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w500,
+      color: AppColors.greyscaleLight.shade700,
+    ),
     headlineMedium: TextStyle(
       fontSize: 24,
       height: 1.2,
-      fontWeight: FontWeight.w900,
+      fontWeight: FontWeight.w700,
       color: AppColors.greyscaleLight,
     ),
     headlineSmall: TextStyle(
@@ -53,15 +69,41 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w700,
       color: AppColors.greyscaleLight,
     ),
+    labelLarge: TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyscaleLight.shade600,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w700,
+      color: AppColors.greyscaleLight,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 18,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyscaleLight,
+    ),
   ),
 );
 
 final ThemeData darkTheme = ThemeData(
+  primaryColor: Colors.white,
+  primaryColorLight: AppColors.dark2,
+  dividerColor: AppColors.dark3,
   fontFamily: 'Urbanist',
+  splashColor: Colors.transparent,
+  highlightColor: Colors.transparent,
   scaffoldBackgroundColor: AppColors.dark1,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.dark1,
-    foregroundColor: AppColors.dark1,
+    surfaceTintColor: AppColors.dark1,
     titleTextStyle: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 24,
@@ -80,6 +122,11 @@ final ThemeData darkTheme = ThemeData(
     selectedItemColor: AppColors.primaryLight,
     unselectedItemColor: AppColors.greyscaleLight.shade500,
   ),
+  dividerTheme: const DividerThemeData(
+    color: AppColors.dark3,
+    thickness: 1.0,
+  ),
+  dialogBackgroundColor: AppColors.dark2,
   textTheme: TextTheme(
     bodyLarge: const TextStyle(
       fontSize: 18,
@@ -94,11 +141,17 @@ final ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w500,
       color: AppColors.greyscaleLight.shade300,
     ),
+    bodySmall: TextStyle(
+      fontSize: 14,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w500,
+      color: AppColors.greyscaleLight.shade400,
+    ),
     headlineMedium: const TextStyle(
       fontSize: 24,
       height: 1.2,
       color: Colors.white,
-      fontWeight: FontWeight.w900,
+      fontWeight: FontWeight.w700,
     ),
     headlineSmall: const TextStyle(
       fontSize: 20,
@@ -106,8 +159,26 @@ final ThemeData darkTheme = ThemeData(
       color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
-  ),
-  listTileTheme: const ListTileThemeData(
-    iconColor: Colors.white,
+    labelLarge: TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyscaleLight.shade300,
+    ),
+    labelMedium: const TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    displayMedium: const TextStyle(
+      fontSize: 18,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+    ),
   ),
 );

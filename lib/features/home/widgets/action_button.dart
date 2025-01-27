@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../constants/app_colors.dart';
-
 class ActionButton extends StatelessWidget {
   const ActionButton({
     super.key,
@@ -14,8 +12,6 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
       onTap: () {},
       child: Container(
         width: 48,
@@ -24,11 +20,17 @@ class ActionButton extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: AppColors.greyscaleLight.shade200,
+            color: Theme.of(context).dividerColor,
             width: 1,
           ),
         ),
-        child: SvgPicture.asset(icon),
+        child: SvgPicture.asset(
+          icon,
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).primaryColor,
+            BlendMode.srcIn,
+          ),
+        ),
       ),
     );
   }
