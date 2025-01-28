@@ -11,7 +11,7 @@ class CartService {
   final Dio dio = Dio(BaseOptions(baseUrl: baseURL));
   final String orderUrl = '/orders/';
 
-  Future<void> postData(List<ProductModel> dataList) async {
+  Future<void> postData(List<ProductModel> dataList, DateTime orderDate) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     for (var element in dataList) {
       element.toJson();
@@ -27,6 +27,9 @@ class CartService {
           },
           contentType: 'application/json',
         ),
+        queryParameters: {
+          'deadline': orderDate.toIso8601String(),
+        },
       );
     } catch (e) {
       log('Exception occurred while posting data: $e');

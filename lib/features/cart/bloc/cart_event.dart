@@ -9,5 +9,9 @@ sealed class CartEvent extends Equatable {
 
 class CreateOrderEvent extends CartEvent {
   final List<ProductModel> products;
-  const CreateOrderEvent({required this.products});
+  final DateTime date;
+  const CreateOrderEvent({
+    required this.products,
+    required this.date,
+  });
 }

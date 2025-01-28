@@ -4,7 +4,6 @@ import 'package:my_dmtt/constants/app_colors.dart';
 import 'app_text_styles.dart';
 
 final ThemeData lightTheme = ThemeData(
-  brightness: Brightness.dark,
   primaryColor: AppColors.greyscaleLight,
   primaryColorLight: Colors.white,
   dividerColor: AppColors.greyscaleLight.shade200,
@@ -124,7 +123,6 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData(
-  brightness: Brightness.light,
   primaryColor: Colors.white,
   primaryColorLight: AppColors.dark2,
   dividerColor: AppColors.dark3,

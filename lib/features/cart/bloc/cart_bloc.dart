@@ -15,7 +15,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       (event, emit) async {
         emit(CreatingOrderState());
         try {
-          await cartService.postData(event.products);
+          await cartService.postData(event.products, event.date);
           emit(CreatedOrderState());
         } catch (e) {
           emit(CreateOrderErrorState(message: e.toString()));

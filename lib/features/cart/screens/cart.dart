@@ -21,6 +21,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   late Box<ProductModel> myDataBox;
+  DateTime? selectedDate;
 
   @override
   void initState() {
@@ -33,8 +34,42 @@ class _CartScreenState extends State<CartScreen> {
     setState(() {});
   }
 
-  Future<void> _clearHiveBox() async {
-    await myDataBox.clear();
+  Future<void> _onOrderButtonPressed(BuildContext context) async {
+    DateTime? selectedDate = await showDatePicker(
+      context: context,
+      locale: const Locale('uz', 'UZ'),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 30)),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppColors.primaryLight,
+              onPrimary: Colors.white,
+              onSurface: Theme.of(context).primaryColor,
+            ),
+            datePickerTheme: DatePickerThemeData(
+              headerBackgroundColor: AppColors.primaryLight,
+              headerForegroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColorDark,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (selectedDate != null) {
+      // ignore: use_build_context_synchronously
+      context.read<CartBloc>().add(
+            CreateOrderEvent(
+              products: myDataBox.values.toList(),
+              date: selectedDate,
+            ),
+          );
+      await myDataBox.clear();
+    }
   }
 
   @override
@@ -109,8 +144,7 @@ class _CartScreenState extends State<CartScreen> {
                             backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
                           ),
                           onPressed: () {
-                            context.read<CartBloc>().add(CreateOrderEvent(products: myDataBox.values.toList()));
-                            _clearHiveBox();
+                            _onOrderButtonPressed(context);
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8),

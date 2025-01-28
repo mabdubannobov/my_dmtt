@@ -11,6 +11,7 @@ import 'package:my_dmtt/features/orders/bloc/bloc/orders_bloc.dart';
 import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
 import 'package:my_dmtt/features/walkthrough/screens/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'constants/sharedprefrences.dart';
 import 'features/home/bloc/home_bloc.dart';
@@ -54,6 +55,16 @@ class MainApp extends StatelessWidget {
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
           return MaterialApp(
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('uz', ''),
+            ],
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            locale: const Locale('uz'),
             debugShowCheckedModeBanner: false,
             home: home,
             theme: lightTheme,
