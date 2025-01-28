@@ -26,6 +26,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
     cartDataBox = Hive.box<ProductModel>('productsBox');
   }
 
+  String formatNumber(double value) {
+    if (value % 1 == 0) {
+      return value.toInt().toString();
+    } else {
+      return value.toString();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +124,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             Row(
                               children: [
                                 Text(
-                                  "Qoldiq - ${currentItem.count} ${currentItem.measure}",
+                                  "Qoldiq - ${formatNumber(safeParseDouble(currentItem.count))} ${currentItem.measure}",
                                   style: Theme.of(context).textTheme.bodySmall,
                                 ),
                                 const Spacer(),
@@ -128,7 +136,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       )
                                     : const SizedBox(),
                                 cartData != 0
-                                    ? Text(' - $cartData $cartMeasure', style: Theme.of(context).textTheme.bodySmall)
+                                    ? Text(' - ${formatNumber(cartData)} $cartMeasure',
+                                        style: Theme.of(context).textTheme.bodySmall)
                                     : const SizedBox(),
                               ],
                             ),

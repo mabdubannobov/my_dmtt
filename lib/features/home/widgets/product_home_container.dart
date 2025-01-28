@@ -24,6 +24,14 @@ class ProductHomeContainer extends StatefulWidget {
 }
 
 class _ProductHomeContainerState extends State<ProductHomeContainer> {
+  String formatNumber(double value) {
+    if (value % 1 == 0) {
+      return value.toInt().toString();
+    } else {
+      return value.toString();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -68,7 +76,7 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
             ),
             const SizedBox(height: 14),
             Text(
-              "Qoldiq - ${widget.productQuantity} ${widget.productMeasure}",
+              "Qoldiq - ${formatNumber(widget.productQuantity)} ${widget.productMeasure}",
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 14),
