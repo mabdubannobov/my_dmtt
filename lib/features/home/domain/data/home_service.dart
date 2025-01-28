@@ -14,28 +14,6 @@ class HomeService {
   final String orderUrl = '/orders/';
   final String productsUrl = '/limit';
 
-  // Future<void> postData(List<ProductModel> dataList) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   for (var element in dataList) {
-  //     element.toJson();
-  //   }
-
-  //   try {
-  //     dio.post(
-  //       orderUrl,
-  //       data: dataList,
-  //       options: Options(
-  //         headers: {
-  //           "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
-  //         },
-  //         contentType: 'application/json',
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     log('Exception occurred while posting data: $e');
-  //   }
-  // }
-
   Future<UserModel> getUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final result = await dio.get(

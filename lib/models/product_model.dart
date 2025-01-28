@@ -25,6 +25,9 @@ class ProductModel extends HiveObject {
   @HiveField(6)
   int? companyId;
 
+  @HiveField(7)
+  int? price;
+
   ProductModel({
     required this.name,
     required this.measure,
@@ -33,6 +36,7 @@ class ProductModel extends HiveObject {
     this.value,
     this.imageUrl,
     this.companyId,
+    this.price,
   });
 
   factory ProductModel.defaultModel() {
@@ -51,6 +55,7 @@ class ProductModel extends HiveObject {
       limit: json['limit'],
       count: json['count'],
       imageUrl: json['image_url'],
+      price: json['price'],
     );
   }
 
@@ -61,6 +66,7 @@ class ProductModel extends HiveObject {
       'count': value,
       'measure': measure,
       'image_url': imageUrl,
+      'price': price,
     };
   }
 }

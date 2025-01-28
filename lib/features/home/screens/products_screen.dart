@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:my_dmtt/features/home/screens/home.dart';
 import 'package:my_dmtt/features/home/widgets/product_dialog.dart';
 import 'package:my_dmtt/models/product_model.dart';
@@ -98,7 +99,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           SvgPicture.asset(AppAssets.icons.wallet),
                           const SizedBox(width: 6),
                           Text(
-                            "1 500 so'm",
+                            "${NumberFormat("#,###", "en_US").format(currentItem.price ?? 0).replaceAll(",", " ")} so'm",
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ],
