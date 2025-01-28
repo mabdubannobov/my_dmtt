@@ -60,14 +60,10 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
                   const SizedBox(height: 32),
                   TextField(
                     controller: textController,
-                    style: AppTextStyles.boldStyle.copyWith(
-                      fontSize: 24,
-                      height: 1.2,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                      // contentPadding: const EdgeInsets.symmetric(vertical: 5),
-                      fillColor: AppColors.greyscaleLight.shade50,
+                      fillColor: Theme.of(context).primaryColorDark,
                       filled: true,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_dmtt/constants/app_colors.dart';
 
 import '../../../constants/app_assets.dart';
 
@@ -26,14 +27,29 @@ class SettingsItem extends StatelessWidget {
         leadingIcon,
         width: 28,
         height: 28,
-        colorFilter: ColorFilter.mode(
-          Theme.of(context).primaryColor,
-          BlendMode.srcIn,
-        ),
+        colorFilter: title == "Chiqish"
+            ? const ColorFilter.mode(
+                AppColors.error,
+                BlendMode.srcIn,
+              )
+            : ColorFilter.mode(
+                Theme.of(context).primaryColor,
+                BlendMode.srcIn,
+              ),
       ),
       title: Row(
         children: [
-          Text(title, style: Theme.of(context).textTheme.bodyLarge),
+          Text(
+            title,
+            style: title == "Chiqish"
+                ? const TextStyle(
+                    fontSize: 18,
+                    letterSpacing: 0.2,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.error,
+                  )
+                : Theme.of(context).textTheme.bodyLarge,
+          ),
           const Spacer(),
           Text(
             title == "Ilova tili" ? "O'zbek" : "",

@@ -16,7 +16,7 @@ class SuccessOrderDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(32),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).dialogBackgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(32),
         child: Column(
@@ -34,11 +34,8 @@ class SuccessOrderDialog extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              "Sizning __-sonli buyurtmangiz muvvafaqiyatli yuborildi.",
-              style: AppTextStyles.regularStyle.copyWith(
-                fontSize: 16,
-                color: AppColors.greyscaleLight,
-              ),
+              "Sizning _-sonli buyurtmangiz muvvafaqiyatli yuborildi.",
+              style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),

@@ -86,13 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: SliverPersistentHeader(
-                pinned: true,
-                delegate: PersistentHeader(
-                  widget: const ProductSearch(),
-                ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: PersistentHeader(
+                widget: const ProductSearch(),
               ),
             ),
             SectionTitle(
@@ -157,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 155 + (MediaQuery.of(context).size.width / 2 - 24 - 48),
+                height: 150 + (MediaQuery.of(context).size.width / 2 - 24 - 48),
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemCount: products.length,

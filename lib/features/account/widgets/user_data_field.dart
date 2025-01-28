@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
 
 import '../../../constants/app_colors.dart';
 
@@ -42,14 +41,11 @@ class _UserDataFieldState extends State<UserDataField> {
       child: TextField(
         controller: widget.controller,
         focusNode: _focusNode,
-        style: AppTextStyles.semiBoldStyle.copyWith(
-          color: AppColors.greyscaleLight,
-          fontSize: 16,
-        ),
+        style: Theme.of(context).textTheme.displaySmall,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           filled: true,
-          fillColor: _isFocused ? AppColors.primaryLight.withValues(alpha: 0.08) : AppColors.greyscaleLight.shade50,
+          fillColor: _isFocused ? Theme.of(context).focusColor : Theme.of(context).primaryColorDark,
           suffixIconConstraints: const BoxConstraints(maxHeight: 20),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),

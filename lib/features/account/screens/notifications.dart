@@ -50,6 +50,10 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     onChanged: (value) {},
                     activeColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
+                    inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                    trackOutlineWidth: const WidgetStatePropertyAll(0),
+                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    inactiveThumbColor: Colors.white,
                   )
                 ],
               ),
@@ -66,6 +70,10 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     onChanged: (value) {},
                     activeColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
+                    inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                    trackOutlineWidth: const WidgetStatePropertyAll(0),
+                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    inactiveThumbColor: Colors.white,
                   )
                 ],
               ),
@@ -82,6 +90,10 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     onChanged: (value) {},
                     activeColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
+                    inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                    trackOutlineWidth: const WidgetStatePropertyAll(0),
+                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    inactiveThumbColor: Colors.white,
                   )
                 ],
               ),
@@ -98,6 +110,10 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     onChanged: (value) {},
                     activeColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
+                    inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                    trackOutlineWidth: const WidgetStatePropertyAll(0),
+                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    inactiveThumbColor: Colors.white,
                   )
                 ],
               )

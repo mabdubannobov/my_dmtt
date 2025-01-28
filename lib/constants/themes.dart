@@ -4,13 +4,17 @@ import 'package:my_dmtt/constants/app_colors.dart';
 import 'app_text_styles.dart';
 
 final ThemeData lightTheme = ThemeData(
+  brightness: Brightness.dark,
   primaryColor: AppColors.greyscaleLight,
   primaryColorLight: Colors.white,
   dividerColor: AppColors.greyscaleLight.shade200,
+  hintColor: AppColors.greyscaleLight.shade400,
   fontFamily: 'Urbanist',
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
   scaffoldBackgroundColor: Colors.white,
+  focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
+  primaryColorDark: AppColors.greyscaleLight.shade50,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
     surfaceTintColor: Colors.white,
@@ -84,6 +88,13 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w700,
       color: AppColors.greyscaleLight,
     ),
+    labelSmall: TextStyle(
+      fontSize: 14,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyscaleLight.shade400,
+    ),
     displayMedium: TextStyle(
       fontSize: 18,
       height: 1.4,
@@ -91,17 +102,28 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
       color: AppColors.greyscaleLight,
     ),
+    displaySmall: TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w600,
+      color: AppColors.greyscaleLight,
+    ),
   ),
 );
 
 final ThemeData darkTheme = ThemeData(
+  brightness: Brightness.light,
   primaryColor: Colors.white,
   primaryColorLight: AppColors.dark2,
   dividerColor: AppColors.dark3,
+  hintColor: AppColors.greyscaleLight.shade600,
   fontFamily: 'Urbanist',
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
   scaffoldBackgroundColor: AppColors.dark1,
+  focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
+  primaryColorDark: AppColors.dark2,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.dark1,
     surfaceTintColor: AppColors.dark1,
@@ -175,11 +197,25 @@ final ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
+    labelSmall: TextStyle(
+      fontSize: 14,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyscaleLight.shade600,
+    ),
     displayMedium: const TextStyle(
       fontSize: 18,
       height: 1.4,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w400,
+      color: Colors.white,
+    ),
+    displaySmall: const TextStyle(
+      fontSize: 16,
+      height: 1.4,
+      letterSpacing: 0.2,
+      fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
   ),

@@ -11,8 +11,9 @@ class PersistentHeader extends SliverPersistentHeaderDelegate {
       width: double.infinity,
       height: 80.0,
       child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
         padding: const EdgeInsets.symmetric(vertical: 12),
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Center(child: widget),
       ),
     );
