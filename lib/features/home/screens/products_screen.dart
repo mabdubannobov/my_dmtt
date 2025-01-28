@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:my_dmtt/features/home/screens/home.dart';
 import 'package:my_dmtt/features/home/widgets/product_dialog.dart';
@@ -17,6 +18,14 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
+  late Box<ProductModel> cartDataBox;
+
+  @override
+  void initState() {
+    super.initState();
+    cartDataBox = Hive.box<ProductModel>('productsBox');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,76 +48,108 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
         ),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-        itemCount: widget.allProducts.length,
-        itemBuilder: (context, index) {
-          ProductModel currentItem = widget.allProducts[index];
-          return InkWell(
-            onTap: () => showDialog(
-              context: context,
-              builder: (context) {
-                return ProductDialog(
-                  productImage: currentItem.imageUrl!,
-                  productTitle: currentItem.name,
-                  productQuantity: safeParseDouble(currentItem.count),
-                  productMeasure: currentItem.measure,
-                  companyId: 2,
-                );
-              },
-            ),
-            child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              padding: const EdgeInsets.all(14),
-              height: 124,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(28),
-                color: Theme.of(context).primaryColorLight,
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF04060F).withValues(alpha: 0.05),
-                    spreadRadius: 0,
-                    blurRadius: 60,
-                    offset: const Offset(0, 4),
+      body: ValueListenableBuilder(
+        valueListenable: cartDataBox.listenable(),
+        builder: (context, Box<ProductModel> box, _) {
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+            itemCount: widget.allProducts.length,
+            itemBuilder: (context, index) {
+              ProductModel currentItem = widget.allProducts[index];
+              List<ProductModel> cartElements = cartDataBox.values.toList();
+              double cartData = 0;
+              String cartMeasure = "";
+
+              for (var element in cartElements) {
+                if (element.name == currentItem.name) {
+                  cartData = element.value!;
+                  cartMeasure = element.measure;
+                }
+              }
+              return InkWell(
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return ProductDialog(
+                      productImage: currentItem.imageUrl!,
+                      productTitle: currentItem.name,
+                      productQuantity: safeParseDouble(currentItem.count),
+                      productMeasure: currentItem.measure,
+                      companyId: 2,
+                    );
+                  },
+                ),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.all(14),
+                  height: 124,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(28),
+                    color: Theme.of(context).primaryColorLight,
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF04060F).withValues(alpha: 0.05),
+                        spreadRadius: 0,
+                        blurRadius: 60,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  CachedNetworkImage(
-                    imageUrl:
-                        currentItem.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                    width: 96,
-                    height: 96,
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Row(
                     children: [
-                      Text(
-                        currentItem.name,
-                        style: Theme.of(context).textTheme.headlineSmall,
+                      CachedNetworkImage(
+                        imageUrl: currentItem.imageUrl ??
+                            "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                        width: 96,
+                        height: 96,
                       ),
-                      Text(
-                        "Qoldiq - ${currentItem.count} ${currentItem.measure}",
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(AppAssets.icons.wallet),
-                          const SizedBox(width: 6),
-                          Text(
-                            "${NumberFormat("#,###", "en_US").format(currentItem.price ?? 0).replaceAll(",", " ")} so'm",
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              currentItem.name,
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Qoldiq - ${currentItem.count} ${currentItem.measure}",
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                                const Spacer(),
+                                cartData != 0
+                                    ? SvgPicture.asset(
+                                        AppAssets.icons.bagActive,
+                                        width: 20,
+                                        height: 20,
+                                      )
+                                    : const SizedBox(),
+                                cartData != 0
+                                    ? Text(' - $cartData $cartMeasure', style: Theme.of(context).textTheme.bodySmall)
+                                    : const SizedBox(),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppAssets.icons.wallet),
+                                const SizedBox(width: 6),
+                                Text(
+                                  "${NumberFormat("#,###", "en_US").format(currentItem.price ?? 0).replaceAll(",", " ")} so'm",
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       )
                     ],
-                  )
-                ],
-              ),
-            ),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),

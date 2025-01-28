@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -88,18 +90,53 @@ class ProductDialog extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                if (double.parse(textController.text) > productQuantity) {
-                } else {
+                final inputText = textController.text;
+
+                if (inputText.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: AppColors.error,
+                      content: Text("Siz miqdorni kiritmadingiz!"),
+                    ),
+                  );
+                  return;
+                }
+
+                final inputQuantity = double.tryParse(inputText);
+
+                if (inputQuantity == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: AppColors.error,
+                      content: Text("To'g'ri miqdorni kiriting!"),
+                    ),
+                  );
+                  return;
+                }
+
+                if (inputQuantity <= productQuantity && inputQuantity != 0.0) {
                   await storeData(
                     productTitle,
-                    double.parse(textController.text),
+                    inputQuantity,
                     companyId,
                     productMeasure,
                     productImage,
                   );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: AppColors.primaryLight,
+                      content: const Text("Savatga qo'shildi!"),
+                    ),
+                  );
+                  Navigator.pop(context);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: AppColors.error,
+                      content: Text("Miqdor ${productQuantity.toStringAsFixed(2)} dan kichik bo'lishi kerak!"),
+                    ),
+                  );
                 }
-                // ignore: use_build_context_synchronously
-                Navigator.pop(context);
               },
               child: Text(
                 "Savatga qo'shish",
