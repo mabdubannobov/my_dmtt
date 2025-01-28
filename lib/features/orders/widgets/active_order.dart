@@ -21,7 +21,7 @@ class ActiveOrder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColorDark,
+        color: Theme.of(context).primaryColorLight,
         borderRadius: const BorderRadius.all(
           Radius.circular(28),
         ),
@@ -66,7 +66,7 @@ class ActiveOrder extends StatelessWidget {
                   const SizedBox(height: 14),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColorLight,
                       border: Border.all(width: 1, color: AppColors.primaryLight),
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),

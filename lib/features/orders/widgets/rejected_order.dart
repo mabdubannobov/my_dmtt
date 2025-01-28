@@ -21,7 +21,7 @@ class RejectedOrder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColorDark,
+        color: Theme.of(context).primaryColorLight,
         borderRadius: const BorderRadius.all(
           Radius.circular(28),
         ),
