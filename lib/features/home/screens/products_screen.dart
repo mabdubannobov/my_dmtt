@@ -19,7 +19,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mahsulotlar"),
-        centerTitle: false,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(

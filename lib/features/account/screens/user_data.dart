@@ -46,7 +46,6 @@ class _UserDataScreenState extends State<UserDataScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ma'lumotlarim"),
-        centerTitle: false,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -54,7 +53,13 @@ class _UserDataScreenState extends State<UserDataScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
+            icon: SvgPicture.asset(
+              AppAssets.icons.arrowLeft,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
         ),
       ),

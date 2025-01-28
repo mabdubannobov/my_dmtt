@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
 
 class SettingsNotifications extends StatefulWidget {
   const SettingsNotifications({super.key});
@@ -17,7 +16,6 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Bildirishnomalar"),
-        centerTitle: false,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -25,12 +23,14 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppAssets.icons.arrowLeft),
+            icon: SvgPicture.asset(
+              AppAssets.icons.arrowLeft,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
-        ),
-        titleTextStyle: AppTextStyles.boldStyle.copyWith(
-          color: AppColors.greyscaleLight,
-          fontSize: 24,
         ),
       ),
       body: SafeArea(
@@ -42,10 +42,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                 children: [
                   Text(
                     "Asosiy bildirishnomalar",
-                    style: AppTextStyles.semiBoldStyle.copyWith(
-                      fontSize: 18,
-                      color: AppColors.greyscaleLight,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
                   Switch(
@@ -61,10 +58,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                 children: [
                   Text(
                     "Ovoz",
-                    style: AppTextStyles.semiBoldStyle.copyWith(
-                      fontSize: 18,
-                      color: AppColors.greyscaleLight,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
                   Switch(
@@ -80,10 +74,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                 children: [
                   Text(
                     "Tebranish",
-                    style: AppTextStyles.semiBoldStyle.copyWith(
-                      fontSize: 18,
-                      color: AppColors.greyscaleLight,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
                   Switch(
@@ -99,10 +90,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                 children: [
                   Text(
                     "Yangiliklar",
-                    style: AppTextStyles.semiBoldStyle.copyWith(
-                      fontSize: 18,
-                      color: AppColors.greyscaleLight,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
                   Switch(

@@ -14,6 +14,7 @@ final ThemeData lightTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
     surfaceTintColor: Colors.white,
+    centerTitle: false,
     titleTextStyle: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 24,
@@ -104,6 +105,7 @@ final ThemeData darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.dark1,
     surfaceTintColor: AppColors.dark1,
+    centerTitle: false,
     titleTextStyle: TextStyle(
       fontFamily: 'Urbanist',
       fontSize: 24,
