@@ -11,6 +11,7 @@ class ProductSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      readOnly: true,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 16),
         fillColor: Theme.of(context).primaryColorDark,
