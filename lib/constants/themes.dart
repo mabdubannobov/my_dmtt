@@ -42,6 +42,17 @@ final ThemeData lightTheme = ThemeData(
     thickness: 1.0,
   ),
   dialogBackgroundColor: Colors.white,
+  tabBarTheme: TabBarTheme(
+    dividerHeight: 2,
+    labelColor: AppColors.primaryLight,
+    indicatorSize: TabBarIndicatorSize.tab,
+    indicatorColor: AppColors.primaryLight,
+    dividerColor: AppColors.greyscaleLight.shade200,
+    unselectedLabelColor: AppColors.greyscaleLight.shade500,
+    overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      return states.contains(WidgetState.focused) ? null : Colors.transparent;
+    }),
+  ),
   textTheme: TextTheme(
     bodyLarge: TextStyle(
       fontSize: 18,
@@ -151,6 +162,17 @@ final ThemeData darkTheme = ThemeData(
     thickness: 1.0,
   ),
   dialogBackgroundColor: AppColors.dark2,
+  tabBarTheme: TabBarTheme(
+    dividerHeight: 2,
+    labelColor: AppColors.primaryLight,
+    indicatorSize: TabBarIndicatorSize.tab,
+    indicatorColor: AppColors.primaryLight,
+    dividerColor: AppColors.greyscaleLight.shade700,
+    unselectedLabelColor: AppColors.greyscaleLight.shade700,
+    overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      return states.contains(WidgetState.focused) ? null : Colors.transparent;
+    }),
+  ),
   textTheme: TextTheme(
     bodyLarge: const TextStyle(
       fontSize: 18,

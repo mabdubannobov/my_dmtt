@@ -21,7 +21,7 @@ class RejectedOrder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColorDark,
         borderRadius: const BorderRadius.all(
           Radius.circular(28),
         ),
@@ -54,15 +54,12 @@ class RejectedOrder extends StatelessWidget {
             children: [
               Text(
                 'Buyurtma - #$idOrder',
-                style: AppTextStyles.titleStyle.copyWith(fontSize: 20),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 14),
               Text(
                 '$itemsCount ta mahsulot | ${DateTime.parse(orderDate).day}.${DateTime.parse(orderDate).month}.${DateTime.parse(orderDate).year}',
-                style: AppTextStyles.mediumStyle.copyWith(
-                  color: AppColors.greyscaleLight.shade700,
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 14),
               Container(

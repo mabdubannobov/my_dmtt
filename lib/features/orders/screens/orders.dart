@@ -99,18 +99,9 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               child: Container(
                 color: Colors.transparent,
                 child: TabBar(
-                  dividerHeight: 1,
-                  indicatorWeight: 4,
                   controller: _tabController,
-                  labelColor: AppColors.primaryLight,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: AppColors.primaryLight,
-                  dividerColor: AppColors.greyscaleLight.shade200,
-                  unselectedLabelColor: AppColors.greyscaleLight.shade500,
-                  labelStyle: AppTextStyles.semiBoldStyle.copyWith(fontSize: 16),
-                  overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
-                    return states.contains(WidgetState.focused) ? null : Colors.transparent;
-                  }),
+                  labelStyle: Theme.of(context).textTheme.displaySmall,
+                  indicatorWeight: 4,
                   tabs: const [
                     Tab(text: 'Faol'),
                     Tab(text: 'Bajarilgan'),
