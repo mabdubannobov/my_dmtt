@@ -57,8 +57,8 @@ class _SignInScreenState extends State<SignInScreen> {
           },
           builder: (context, state) {
             if (state is SignInLoadingState) {
-              return const Center(
-                child: CupertinoActivityIndicator(),
+              return Center(
+                child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
               );
             }
             return Column(

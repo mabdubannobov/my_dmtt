@@ -36,7 +36,7 @@ class CartItem extends StatelessWidget {
             height: 80,
             width: 80,
             imageUrl: photoUrl,
-            placeholder: (context, url) => const CupertinoActivityIndicator(),
+            placeholder: (context, url) => CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
           ),
           const SizedBox(width: 16),
           Padding(

@@ -42,8 +42,8 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
       listener: (context, state) {},
       builder: (context, state) {
         if (state is OrdersLoadingState) {
-          return const Center(
-            child: CupertinoActivityIndicator(),
+          return Center(
+            child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
           );
         }
 

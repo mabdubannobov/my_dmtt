@@ -48,8 +48,8 @@ class _AccountScreenState extends State<AccountScreen> {
       },
       builder: (context, state) {
         if (state is AccountLoadingState) {
-          return const Center(
-            child: CupertinoActivityIndicator(),
+          return Center(
+            child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
           );
         }
 
