@@ -24,7 +24,6 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: BlocConsumer<SignInBloc, SignInState>(
@@ -73,11 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 48),
                   child: Text(
                     "Hisobga kirish",
-                    style: AppTextStyles.boldStyle.copyWith(
-                      fontSize: 32,
-                      height: 1.2,
-                      color: AppColors.greyscaleLight,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 Padding(

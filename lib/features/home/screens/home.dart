@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/labels.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/features/home/screens/products_screen.dart';

@@ -119,6 +119,12 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
       color: AppColors.greyscaleLight,
     ),
+    titleLarge: TextStyle(
+      fontSize: 32,
+      height: 1.2,
+      fontWeight: FontWeight.w700,
+      color: AppColors.greyscaleLight,
+    ),
   ),
 );
 
@@ -236,6 +242,12 @@ final ThemeData darkTheme = ThemeData(
       height: 1.4,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    titleLarge: const TextStyle(
+      fontSize: 32,
+      height: 1.2,
+      fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
   ),

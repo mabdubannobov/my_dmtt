@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 
 import '../../../constants/app_colors.dart';
-import '../../../constants/app_text_styles.dart';
 
 class SignInField extends StatefulWidget {
   const SignInField({
@@ -53,10 +52,11 @@ class _SignInFieldState extends State<SignInField> {
       focusNode: _focusNode,
       obscureText: widget.hintText == "Xavfsizlik paroli" ? isObscure : false,
       obscuringCharacter: "*",
+      style: Theme.of(context).textTheme.displaySmall,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         filled: true,
-        fillColor: _isFocused ? AppColors.primaryLight.withValues(alpha: 0.08) : AppColors.greyscaleLight.shade50,
+        fillColor: _isFocused ? Theme.of(context).focusColor : Theme.of(context).primaryColorDark,
         prefixIconConstraints: const BoxConstraints(maxHeight: 20),
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 20, right: 12),
@@ -83,12 +83,7 @@ class _SignInFieldState extends State<SignInField> {
               )
             : const SizedBox(),
         hintText: widget.hintText,
-        hintStyle: AppTextStyles.regularStyle.copyWith(
-          color: AppColors.greyscaleLight.shade400,
-          letterSpacing: 0.2,
-          height: 1.4,
-          fontSize: 14,
-        ),
+        hintStyle: Theme.of(context).textTheme.labelSmall,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
