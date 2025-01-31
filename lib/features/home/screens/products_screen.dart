@@ -79,7 +79,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   context: context,
                   builder: (context) {
                     return ProductDialog(
-                      productImage: currentItem.imageUrl!,
+                      productImage: currentItem.imageUrl ??
+                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                       productTitle: currentItem.name,
                       productQuantity: safeParseDouble(currentItem.count),
                       productMeasure: currentItem.measure,
