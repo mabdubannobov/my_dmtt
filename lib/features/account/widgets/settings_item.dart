@@ -21,7 +21,7 @@ class SettingsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24),
       onTap: onTap,
       leading: SvgPicture.asset(
         leadingIcon,

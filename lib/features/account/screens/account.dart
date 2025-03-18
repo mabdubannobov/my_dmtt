@@ -66,7 +66,7 @@ class _AccountScreenState extends State<AccountScreen> {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
               child: AppBar(
                 leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
                 leadingWidth: 28,
@@ -77,7 +77,7 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
               child: Row(
                 children: [
                   ClipRRect(
@@ -145,7 +145,7 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24),
               child: Divider(),
             ),
             SettingsItem(
@@ -159,7 +159,7 @@ class _AccountScreenState extends State<AccountScreen> {
               onTap: () {},
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24),
               child: Divider(),
             ),
             SettingsItem(
