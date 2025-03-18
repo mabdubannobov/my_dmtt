@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+import 'package:my_dmtt/constants/app_assets.dart';
 
 import 'product_dialog.dart';
 
@@ -10,6 +13,8 @@ class ProductHomeContainer extends StatefulWidget {
     required this.productTitle,
     required this.productQuantity,
     required this.productMeasure,
+    required this.productPrice,
+    required this.companyName,
     required this.companyId,
   });
 
@@ -17,6 +22,8 @@ class ProductHomeContainer extends StatefulWidget {
   final String productTitle;
   final double productQuantity;
   final String productMeasure;
+  final int productPrice;
+  final String companyName;
   final int companyId;
 
   @override
@@ -48,8 +55,8 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
         },
       ),
       child: Container(
-        width: MediaQuery.of(context).size.width / 2 - 24,
-        padding: const EdgeInsets.fromLTRB(14, 14, 14, 0),
+        width: 220,
+        padding: const EdgeInsets.fromLTRB(14, 14, 14, 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
           color: Theme.of(context).primaryColorLight,
@@ -67,19 +74,49 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
           children: [
             CachedNetworkImage(
               imageUrl: widget.productImage,
+              width: 192,
+              height: 192,
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 14),
             Text(
               widget.productTitle,
               style: Theme.of(context).textTheme.headlineSmall,
               softWrap: false,
             ),
             const SizedBox(height: 14),
-            Text(
-              "Qoldiq - ${formatNumber(widget.productQuantity)} ${widget.productMeasure}",
-              style: Theme.of(context).textTheme.bodySmall,
+            Row(
+              children: [
+                SvgPicture.asset(AppAssets.icons.chart),
+                SizedBox(width: 6),
+                Text(
+                  "${formatNumber(widget.productQuantity)} ${widget.productMeasure}",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                SizedBox(width: 6),
+                Text(
+                  "|",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                SizedBox(width: 6),
+                SvgPicture.asset(AppAssets.icons.goldWallet),
+                SizedBox(width: 6),
+                Text(
+                  "${NumberFormat("#,###", "en_US").format(widget.productPrice).replaceAll(",", " ")} so'm",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
             const SizedBox(height: 14),
+            Row(
+              children: [
+                SvgPicture.asset(AppAssets.icons.delivey),
+                SizedBox(width: 6),
+                Text(
+                  widget.companyName,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
           ],
         ),
       ),

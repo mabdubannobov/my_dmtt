@@ -27,6 +27,7 @@ class SignInField extends StatefulWidget {
 class _SignInFieldState extends State<SignInField> {
   final FocusNode _focusNode = FocusNode();
   bool _isFocused = false;
+  bool _isObscure = true; // **isObscure ni State ichida saqlaymiz**
 
   @override
   void initState() {
@@ -46,11 +47,10 @@ class _SignInFieldState extends State<SignInField> {
 
   @override
   Widget build(BuildContext context) {
-    bool isObscure = true;
     return TextField(
       controller: widget.controller,
       focusNode: _focusNode,
-      obscureText: widget.hintText == "Xavfsizlik paroli" ? isObscure : false,
+      obscureText: widget.hintText == "Xavfsizlik paroli" ? _isObscure : false,
       obscuringCharacter: "*",
       style: Theme.of(context).textTheme.displaySmall,
       decoration: InputDecoration(
@@ -63,7 +63,7 @@ class _SignInFieldState extends State<SignInField> {
           child: SvgPicture.asset(
             _isFocused
                 ? widget.activeIcon
-                : widget.controller.text == ""
+                : widget.controller.text.isEmpty
                     ? widget.icon
                     : widget.filledIcon,
           ),
@@ -73,12 +73,14 @@ class _SignInFieldState extends State<SignInField> {
             ? InkWell(
                 onTap: () {
                   setState(() {
-                    isObscure = !isObscure;
+                    _isObscure = !_isObscure; // **Davlat o‘zgaruvchisini yangilaymiz**
                   });
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: SvgPicture.asset(_isFocused ? AppAssets.icons.hideActive : AppAssets.icons.hide),
+                  child: SvgPicture.asset(
+                    _isObscure ? AppAssets.icons.hide : AppAssets.icons.hideActive,
+                  ),
                 ),
               )
             : const SizedBox(),

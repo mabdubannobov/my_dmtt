@@ -14,6 +14,8 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
   primaryColorDark: AppColors.greyscaleLight.shade50,
+  progressIndicatorTheme: ProgressIndicatorThemeData(color: AppColors.primaryLight),
+  secondaryHeaderColor: AppColors.greyscaleLight.shade100,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
     surfaceTintColor: Colors.white,
@@ -40,7 +42,6 @@ final ThemeData lightTheme = ThemeData(
     color: AppColors.greyscaleLight.shade200,
     thickness: 1.0,
   ),
-  dialogBackgroundColor: Colors.white,
   tabBarTheme: TabBarTheme(
     dividerHeight: 2,
     labelColor: AppColors.primaryLight,
@@ -126,6 +127,7 @@ final ThemeData lightTheme = ThemeData(
       color: AppColors.greyscaleLight,
     ),
   ),
+  dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
 );
 
 final ThemeData darkTheme = ThemeData(
@@ -139,6 +141,8 @@ final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.dark1,
   focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
   primaryColorDark: AppColors.dark2,
+  progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.white),
+  secondaryHeaderColor: AppColors.dark2,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.dark1,
     surfaceTintColor: AppColors.dark1,
@@ -165,7 +169,6 @@ final ThemeData darkTheme = ThemeData(
     color: AppColors.dark3,
     thickness: 1.0,
   ),
-  dialogBackgroundColor: AppColors.dark2,
   tabBarTheme: TabBarTheme(
     dividerHeight: 2,
     labelColor: AppColors.primaryLight,
@@ -251,4 +254,5 @@ final ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
   ),
+  dialogTheme: const DialogThemeData(backgroundColor: AppColors.dark2),
 );

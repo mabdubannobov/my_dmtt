@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_dmtt/constants/labels.dart';
@@ -43,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return Center(
-            child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
+            child: CircularProgressIndicator(),
           );
         }
         UserModel userModel = state is HomeLoadedState ? state.userModel : UserModel.defaultModel();
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+              padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
               sliver: SliverAppBar(
                 floating: false,
                 expandedHeight: 56,
@@ -99,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverList(
               delegate: SliverChildListDelegate([
                 Container(
-                  margin: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+                  margin: const EdgeInsets.fromLTRB(24, 12, 24, 24),
                   height: 180,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(36),
@@ -112,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ]),
             ),
             SliverPadding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
               sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 100,
@@ -154,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 150 + (MediaQuery.of(context).size.width / 2 - 24 - 48),
+                height: 362,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemCount: products.length,
@@ -167,6 +166,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       productTitle: products[index].name,
                       productQuantity: safeParseDouble(products[index].count),
                       productMeasure: products[index].measure,
+                      productPrice: products[index].price ?? 0,
+                      companyName: "Abdusalom Yuksak Kelaj...",
                       companyId: 2,
                     );
                   },

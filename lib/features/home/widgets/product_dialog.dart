@@ -32,7 +32,7 @@ class ProductDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(32),
       ),
-      backgroundColor: Theme.of(context).dialogBackgroundColor,
+      backgroundColor: const DialogThemeData().backgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(32),
         child: Column(

@@ -72,23 +72,36 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
               ),
             ),
             const SizedBox(height: 80),
-            TextButton(
-              onPressed: () {
-                _currentPage == 2
-                    ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen()))
-                    : _pageController.nextPage(
-                        duration: const Duration(milliseconds: 250),
-                        curve: Curves.easeOut,
-                      );
-              },
-              style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
-                fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
-                padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 16)),
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.primaryLight.withValues(alpha: 0.25),
+                    spreadRadius: 0,
+                    blurRadius: 24,
+                    offset: Offset(4, 8),
+                  ),
+                ],
               ),
-              child: Text(
-                _currentPage == 2 ? "Qani ketdik!" : "Keyingisi",
-                style: AppTextStyles.boldStyle.copyWith(fontSize: 16, color: Colors.white),
+              child: TextButton(
+                onPressed: () {
+                  _currentPage == 2
+                      ? Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) => const SignInScreen()))
+                      : _pageController.nextPage(
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.easeOut,
+                        );
+                },
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                  fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
+                  padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 16)),
+                ),
+                child: Text(
+                  _currentPage == 2 ? "Qani ketdik!" : "Keyingisi",
+                  style: AppTextStyles.boldStyle.copyWith(fontSize: 16, color: Colors.white),
+                ),
               ),
             ),
             const SizedBox(height: 16),

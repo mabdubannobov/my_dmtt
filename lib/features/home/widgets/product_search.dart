@@ -10,29 +10,27 @@ class ProductSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      readOnly: true,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: 16),
-        fillColor: Theme.of(context).primaryColorDark,
-        filled: true,
-        prefixIconConstraints: const BoxConstraints(maxHeight: 20),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 12),
-          child: SvgPicture.asset(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+      decoration: BoxDecoration(
+        color: Theme.of(context).secondaryHeaderColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          SvgPicture.asset(
             AppAssets.icons.search,
             colorFilter: ColorFilter.mode(
               Theme.of(context).hintColor,
               BlendMode.srcIn,
             ),
           ),
-        ),
-        hintText: 'Qaysi mahsulotni qidiramiz?',
-        hintStyle: Theme.of(context).textTheme.labelSmall,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
-        ),
+          SizedBox(width: 12),
+          Text(
+            'Sizga qaysi mahsulot kerak?',
+            style: Theme.of(context).textTheme.labelSmall,
+          )
+        ],
       ),
     );
   }

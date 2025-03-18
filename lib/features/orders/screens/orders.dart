@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,7 +42,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
       builder: (context, state) {
         if (state is OrdersLoadingState) {
           return Center(
-            child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
+            child: CircularProgressIndicator(),
           );
         }
 

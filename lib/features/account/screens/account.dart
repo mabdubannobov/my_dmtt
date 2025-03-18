@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +48,7 @@ class _AccountScreenState extends State<AccountScreen> {
       builder: (context, state) {
         if (state is AccountLoadingState) {
           return Center(
-            child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
+            child: CircularProgressIndicator(),
           );
         }
 
@@ -210,7 +209,7 @@ class _AccountScreenState extends State<AccountScreen> {
               trailingIcon: const SizedBox.shrink(),
               onTap: () {
                 showModalBottomSheet(
-                  backgroundColor: Theme.of(context).dialogBackgroundColor,
+                  backgroundColor: const DialogThemeData().backgroundColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(44),

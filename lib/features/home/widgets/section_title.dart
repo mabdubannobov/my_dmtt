@@ -18,7 +18,7 @@ class SectionTitle extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate([
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           child: Row(
             children: [
               Text(title, style: Theme.of(context).textTheme.headlineSmall),

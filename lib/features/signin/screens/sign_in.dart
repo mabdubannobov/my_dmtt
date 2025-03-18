@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -57,7 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
           builder: (context, state) {
             if (state is SignInLoadingState) {
               return Center(
-                child: CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
+                child: CircularProgressIndicator(),
               );
             }
             return Column(
@@ -95,30 +94,42 @@ class _SignInScreenState extends State<SignInScreen> {
                     filledIcon: AppAssets.icons.passwordFieldFilled,
                   ),
                 ),
-                TextButton(
-                  style: ButtonStyle(
-                    fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
-                    backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primaryLight.withValues(alpha: 0.25),
+                        spreadRadius: 0,
+                        blurRadius: 24,
+                        offset: Offset(4, 8),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    if (userController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-                      context.read<SignInBloc>().add(
-                            SignInEnterEvent(
-                              userController.text,
-                              passwordController.text,
-                            ),
-                          );
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      "Kirish",
-                      style: AppTextStyles.boldStyle.copyWith(
-                        color: Colors.white,
-                        fontSize: 16,
-                        letterSpacing: 0.2,
-                        height: 1.4,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
+                      backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
+                    ),
+                    onPressed: () {
+                      if (userController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+                        context.read<SignInBloc>().add(
+                              SignInEnterEvent(
+                                userController.text,
+                                passwordController.text,
+                              ),
+                            );
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        "Kirish",
+                        style: AppTextStyles.boldStyle.copyWith(
+                          color: Colors.white,
+                          fontSize: 16,
+                          letterSpacing: 0.2,
+                          height: 1.4,
+                        ),
                       ),
                     ),
                   ),

@@ -21,7 +21,7 @@ class ExitBottomSheet extends StatelessWidget {
             topLeft: Radius.circular(44),
             topRight: Radius.circular(44),
           ),
-          color: Theme.of(context).dialogBackgroundColor,
+          color: const DialogThemeData().backgroundColor,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

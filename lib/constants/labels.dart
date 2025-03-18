@@ -40,7 +40,7 @@ List<String> categoryImages = [
   AppAssets.images.categoryUn,
   AppAssets.images.categoryDon,
   AppAssets.images.categoryMeat,
-  AppAssets.images.categoryPotato,
+  AppAssets.images.categoryQandolat,
   AppAssets.images.categoryMilk,
   AppAssets.images.categoryApple,
   AppAssets.images.categoryOthers,
@@ -48,11 +48,11 @@ List<String> categoryImages = [
 
 List<String> categoryNames = [
   "Sabzavot",
-  "Un mah..",
-  "Don ma..",
+  "Un mahs..",
+  "Yormalar",
   "Go'sht",
-  "Poliz ek..",
-  "Sut ma..",
+  "Qandolat",
+  "Sut mah..",
   "Mevalar",
   "Boshqa",
 ];

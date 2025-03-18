@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -36,7 +35,7 @@ class CartItem extends StatelessWidget {
             height: 80,
             width: 80,
             imageUrl: photoUrl,
-            placeholder: (context, url) => CupertinoActivityIndicator(color: Theme.of(context).primaryColor),
+            placeholder: (context, url) => CircularProgressIndicator(),
           ),
           const SizedBox(width: 16),
           Padding(

@@ -29,6 +29,10 @@ class AppIcons extends AssetsFolder {
   String get scan => '$basePath/ic-scan.svg';
   String get search => '$basePath/ic-search.svg';
 
+  String get delivey => '$basePath/ic-delivery.svg';
+  String get goldWallet => '$basePath/ic-wallet-gold.svg';
+  String get chart => '$basePath/ic-chart.svg';
+
   String get appBarLogo => '$basePath/appbar-logo.svg';
   String get loading => '$basePath/loading.svg';
 
@@ -75,7 +79,7 @@ class AppImages extends AssetsFolder {
   String get categoryUn => '$basePath/un.png';
   String get categoryDon => '$basePath/don.png';
   String get categoryMeat => '$basePath/meat.png';
-  String get categoryPotato => '$basePath/potato.png';
+  String get categoryQandolat => '$basePath/qandolat.png';
   String get categoryMilk => '$basePath/milk.png';
   String get categoryApple => '$basePath/apple.png';
   String get categoryOthers => '$basePath/other.png';

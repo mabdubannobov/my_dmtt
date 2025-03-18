@@ -1,0 +1,2 @@
+/Users/mabdubannobov/Desktop/Projects/my_dmtt/android/app/.cxx/RelWithDebInfo/40644l1d/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/mabdubannobov/Desktop/Projects/my_dmtt/android/app/.cxx/RelWithDebInfo/40644l1d/arm64-v8a/CMakeFiles/rebuild_cache.dir

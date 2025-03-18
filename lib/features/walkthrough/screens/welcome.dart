@@ -21,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
           MaterialPageRoute(builder: (context) => const WalkthroughScreen()),
         ),
         child: Container(
-          padding: const EdgeInsets.fromLTRB(24, 48, 24, 16),
+          padding: const EdgeInsets.fromLTRB(24, 48, 24, 48),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(AppAssets.images.welcomeBg),
@@ -46,6 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 20),
                 Text(
                   "MyDMTT - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
                   style: AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: Colors.white),
