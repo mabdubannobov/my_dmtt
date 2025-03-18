@@ -77,7 +77,7 @@ class _CartScreenState extends State<CartScreen> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 18),
           child: AppBar(
             leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
             leadingWidth: 28,
@@ -100,35 +100,49 @@ class _CartScreenState extends State<CartScreen> {
                   return Column(
                     children: [
                       Expanded(
-                        child: ListView.builder(
-                          itemCount: box.length,
-                          itemBuilder: (context, index) {
-                            final key = box.keyAt(index);
-                            final item = box.get(key);
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          margin: EdgeInsets.symmetric(horizontal: 24),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0XFF04060F).withValues(alpha: 0.05),
+                                blurRadius: 60,
+                                spreadRadius: 0,
+                                offset: Offset(0, 4),
+                              )
+                            ],
+                          ),
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            itemCount: box.length,
+                            itemBuilder: (context, index) {
+                              final key = box.keyAt(index);
+                              final item = box.get(key);
 
-                            return Column(
-                              children: [
-                                CartItem(
-                                  itemKey: key,
-                                  name: item.name,
-                                  count: item.value,
-                                  measure: item.measure,
-                                  photoUrl: item.imageUrl,
-                                  onDelete: () => _deleteItem(key),
-                                ),
-                                if (index != box.length - 1)
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 16),
-                                    child: Divider(),
+                              return Column(
+                                children: [
+                                  CartItem(
+                                    itemKey: key,
+                                    name: item.name,
+                                    count: item.value,
+                                    measure: item.measure,
+                                    photoUrl: item.imageUrl,
+                                    onDelete: () => _deleteItem(key),
                                   ),
-                              ],
-                            );
-                          },
+                                  if (index != box.length - 1) Divider(),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
+                      SizedBox(height: 28),
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                         decoration: BoxDecoration(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           border: Border(

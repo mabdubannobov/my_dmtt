@@ -104,7 +104,7 @@ final ThemeData lightTheme = ThemeData(
       height: 1.4,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w400,
-      color: AppColors.greyscaleLight.shade400,
+      color: AppColors.greyscaleLight.shade500,
     ),
     displayMedium: TextStyle(
       fontSize: 18,

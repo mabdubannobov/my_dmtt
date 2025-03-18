@@ -59,7 +59,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
               child: AppBar(
                 leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
                 leadingWidth: 28,
@@ -83,7 +83,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                     ),
                     onPressed: () {},
                     child: Text(
-                      "2025, Yanvar",
+                      "2025, Mart",
                       style: AppTextStyles.semiBoldStyle.copyWith(
                         fontSize: 14,
                         color: Colors.white,
@@ -94,7 +94,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(
                 color: Colors.transparent,
                 child: TabBar(
@@ -119,7 +119,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                         )
                       : Center(
                           child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: activeOrders.length,
                             separatorBuilder: (BuildContext context, int index) {
                               return const SizedBox(height: 24);
@@ -139,7 +139,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                         )
                       : Center(
                           child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: acceptedOrders.length,
                             separatorBuilder: (BuildContext context, int index) {
                               return const SizedBox(height: 24);
@@ -159,7 +159,7 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                         )
                       : Center(
                           child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: rejectedOrders.length,
                             separatorBuilder: (BuildContext context, int index) {
                               return const SizedBox(height: 24);

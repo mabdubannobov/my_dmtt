@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       productQuantity: safeParseDouble(products[index].count),
                       productMeasure: products[index].measure,
                       productPrice: products[index].price ?? 0,
-                      companyName: "Abdusalom Yuksak Kelaj...",
+                      companyName: "New Valley Coders Team MCHJ",
                       companyId: 2,
                     );
                   },

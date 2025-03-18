@@ -111,9 +111,12 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
               children: [
                 SvgPicture.asset(AppAssets.icons.delivey),
                 SizedBox(width: 6),
-                Text(
-                  widget.companyName,
-                  style: Theme.of(context).textTheme.bodySmall,
+                Expanded(
+                  child: Text(
+                    widget.companyName,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
