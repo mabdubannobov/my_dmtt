@@ -48,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "MyDMTT - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
+                  "My DMTT - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
                   style: AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),

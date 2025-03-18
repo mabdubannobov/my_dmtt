@@ -70,13 +70,13 @@ class _SignInFieldState extends State<SignInField> {
         ),
         suffixIconConstraints: const BoxConstraints(maxHeight: 20),
         suffixIcon: widget.hintText == "Xavfsizlik paroli"
-            ? InkWell(
-                onTap: () {
+            ? IconButton(
+                onPressed: () {
                   setState(() {
-                    _isObscure = !_isObscure; // **Davlat o‘zgaruvchisini yangilaymiz**
+                    _isObscure = !_isObscure;
                   });
                 },
-                child: Padding(
+                icon: Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: SvgPicture.asset(
                     _isObscure ? AppAssets.icons.hide : AppAssets.icons.hideActive,
