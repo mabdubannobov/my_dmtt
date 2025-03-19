@@ -6,7 +6,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/constants/app_text_styles.dart';
+import 'package:my_dmtt/features/main_screen.dart';
+import 'package:my_dmtt/features/signin/screens/sign_in.dart';
 import 'package:my_dmtt/features/walkthrough/screens/welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,13 +25,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    Timer(
-      const Duration(seconds: 2),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-      ),
-    );
+    _checkUserStatus();
 
     _controller = AnimationController(
       duration: const Duration(seconds: 3),
@@ -36,6 +33,36 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     )..repeat();
 
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+  }
+
+  Future<void> _checkUserStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bool isFirstLaunch = prefs.getBool('first_launch') ?? true;
+    final bool isAuthenticated = prefs.getBool('is_authenticated') ?? false;
+
+    await Future.delayed(const Duration(seconds: 2)); // Splash Screen animatsiyasi
+
+    if (isFirstLaunch) {
+      await prefs.setBool('first_launch', false);
+      Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+      );
+    } else if (isAuthenticated) {
+      Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+      );
+    } else {
+      // Aks holda Welcome Screen ochiladi
+      Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (context) => const SignInScreen()),
+      );
+    }
   }
 
   @override

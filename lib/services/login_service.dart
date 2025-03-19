@@ -20,6 +20,7 @@ class LoginService {
     if (result.statusCode == 200) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString(Shared.accessToken, result.data['access_token']);
+      await prefs.setBool('is_authenticated', true);
 
       return "Success";
     } else {

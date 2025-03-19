@@ -6,14 +6,11 @@ import 'package:my_dmtt/constants/themes.dart';
 import 'package:my_dmtt/cubit/theme_cubit.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
 import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
-import 'package:my_dmtt/features/main_screen.dart';
 import 'package:my_dmtt/features/orders/bloc/bloc/orders_bloc.dart';
 import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
 import 'package:my_dmtt/features/walkthrough/screens/splash.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'constants/sharedprefrences.dart';
 import 'features/home/bloc/home_bloc.dart';
 import 'models/product_model.dart';
 
@@ -22,11 +19,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ProductModelAdapter());
   await Hive.openBox<ProductModel>('productsBox');
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var token = prefs.getString(Shared.accessToken);
-  runApp(MainApp(
-    home: token == null ? const SplashScreen() : const MainScreen(),
-  ));
+  runApp(MainApp(home: const SplashScreen()));
 }
 
 class MainApp extends StatelessWidget {

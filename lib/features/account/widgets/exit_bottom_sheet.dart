@@ -74,6 +74,7 @@ class ExitBottomSheet extends StatelessWidget {
                   onPressed: () async {
                     SharedPreferences prefs = await SharedPreferences.getInstance();
                     prefs.remove(Shared.accessToken);
+                    prefs.setBool('is_authenticated', false);
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(

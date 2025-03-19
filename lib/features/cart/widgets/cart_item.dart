@@ -43,7 +43,10 @@ class CartItem extends StatelessWidget {
             height: 80,
             width: 80,
             imageUrl: photoUrl,
-            placeholder: (context, url) => CircularProgressIndicator(),
+            placeholder: (context, url) => Padding(
+              padding: EdgeInsets.all(20),
+              child: CircularProgressIndicator(),
+            ),
           ),
           const SizedBox(width: 16),
           Padding(
