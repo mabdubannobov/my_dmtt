@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_dmtt/constants/labels.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 import 'package:my_dmtt/features/home/screens/products_screen.dart';
@@ -23,10 +24,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Box<ProductModel> cartDataBox;
+
   @override
   void initState() {
     super.initState();
     context.read<HomeBloc>().add(GetUSerDataEvent());
+    cartDataBox = Hive.box<ProductModel>('productsBox');
   }
 
   @override
@@ -154,28 +158,42 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(
               child: SizedBox(
                 height: 362,
-                child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: products.length,
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return ProductHomeContainer(
-                      productImage: products[index].imageUrl ??
-                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                      productTitle: products[index].name,
-                      productQuantity: safeParseDouble(products[index].count),
-                      productMeasure: products[index].measure,
-                      productPrice: products[index].price ?? 0,
-                      companyName: "New Valley Coders Team MCHJ",
-                      companyId: 2,
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(width: 16);
-                  },
-                  padding: const EdgeInsets.all(16),
-                ),
+                child: ValueListenableBuilder(
+                    valueListenable: cartDataBox.listenable(),
+                    builder: (context, Box<ProductModel> box, _) {
+                      return ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: products.length,
+                        clipBehavior: Clip.none,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          List<ProductModel> cartElements = cartDataBox.values.toList();
+                          double cartData = 0;
+
+                          for (var element in cartElements) {
+                            if (element.name == products[index].name) {
+                              cartData = element.value!;
+                            }
+                          }
+
+                          return ProductHomeContainer(
+                            productImage: products[index].imageUrl ??
+                                "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                            productTitle: products[index].name,
+                            productQuantity: safeParseDouble(products[index].count),
+                            productMeasure: products[index].measure,
+                            productPrice: products[index].price ?? 0,
+                            companyName: "New Valley Coders Team MCHJ",
+                            companyId: 2,
+                            cartData: cartData,
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(width: 16);
+                        },
+                        padding: const EdgeInsets.all(16),
+                      );
+                    }),
               ),
             ),
           ],

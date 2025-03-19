@@ -29,8 +29,8 @@ class _CartScreenState extends State<CartScreen> {
     myDataBox = Hive.box<ProductModel>('productsBox');
   }
 
-  void _deleteItem(String key) async {
-    await myDataBox.delete(key);
+  void _deleteItem(int key) async {
+    await myDataBox.deleteAt(key);
     setState(() {});
   }
 
@@ -119,18 +119,17 @@ class _CartScreenState extends State<CartScreen> {
                             physics: BouncingScrollPhysics(),
                             itemCount: box.length,
                             itemBuilder: (context, index) {
-                              final key = box.keyAt(index);
-                              final item = box.get(key);
+                              final item = box.getAt(index); // Index bo‘yicha mahsulotni olamiz
 
                               return Column(
                                 children: [
                                   CartItem(
-                                    itemKey: key,
+                                    itemKey: index, // Endi indeks asosida ishlaydi
                                     name: item.name,
                                     count: item.value,
                                     measure: item.measure,
                                     photoUrl: item.imageUrl,
-                                    onDelete: () => _deleteItem(key),
+                                    onDelete: () => _deleteItem(index), // Index orqali o‘chiramiz
                                   ),
                                   if (index != box.length - 1) Divider(),
                                 ],

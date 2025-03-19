@@ -8,7 +8,7 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../../../models/product_model.dart';
 
-class ProductDialog extends StatelessWidget {
+class ProductDialog extends StatefulWidget {
   const ProductDialog({
     super.key,
     required this.productImage,
@@ -27,9 +27,49 @@ class ProductDialog extends StatelessWidget {
   final int productID;
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController textController = TextEditingController();
+  State<ProductDialog> createState() => _ProductDialogState();
+}
 
+class _ProductDialogState extends State<ProductDialog> {
+  late TextEditingController textController;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeTextController();
+  }
+
+  String formatNumber(double value) {
+    if (value % 1 == 0) {
+      return value.toInt().toString();
+    } else {
+      return value.toString();
+    }
+  }
+
+  Future<void> _initializeTextController() async {
+    final myDataBox = Hive.box<ProductModel>('productsBox');
+
+    // Mavjud mahsulotni qidiramiz
+    ProductModel? existingProduct;
+    for (int i = 0; i < myDataBox.length; i++) {
+      final product = myDataBox.getAt(i);
+      if (product!.name == widget.productTitle) {
+        existingProduct = product;
+        break;
+      }
+    }
+
+    // Agar mahsulot bo‘lsa, uning qiymatini chiqaramiz, aks holda bo‘sh qoldiramiz
+    textController = TextEditingController(
+      text: existingProduct != null ? formatNumber(existingProduct.value!).toString() : '',
+    );
+
+    setState(() {}); // UI ni yangilash uchun
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(32),
@@ -42,7 +82,7 @@ class ProductDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(58, 8, 58, 32),
               child: CachedNetworkImage(
-                imageUrl: productImage,
+                imageUrl: widget.productImage,
               ),
             ),
             Text(
@@ -97,6 +137,7 @@ class ProductDialog extends StatelessWidget {
                 if (inputText.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
+                      behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
                       content: Text("Siz miqdorni kiritmadingiz!"),
                     ),
@@ -109,6 +150,7 @@ class ProductDialog extends StatelessWidget {
                 if (inputQuantity == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
+                      behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
                       content: Text("To'g'ri miqdorni kiriting!"),
                     ),
@@ -116,16 +158,17 @@ class ProductDialog extends StatelessWidget {
                   return;
                 }
 
-                if (inputQuantity <= productQuantity && inputQuantity != 0.0) {
+                if (inputQuantity <= widget.productQuantity && inputQuantity != 0.0) {
                   await storeData(
-                    productTitle,
+                    widget.productTitle,
                     inputQuantity,
-                    companyId,
-                    productMeasure,
-                    productImage,
+                    widget.companyId,
+                    widget.productMeasure,
+                    widget.productImage,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.primaryLight,
                       content: const Text("Savatga qo'shildi!"),
                     ),
@@ -134,8 +177,9 @@ class ProductDialog extends StatelessWidget {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
-                      content: Text("Miqdor ${productQuantity.toStringAsFixed(2)} dan kichik bo'lishi kerak!"),
+                      content: Text("Miqdor ${widget.productQuantity.toStringAsFixed(2)} dan kichik bo'lishi kerak!"),
                     ),
                   );
                 }
@@ -155,23 +199,39 @@ class ProductDialog extends StatelessWidget {
   }
 }
 
-Future<void> storeData(
-  String name,
-  double count,
-  int companyId,
-  String measure,
-  String imageUrl,
-) async {
+Future<void> storeData(String name, double count, int companyId, String measure, String imageUrl) async {
   final myDataBox = Hive.box<ProductModel>('productsBox');
 
-  await myDataBox.put(
-    name,
-    ProductModel(
-      name: name,
-      value: count,
-      companyId: companyId,
-      measure: measure,
-      imageUrl: imageUrl,
-    ),
-  );
+  // Mahsulot allaqachon mavjudligini tekshiramiz
+  int? existingIndex;
+  for (int i = 0; i < myDataBox.length; i++) {
+    final product = myDataBox.getAt(i);
+    if (product!.name == name) {
+      existingIndex = i;
+      break;
+    }
+  }
+
+  if (existingIndex != null) {
+    await myDataBox.putAt(
+      existingIndex,
+      ProductModel(
+        name: name,
+        value: count,
+        companyId: companyId,
+        measure: measure,
+        imageUrl: imageUrl,
+      ),
+    );
+  } else {
+    await myDataBox.add(
+      ProductModel(
+        name: name,
+        value: count,
+        companyId: companyId,
+        measure: measure,
+        imageUrl: imageUrl,
+      ),
+    );
+  }
 }

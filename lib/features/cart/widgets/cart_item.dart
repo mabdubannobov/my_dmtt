@@ -17,7 +17,7 @@ class CartItem extends StatelessWidget {
     super.key,
   });
 
-  final String itemKey;
+  final int itemKey;
   final String name;
   final double count;
   final String measure;

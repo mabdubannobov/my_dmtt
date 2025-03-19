@@ -70,16 +70,17 @@ class _SignInFieldState extends State<SignInField> {
         ),
         suffixIconConstraints: const BoxConstraints(maxHeight: 20),
         suffixIcon: widget.hintText == "Xavfsizlik paroli"
-            ? IconButton(
-                onPressed: () {
+            ? GestureDetector(
+                onTap: () {
                   setState(() {
                     _isObscure = !_isObscure;
                   });
                 },
-                icon: Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: SvgPicture.asset(
                     _isObscure ? AppAssets.icons.hide : AppAssets.icons.hideActive,
+                    width: 20,
                   ),
                 ),
               )

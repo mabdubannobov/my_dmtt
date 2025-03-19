@@ -28,6 +28,9 @@ final ThemeData lightTheme = ThemeData(
       color: AppColors.greyscaleLight,
     ),
   ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: Colors.white,
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 0,
     showUnselectedLabels: true,
@@ -253,6 +256,9 @@ final ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
+  ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: AppColors.dark2,
   ),
   dialogTheme: const DialogThemeData(backgroundColor: AppColors.dark2),
 );

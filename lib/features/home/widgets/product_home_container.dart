@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 
+import '../../../constants/app_colors.dart';
 import 'product_dialog.dart';
 
 class ProductHomeContainer extends StatefulWidget {
@@ -16,6 +17,7 @@ class ProductHomeContainer extends StatefulWidget {
     required this.productPrice,
     required this.companyName,
     required this.companyId,
+    required this.cartData,
   });
 
   final String productImage;
@@ -25,6 +27,7 @@ class ProductHomeContainer extends StatefulWidget {
   final int productPrice;
   final String companyName;
   final int companyId;
+  final double cartData;
 
   @override
   State<ProductHomeContainer> createState() => _ProductHomeContainerState();
@@ -73,10 +76,49 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage(
-              imageUrl: widget.productImage,
-              width: 192,
-              height: 192,
+            Stack(
+              children: [
+                CachedNetworkImage(
+                  imageUrl: widget.productImage,
+                  width: 192,
+                  height: 192,
+                ),
+                widget.cartData != 0
+                    ? Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 12, top: 12),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryLight,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    AppAssets.icons.bagActive,
+                                    colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    '${formatNumber(widget.cartData)} ${widget.productMeasure}',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    : SizedBox(),
+              ],
             ),
             const SizedBox(height: 14),
             Text(
