@@ -141,39 +141,51 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       SizedBox(height: 28),
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          border: Border(
-                            top: BorderSide(
-                              color: Theme.of(context).dividerColor,
-                              width: 1.0,
-                            ),
-                          ),
-                        ),
-                        child: TextButton(
-                          style: ButtonStyle(
-                            fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
-                            backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
-                          ),
-                          onPressed: () {
-                            _onOrderButtonPressed(context);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: Text(
-                              "Buyurtma berish",
-                              style: AppTextStyles.boldStyle.copyWith(
-                                color: Colors.white,
-                                fontSize: 16,
-                                letterSpacing: 0.2,
-                                height: 1.4,
+                          width: MediaQuery.of(context).size.width,
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            border: Border(
+                              top: BorderSide(
+                                color: Theme.of(context).dividerColor,
+                                width: 1.0,
                               ),
                             ),
                           ),
-                        ),
-                      ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.primaryLight.withValues(alpha: 0.25),
+                                  spreadRadius: 0,
+                                  blurRadius: 24,
+                                  offset: Offset(4, 8),
+                                ),
+                              ],
+                            ),
+                            child: TextButton(
+                              style: ButtonStyle(
+                                fixedSize:
+                                    WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
+                                backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                              ),
+                              onPressed: () {
+                                _onOrderButtonPressed(context);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                child: Text(
+                                  "Buyurtma berish",
+                                  style: AppTextStyles.boldStyle.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    letterSpacing: 0.2,
+                                    height: 1.4,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )),
                     ],
                   );
                 },

@@ -16,6 +16,7 @@ class ProductDialog extends StatelessWidget {
     required this.productQuantity,
     required this.productMeasure,
     required this.companyId,
+    required this.productID,
   });
 
   final String productImage;
@@ -23,6 +24,7 @@ class ProductDialog extends StatelessWidget {
   final double productQuantity;
   final String productMeasure;
   final int companyId;
+  final int productID;
 
   @override
   Widget build(BuildContext context) {

@@ -24,6 +24,14 @@ class CartItem extends StatelessWidget {
   final String photoUrl;
   final VoidCallback onDelete;
 
+  String formatNumber(double value) {
+    if (value % 1 == 0) {
+      return value.toInt().toString();
+    } else {
+      return value.toString();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +57,7 @@ class CartItem extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 Text(
-                  "$count $measure",
+                  "${formatNumber(count)} $measure",
                   style: AppTextStyles.boldStyle.copyWith(
                     fontSize: 18,
                     color: AppColors.primaryLight,

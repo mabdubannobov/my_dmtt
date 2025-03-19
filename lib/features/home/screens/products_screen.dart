@@ -86,6 +86,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       productQuantity: safeParseDouble(currentItem.count),
                       productMeasure: currentItem.measure,
                       companyId: 2,
+                      productID: 2,
                     );
                   },
                 ),

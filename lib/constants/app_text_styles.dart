@@ -14,6 +14,14 @@ abstract class AppTextStyles {
     letterSpacing: 0.2,
     fontSize: 12,
   );
+
+  static TextStyle selectedBottomLabelStyle = const TextStyle(
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    letterSpacing: 0.2,
+    fontSize: 12,
+  );
   static TextStyle titleStyle = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w700,

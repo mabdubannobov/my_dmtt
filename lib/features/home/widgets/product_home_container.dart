@@ -51,6 +51,7 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
             productQuantity: widget.productQuantity,
             productMeasure: widget.productMeasure,
             companyId: widget.companyId,
+            productID: 2,
           );
         },
       ),
