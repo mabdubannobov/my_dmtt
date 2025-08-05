@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
 
 import '../../../constants/app_colors.dart';
@@ -93,12 +92,14 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
                                 color: AppColors.primaryLight,
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 6),
                               child: Row(
                                 children: [
                                   SvgPicture.asset(
                                     AppAssets.icons.bagActive,
-                                    colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                    colorFilter: ColorFilter.mode(
+                                        Colors.white, BlendMode.srcIn),
                                     width: 12,
                                     height: 12,
                                   ),
@@ -125,29 +126,6 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
               widget.productTitle,
               style: Theme.of(context).textTheme.headlineSmall,
               softWrap: false,
-            ),
-            const SizedBox(height: 14),
-            Row(
-              children: [
-                SvgPicture.asset(AppAssets.icons.chart),
-                SizedBox(width: 6),
-                Text(
-                  "${formatNumber(widget.productQuantity)} ${widget.productMeasure}",
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                SizedBox(width: 6),
-                Text(
-                  "|",
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                SizedBox(width: 6),
-                SvgPicture.asset(AppAssets.icons.goldWallet),
-                SizedBox(width: 6),
-                Text(
-                  "${NumberFormat("#,###", "en_US").format(widget.productPrice).replaceAll(",", " ")} so'm",
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ],
             ),
             const SizedBox(height: 14),
             Row(

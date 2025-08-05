@@ -62,7 +62,9 @@ class _ProductDialogState extends State<ProductDialog> {
 
     // Agar mahsulot bo‘lsa, uning qiymatini chiqaramiz, aks holda bo‘sh qoldiramiz
     textController = TextEditingController(
-      text: existingProduct != null ? formatNumber(existingProduct.value!).toString() : '',
+      text: existingProduct != null
+          ? formatNumber(existingProduct.value!).toString()
+          : '',
     );
 
     setState(() {}); // UI ni yangilash uchun
@@ -126,7 +128,8 @@ class _ProductDialogState extends State<ProductDialog> {
             const SizedBox(height: 24),
             TextButton(
               style: const ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(AppColors.disabledButton),
+                backgroundColor:
+                    WidgetStatePropertyAll(AppColors.disabledButton),
                 padding: WidgetStatePropertyAll(
                   EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
@@ -158,7 +161,7 @@ class _ProductDialogState extends State<ProductDialog> {
                   return;
                 }
 
-                if (inputQuantity <= widget.productQuantity && inputQuantity != 0.0) {
+                if (inputQuantity >= 0.0) {
                   await storeData(
                     widget.productTitle,
                     inputQuantity,
@@ -179,7 +182,7 @@ class _ProductDialogState extends State<ProductDialog> {
                     SnackBar(
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
-                      content: Text("Miqdor ${widget.productQuantity.toStringAsFixed(2)} dan kichik bo'lishi kerak!"),
+                      content: Text("To'g'ri miqdorni kiriting!"),
                     ),
                   );
                 }
@@ -199,7 +202,8 @@ class _ProductDialogState extends State<ProductDialog> {
   }
 }
 
-Future<void> storeData(String name, double count, int companyId, String measure, String imageUrl) async {
+Future<void> storeData(String name, double count, int companyId, String measure,
+    String imageUrl) async {
   final myDataBox = Hive.box<ProductModel>('productsBox');
 
   // Mahsulot allaqachon mavjudligini tekshiramiz

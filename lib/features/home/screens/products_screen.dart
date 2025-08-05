@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:my_dmtt/constants/app_colors.dart';
 import 'package:my_dmtt/features/home/screens/home.dart';
 import 'package:my_dmtt/features/home/widgets/product_dialog.dart';
@@ -124,12 +123,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       color: AppColors.primaryLight,
                                       borderRadius: BorderRadius.circular(6),
                                     ),
-                                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 6),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset(
                                           AppAssets.icons.bagActive,
-                                          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                          colorFilter: ColorFilter.mode(
+                                              Colors.white, BlendMode.srcIn),
                                           width: 12,
                                           height: 12,
                                         ),
@@ -162,35 +163,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             const SizedBox(height: 16),
                             Row(
                               children: [
-                                SvgPicture.asset(AppAssets.icons.chart),
-                                SizedBox(width: 6),
-                                Text(
-                                  "${formatNumber(safeParseDouble(currentItem.count))} ${currentItem.measure}",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                SizedBox(width: 6),
-                                Text(
-                                  "|",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                SizedBox(width: 6),
-                                SvgPicture.asset(AppAssets.icons.goldWallet),
-                                SizedBox(width: 6),
-                                Text(
-                                  "${NumberFormat("#,###", "en_US").format(currentItem.price ?? 0).replaceAll(",", " ")} so'm",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 14),
-                            Row(
-                              children: [
                                 SvgPicture.asset(AppAssets.icons.delivey),
                                 SizedBox(width: 6),
                                 Expanded(
                                   child: Text(
-                                    "New Valley Coders Team MCHJ",
-                                    style: Theme.of(context).textTheme.bodySmall,
+                                    "Supply Foods MCHJ",
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),

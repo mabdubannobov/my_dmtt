@@ -14,7 +14,8 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
   primaryColorDark: AppColors.greyscaleLight.shade50,
-  progressIndicatorTheme: ProgressIndicatorThemeData(color: AppColors.primaryLight),
+  progressIndicatorTheme:
+      ProgressIndicatorThemeData(color: AppColors.primaryLight),
   secondaryHeaderColor: AppColors.greyscaleLight.shade100,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
@@ -45,14 +46,15 @@ final ThemeData lightTheme = ThemeData(
     color: AppColors.greyscaleLight.shade200,
     thickness: 1.0,
   ),
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: TabBarThemeData(
     dividerHeight: 2,
     labelColor: AppColors.primaryLight,
     indicatorSize: TabBarIndicatorSize.tab,
     indicatorColor: AppColors.primaryLight,
     dividerColor: AppColors.greyscaleLight.shade200,
     unselectedLabelColor: AppColors.greyscaleLight.shade500,
-    overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+    overlayColor:
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
       return states.contains(WidgetState.focused) ? null : Colors.transparent;
     }),
   ),
@@ -172,14 +174,15 @@ final ThemeData darkTheme = ThemeData(
     color: AppColors.dark3,
     thickness: 1.0,
   ),
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: TabBarThemeData(
     dividerHeight: 2,
     labelColor: AppColors.primaryLight,
     indicatorSize: TabBarIndicatorSize.tab,
     indicatorColor: AppColors.primaryLight,
     dividerColor: AppColors.greyscaleLight.shade700,
     unselectedLabelColor: AppColors.greyscaleLight.shade700,
-    overlayColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+    overlayColor:
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
       return states.contains(WidgetState.focused) ? null : Colors.transparent;
     }),
   ),

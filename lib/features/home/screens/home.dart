@@ -49,9 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircularProgressIndicator(),
           );
         }
-        UserModel userModel = state is HomeLoadedState ? state.userModel : UserModel.defaultModel();
-        DmttModel dmttModel = state is HomeLoadedState ? state.dmttModel : DmttModel.defaultModel();
-        List<ProductModel> products = state is HomeLoadedState ? state.products : [ProductModel.defaultModel()];
+        UserModel userModel = state is HomeLoadedState
+            ? state.userModel
+            : UserModel.defaultModel();
+        DmttModel dmttModel = state is HomeLoadedState
+            ? state.dmttModel
+            : DmttModel.defaultModel();
+        List<ProductModel> products = state is HomeLoadedState
+            ? state.products
+            : [ProductModel.defaultModel()];
 
         return CustomScrollView(
           scrollDirection: Axis.vertical,
@@ -157,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 362,
+                height: 330,
                 child: ValueListenableBuilder(
                     valueListenable: cartDataBox.listenable(),
                     builder: (context, Box<ProductModel> box, _) {
@@ -167,7 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         clipBehavior: Clip.none,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          List<ProductModel> cartElements = cartDataBox.values.toList();
+                          List<ProductModel> cartElements =
+                              cartDataBox.values.toList();
                           double cartData = 0;
 
                           for (var element in cartElements) {
@@ -180,10 +187,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             productImage: products[index].imageUrl ??
                                 "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                             productTitle: products[index].name,
-                            productQuantity: safeParseDouble(products[index].count),
+                            productQuantity:
+                                safeParseDouble(products[index].count),
                             productMeasure: products[index].measure,
                             productPrice: products[index].price ?? 0,
-                            companyName: "New Valley Coders Team MCHJ",
+                            companyName: "Supply Foods MCHJ",
                             companyId: 2,
                             cartData: cartData,
                           );
