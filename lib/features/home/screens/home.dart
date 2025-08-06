@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_dmtt/constants/labels.dart';
 import 'package:my_dmtt/constants/app_assets.dart';
+import 'package:my_dmtt/features/cart/screens/cart.dart';
 import 'package:my_dmtt/features/home/screens/products_screen.dart';
 import 'package:my_dmtt/models/product_model.dart';
 
@@ -89,9 +90,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 actions: [
-                  ActionButton(icon: AppAssets.icons.scan),
+                  ActionButton(
+                    icon: AppAssets.icons.bag,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartScreen()),
+                    ),
+                  ),
                   const SizedBox(width: 16),
-                  ActionButton(icon: AppAssets.icons.notification),
+                  ActionButton(
+                    icon: AppAssets.icons.notification,
+                    onTap: () {},
+                  ),
                 ],
               ),
             ),

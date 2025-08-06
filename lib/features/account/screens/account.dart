@@ -37,7 +37,8 @@ class _AccountScreenState extends State<AccountScreen> {
             SnackBar(
               content: Text(
                 "Ma'lumotlaringiz muvaffaqiyatli yangilandi!",
-                style: AppTextStyles.semiBoldStyle.copyWith(color: Colors.white),
+                style:
+                    AppTextStyles.semiBoldStyle.copyWith(color: Colors.white),
               ),
               backgroundColor: AppColors.primaryLight,
               duration: const Duration(seconds: 3),
@@ -85,8 +86,8 @@ class _AccountScreenState extends State<AccountScreen> {
                     child: CachedNetworkImage(
                       width: 80,
                       height: 80,
-                      imageUrl:
-                          userModel.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                      imageUrl: userModel.imageUrl ??
+                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                       placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(),
                       ),
@@ -124,7 +125,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         final updatedUser = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => UserDataScreen(userData: userModel),
+                            builder: (context) =>
+                                UserDataScreen(userData: userModel),
                           ),
                         );
 
@@ -147,11 +149,6 @@ class _AccountScreenState extends State<AccountScreen> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Divider(),
-            ),
-            SettingsItem(
-              leadingIcon: AppAssets.icons.calendar,
-              title: '"Aqlvoy" taomnomasi',
-              onTap: () {},
             ),
             SettingsItem(
               leadingIcon: AppAssets.icons.folder,
@@ -187,7 +184,8 @@ class _AccountScreenState extends State<AccountScreen> {
             SettingsItem(
               leadingIcon: AppAssets.icons.show,
               title: 'Tungi rejim',
-              trailingIcon: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
+              trailingIcon: BlocBuilder<ThemeCubit, ThemeMode>(
+                  builder: (context, themeMode) {
                 return Switch(
                   value: themeMode == ThemeMode.dark,
                   onChanged: (value) {
@@ -197,7 +195,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   activeTrackColor: AppColors.primaryLight.shade500,
                   inactiveTrackColor: AppColors.greyscaleLight.shade300,
                   trackOutlineWidth: const WidgetStatePropertyAll(0),
-                  trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                  trackOutlineColor:
+                      WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
                   inactiveThumbColor: Colors.white,
                 );
               }),

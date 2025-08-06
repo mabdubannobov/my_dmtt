@@ -74,133 +74,153 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 18),
-          child: AppBar(
-            leading: SvgPicture.asset(AppAssets.icons.appBarLogo),
-            leadingWidth: 28,
-            title: const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Savat'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Savat'),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
+            highlightColor: Colors.transparent,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(
+              AppAssets.icons.arrowLeft,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ),
-        BlocConsumer<CartBloc, CartState>(
-          builder: (context, state) {
-            return Expanded(
-              child: ValueListenableBuilder(
-                valueListenable: myDataBox.listenable(),
-                builder: (context, Box box, _) {
-                  if (box.isEmpty) {
-                    return const EmptyCart();
-                  }
+      ),
+      body: Column(
+        children: [
+          BlocConsumer<CartBloc, CartState>(
+            builder: (context, state) {
+              return Expanded(
+                child: ValueListenableBuilder(
+                  valueListenable: myDataBox.listenable(),
+                  builder: (context, Box box, _) {
+                    if (box.isEmpty) {
+                      return const EmptyCart();
+                    }
 
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(20),
-                          margin: EdgeInsets.symmetric(horizontal: 24),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(24),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0XFF04060F).withValues(alpha: 0.05),
-                                blurRadius: 60,
-                                spreadRadius: 0,
-                                offset: Offset(0, 4),
-                              )
-                            ],
-                          ),
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            itemCount: box.length,
-                            itemBuilder: (context, index) {
-                              final item = box.getAt(index); // Index bo‘yicha mahsulotni olamiz
-
-                              return Column(
-                                children: [
-                                  CartItem(
-                                    itemKey: index, // Endi indeks asosida ishlaydi
-                                    name: item.name,
-                                    count: item.value,
-                                    measure: item.measure,
-                                    photoUrl: item.imageUrl,
-                                    onDelete: () => _deleteItem(index), // Index orqali o‘chiramiz
-                                  ),
-                                  if (index != box.length - 1) Divider(),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 28),
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                            border: Border(
-                              top: BorderSide(
-                                color: Theme.of(context).dividerColor,
-                                width: 1.0,
-                              ),
-                            ),
-                          ),
+                    return Column(
+                      children: [
+                        Expanded(
                           child: Container(
+                            padding: EdgeInsets.all(20),
+                            margin: EdgeInsets.symmetric(horizontal: 24),
                             decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.primaryLight.withValues(alpha: 0.25),
+                                  color:
+                                      Color(0XFF04060F).withValues(alpha: 0.05),
+                                  blurRadius: 60,
                                   spreadRadius: 0,
-                                  blurRadius: 24,
-                                  offset: Offset(4, 8),
-                                ),
+                                  offset: Offset(0, 4),
+                                )
                               ],
                             ),
-                            child: TextButton(
-                              style: ButtonStyle(
-                                fixedSize:
-                                    WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
-                                backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
-                              ),
-                              onPressed: () {
-                                _onOrderButtonPressed(context);
+                            child: ListView.builder(
+                              physics: BouncingScrollPhysics(),
+                              itemCount: box.length,
+                              itemBuilder: (context, index) {
+                                final item = box.getAt(
+                                    index); // Index bo‘yicha mahsulotni olamiz
+
+                                return Column(
+                                  children: [
+                                    CartItem(
+                                      itemKey:
+                                          index, // Endi indeks asosida ishlaydi
+                                      name: item.name,
+                                      count: item.value,
+                                      measure: item.measure,
+                                      photoUrl: item.imageUrl,
+                                      onDelete: () => _deleteItem(
+                                          index), // Index orqali o‘chiramiz
+                                    ),
+                                    if (index != box.length - 1) Divider(),
+                                  ],
+                                );
                               },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8),
-                                child: Text(
-                                  "Buyurtma berish",
-                                  style: AppTextStyles.boldStyle.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    letterSpacing: 0.2,
-                                    height: 1.4,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 28),
+                        Container(
+                            width: MediaQuery.of(context).size.width,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 24),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              border: Border(
+                                top: BorderSide(
+                                  color: Theme.of(context).dividerColor,
+                                  width: 1.0,
+                                ),
+                              ),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.primaryLight
+                                        .withValues(alpha: 0.25),
+                                    spreadRadius: 0,
+                                    blurRadius: 24,
+                                    offset: Offset(4, 8),
+                                  ),
+                                ],
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  fixedSize: WidgetStatePropertyAll(
+                                      Size.fromWidth(
+                                          MediaQuery.of(context).size.width -
+                                              32)),
+                                  backgroundColor: WidgetStatePropertyAll(
+                                      AppColors.primaryLight),
+                                ),
+                                onPressed: () {
+                                  _onOrderButtonPressed(context);
+                                },
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  child: Text(
+                                    "Buyurtma berish",
+                                    style: AppTextStyles.boldStyle.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      letterSpacing: 0.2,
+                                      height: 1.4,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )),
-                    ],
-                  );
-                },
-              ),
-            );
-          },
-          listener: (context, state) {
-            if (state is CreatedOrderState) {
-              showDialog(
-                context: context,
-                builder: (_) => const SuccessOrderDialog(),
+                            )),
+                      ],
+                    );
+                  },
+                ),
               );
-            }
-          },
-        )
-      ],
+            },
+            listener: (context, state) {
+              if (state is CreatedOrderState) {
+                showDialog(
+                  context: context,
+                  builder: (_) => const SuccessOrderDialog(),
+                );
+              }
+            },
+          )
+        ],
+      ),
     );
   }
 }

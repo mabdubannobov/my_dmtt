@@ -5,14 +5,16 @@ class ActionButton extends StatelessWidget {
   const ActionButton({
     super.key,
     required this.icon,
+    required this.onTap,
   });
 
   final String icon;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: 48,
         height: 48,

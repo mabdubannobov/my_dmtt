@@ -17,21 +17,24 @@ class AppIcons extends AssetsFolder {
 
   String get home => '$basePath/ic-home.svg';
   String get document => '$basePath/ic-document.svg';
-  String get bag => '$basePath/ic-bag.svg';
+  String get calendar => '$basePath/ic-calendar.svg';
+  String get chart => '$basePath/ic-chart.svg';
   String get profile => '$basePath/ic-profile.svg';
 
   String get homeActive => '$basePath/ic-home-filled.svg';
   String get documentActive => '$basePath/ic-document-filled.svg';
-  String get bagActive => '$basePath/ic-bag-filled.svg';
+  String get calendarActive => '$basePath/ic-calendar-filled.svg';
+  String get chartActive => '$basePath/ic-chart-filled.svg';
   String get profileActive => '$basePath/ic-profile-filled.svg';
 
   String get notification => '$basePath/ic-notification.svg';
   String get scan => '$basePath/ic-scan.svg';
   String get search => '$basePath/ic-search.svg';
+  String get bag => '$basePath/ic-bag.svg';
 
   String get delivey => '$basePath/ic-delivery.svg';
   String get goldWallet => '$basePath/ic-wallet-gold.svg';
-  String get chart => '$basePath/ic-chart.svg';
+  String get bagActive => '$basePath/ic-bag-filled.svg';
 
   String get appBarLogo => '$basePath/appbar-logo.svg';
   String get loading => '$basePath/loading.svg';
@@ -50,7 +53,6 @@ class AppIcons extends AssetsFolder {
   String get hideActive => '$basePath/ic-hide-active.svg';
 
   // Account Screen
-  String get calendar => '$basePath/ic-calendar.svg';
   String get folder => '$basePath/ic-folder.svg';
   String get arrowRight => '$basePath/ic-arrow-right.svg';
   String get security => '$basePath/ic-security.svg';

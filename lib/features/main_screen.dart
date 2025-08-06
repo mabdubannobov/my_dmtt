@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
           _pageController.jumpToPage(index);
         },
         items: List.generate(
-          4,
+          5,
           (int index) => BottomNavigationBarItem(
             icon: bottomNavBarIcons[index],
             label: bottomNavBarTitles[index],
