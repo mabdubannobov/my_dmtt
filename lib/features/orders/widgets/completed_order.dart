@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_dmtt/features/orders/screens/orders_detail_screen.dart';
+import 'package:my_dmtt/models/order_model.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -6,15 +8,11 @@ import '../../../constants/app_text_styles.dart';
 
 class CompletedOrder extends StatelessWidget {
   const CompletedOrder({
-    required this.idOrder,
-    required this.itemsCount,
-    required this.orderDate,
+    required this.currentOrder,
     super.key,
   });
 
-  final int idOrder;
-  final int itemsCount;
-  final String orderDate;
+  final OrderModel currentOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +53,20 @@ class CompletedOrder extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Buyurtma - #$idOrder',
+                    'Buyurtma - #${currentOrder.id}',
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: 14),
                   Text(
-                    '$itemsCount ta mahsulot | ${DateTime.parse(orderDate).day}.${DateTime.parse(orderDate).month}.${DateTime.parse(orderDate).year}',
+                    '${currentOrder.items.length} ta mahsulot | ${DateTime.parse(currentOrder.orderDate).day}.${DateTime.parse(currentOrder.orderDate).month}.${DateTime.parse(currentOrder.orderDate).year}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(height: 14),
                   Container(
                     decoration: BoxDecoration(
                       color: AppColors.primaryLight,
-                      border: Border.all(width: 1, color: AppColors.primaryLight),
+                      border:
+                          Border.all(width: 1, color: AppColors.primaryLight),
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),
                     padding: const EdgeInsets.symmetric(
@@ -76,7 +75,8 @@ class CompletedOrder extends StatelessWidget {
                     ),
                     child: Text(
                       'Bajarilgan',
-                      style: AppTextStyles.semiBoldStyle.copyWith(color: Colors.white, fontSize: 10),
+                      style: AppTextStyles.semiBoldStyle
+                          .copyWith(color: Colors.white, fontSize: 10),
                     ),
                   ),
                 ],
@@ -100,7 +100,8 @@ class CompletedOrder extends StatelessWidget {
                         side: const BorderSide(color: AppColors.error),
                       ),
                     ),
-                    padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 6)),
+                    padding: const WidgetStatePropertyAll(
+                        EdgeInsets.symmetric(vertical: 6)),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
                   onPressed: () {},
@@ -118,17 +119,28 @@ class CompletedOrder extends StatelessWidget {
                 child: TextButton(
                   style: ButtonStyle(
                     fixedSize: const WidgetStatePropertyAll(Size.infinite),
-                    backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                    backgroundColor:
+                        WidgetStatePropertyAll(AppColors.primaryLight),
                     shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
                         side: BorderSide(color: AppColors.primaryLight),
                       ),
                     ),
-                    padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 6)),
+                    padding: const WidgetStatePropertyAll(
+                        EdgeInsets.symmetric(vertical: 6)),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OrderDetailsScreen(
+                          currentOrder: currentOrder,
+                        ),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Tafsilotlar",
                     style: AppTextStyles.semiBoldStyle.copyWith(

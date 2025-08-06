@@ -19,7 +19,8 @@ class OrdersScreen extends StatefulWidget {
   State<OrdersScreen> createState() => _OrdersScreenState();
 }
 
-class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderStateMixin {
+class _OrdersScreenState extends State<OrdersScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -71,14 +72,16 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                   TextButton(
                     style: ButtonStyle(
                       fixedSize: const WidgetStatePropertyAll(Size.infinite),
-                      backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                      backgroundColor:
+                          WidgetStatePropertyAll(AppColors.primaryLight),
                       shape: WidgetStatePropertyAll(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
                           side: BorderSide(color: AppColors.primaryLight),
                         ),
                       ),
-                      padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 6, horizontal: 10)),
+                      padding: const WidgetStatePropertyAll(
+                          EdgeInsets.symmetric(vertical: 6, horizontal: 10)),
                       minimumSize: const WidgetStatePropertyAll(Size.zero),
                     ),
                     onPressed: () {},
@@ -121,7 +124,8 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                           child: ListView.separated(
                             padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: activeOrders.length,
-                            separatorBuilder: (BuildContext context, int index) {
+                            separatorBuilder:
+                                (BuildContext context, int index) {
                               return const SizedBox(height: 24);
                             },
                             itemBuilder: (BuildContext context, int index) {
@@ -141,14 +145,13 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                           child: ListView.separated(
                             padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: acceptedOrders.length,
-                            separatorBuilder: (BuildContext context, int index) {
+                            separatorBuilder:
+                                (BuildContext context, int index) {
                               return const SizedBox(height: 24);
                             },
                             itemBuilder: (BuildContext context, int index) {
                               return CompletedOrder(
-                                idOrder: acceptedOrders[index].id,
-                                itemsCount: acceptedOrders[index].items.length,
-                                orderDate: acceptedOrders[index].orderDate,
+                                currentOrder: acceptedOrders[index],
                               );
                             },
                           ),
@@ -161,7 +164,8 @@ class _OrdersScreenState extends State<OrdersScreen> with SingleTickerProviderSt
                           child: ListView.separated(
                             padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                             itemCount: rejectedOrders.length,
-                            separatorBuilder: (BuildContext context, int index) {
+                            separatorBuilder:
+                                (BuildContext context, int index) {
                               return const SizedBox(height: 24);
                             },
                             itemBuilder: (BuildContext context, int index) {

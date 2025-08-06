@@ -123,8 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
               sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 100,
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent:
+                      (MediaQuery.sizeOf(context).width - 48) / 4,
                   mainAxisSpacing: 24,
                   crossAxisSpacing: 16,
                   childAspectRatio: 0.8,
