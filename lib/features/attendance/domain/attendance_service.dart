@@ -63,5 +63,6 @@ class AttendanceService {
     } catch (e) {
       log('Exception occurred while posting data: $e');
     }
+    await getTodayCount();
   }
 }

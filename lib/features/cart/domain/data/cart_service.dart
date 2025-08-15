@@ -34,5 +34,6 @@ class CartService {
     } catch (e) {
       log('Exception occurred while posting data: $e');
     }
+    
   }
 }

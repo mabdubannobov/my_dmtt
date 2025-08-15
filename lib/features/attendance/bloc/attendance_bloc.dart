@@ -14,7 +14,13 @@ class AttendanceBloc extends Bloc<AttendanceEvent, AttendanceState> {
       emit(CreatingAttendanceState());
       try {
         await attendanceService.postData(event.childCount);
+
+        // Avval Created holatini yuboramiz
         emit(CreatedAttendanceState());
+
+        // So'ng bugungi davomatni qayta yuklaymiz
+        final count = await attendanceService.getTodayCount();
+        emit(TodayAttendanceLoadedState(count: count));
       } catch (e) {
         emit(CreateAttendanceErrorState(message: e.toString()));
       }
