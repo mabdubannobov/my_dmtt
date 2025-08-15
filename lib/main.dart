@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_dmtt/constants/themes.dart';
 import 'package:my_dmtt/cubit/theme_cubit.dart';
 import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
+import 'package:my_dmtt/features/attendance/bloc/attendance_bloc.dart';
 import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
 import 'package:my_dmtt/features/orders/bloc/bloc/orders_bloc.dart';
 import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
@@ -45,8 +46,10 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => OrdersBloc()),
           BlocProvider(create: (context) => AccountBloc()),
           BlocProvider(create: (context) => CartBloc()),
+          BlocProvider(create: (context) => AttendanceBloc()),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
+        child:
+            BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
           return MaterialApp(
             supportedLocales: const [
               Locale('en', ''),

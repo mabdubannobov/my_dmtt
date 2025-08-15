@@ -105,7 +105,6 @@ class _CartScreenState extends State<CartScreen> {
                     if (box.isEmpty) {
                       return const EmptyCart();
                     }
-
                     return Column(
                       children: [
                         Expanded(
