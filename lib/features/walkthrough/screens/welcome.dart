@@ -37,7 +37,8 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Xush kelibsiz!",
-                      style: AppTextStyles.boldStyle.copyWith(fontSize: 40, color: AppColors.primaryLight),
+                      style: AppTextStyles.boldStyle.copyWith(
+                          fontSize: 40, color: AppColors.primaryLight),
                     ),
                     const SizedBox(width: 10),
                     Image.asset(
@@ -48,8 +49,9 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "My DMTT - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
-                  style: AppTextStyles.mediumStyle.copyWith(fontSize: 16, color: Colors.white),
+                  "Bolajon Taminoti - Davlat maktabgacha ta'lim muassasalariga oziq-ovqat yetkazib berish tizimi",
+                  style: AppTextStyles.mediumStyle
+                      .copyWith(fontSize: 16, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ],

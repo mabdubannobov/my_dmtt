@@ -18,7 +18,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -40,7 +41,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     final bool isFirstLaunch = prefs.getBool('first_launch') ?? true;
     final bool isAuthenticated = prefs.getBool('is_authenticated') ?? false;
 
-    await Future.delayed(const Duration(seconds: 2)); // Splash Screen animatsiyasi
+    await Future.delayed(
+        const Duration(seconds: 2)); // Splash Screen animatsiyasi
 
     if (isFirstLaunch) {
       await prefs.setBool('first_launch', false);
@@ -76,37 +78,35 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  AppAssets.icons.appBarLogo,
-                  width: 60,
-                  height: 60,
-                ),
-                const SizedBox(width: 16),
-                Text(
-                  "My DMTT",
-                  style: AppTextStyles.boldStyle.copyWith(fontSize: 48),
-                ),
-              ],
-            ),
-            const Spacer(),
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return CustomPaint(
-                  painter: BubblePainter(_animation.value),
-                  size: const Size(60, 60),
-                );
-              },
-            ),
-            const SizedBox(height: 100),
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Spacer(),
+              SvgPicture.asset(
+                AppAssets.icons.appBarLogo,
+                width: 60,
+                height: 60,
+              ),
+              const SizedBox(width: 16),
+              Text(
+                "Bolajon Taminoti",
+                style: AppTextStyles.boldStyle.copyWith(fontSize: 40),
+              ),
+              const Spacer(),
+              AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return CustomPaint(
+                    painter: BubblePainter(_animation.value),
+                    size: const Size(60, 60),
+                  );
+                },
+              ),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
     );
@@ -137,7 +137,8 @@ class BubblePainter extends CustomPainter {
       double dy = centerY + orbitRadius * sin(angle);
 
       double phase = (progress + i / 7) % 1;
-      double bubbleRadius = maxBubbleRadius * (0.5 + 0.5 * (1 - cos(phase * pi)));
+      double bubbleRadius =
+          maxBubbleRadius * (0.5 + 0.5 * (1 - cos(phase * pi)));
 
       canvas.drawCircle(Offset(dx, dy), bubbleRadius, paint);
     }
