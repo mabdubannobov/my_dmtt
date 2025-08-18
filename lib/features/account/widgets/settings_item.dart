@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
 
 import '../../../constants/app_assets.dart';
 

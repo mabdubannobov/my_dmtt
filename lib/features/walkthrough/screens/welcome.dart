@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
-import 'package:my_dmtt/features/walkthrough/screens/walkthrough.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_text_styles.dart';
+import 'package:bolajon_taminoti/features/walkthrough/screens/walkthrough.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

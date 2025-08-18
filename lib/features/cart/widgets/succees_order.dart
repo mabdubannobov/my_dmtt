@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
@@ -43,7 +43,8 @@ class SuccessOrderDialog extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                  backgroundColor:
+                      WidgetStatePropertyAll(AppColors.primaryLight),
                   padding: const WidgetStatePropertyAll(
                     EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),

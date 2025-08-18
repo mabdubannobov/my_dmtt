@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
-import 'package:my_dmtt/features/account/widgets/user_data_field.dart';
-import 'package:my_dmtt/models/user_model.dart';
+import 'package:bolajon_taminoti/features/account/bloc/account_bloc.dart';
+import 'package:bolajon_taminoti/features/account/widgets/user_data_field.dart';
+import 'package:bolajon_taminoti/models/user_model.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -74,7 +74,8 @@ class _UserDataScreenState extends State<UserDataScreen> {
                 child: CachedNetworkImage(
                   width: 100,
                   height: 100,
-                  imageUrl: userData.imageUrl ?? "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                  imageUrl: userData.imageUrl ??
+                      "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
                 ),
               ),
               UserDataField(controller: userName),
@@ -83,8 +84,10 @@ class _UserDataScreenState extends State<UserDataScreen> {
               const Spacer(),
               TextButton(
                 style: ButtonStyle(
-                  fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
-                  backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
+                  fixedSize: WidgetStatePropertyAll(
+                      Size.fromWidth(MediaQuery.of(context).size.width - 48)),
+                  backgroundColor:
+                      const WidgetStatePropertyAll(AppColors.disabledButton),
                 ),
                 onPressed: () {
                   final updatedUser = UserModel(
@@ -93,7 +96,9 @@ class _UserDataScreenState extends State<UserDataScreen> {
                     phoneNumber: userNumber.text,
                   );
 
-                  context.read<AccountBloc>().add(UpdateUserDataEvent(userData: updatedUser));
+                  context
+                      .read<AccountBloc>()
+                      .add(UpdateUserDataEvent(userData: updatedUser));
                   Navigator.pop(context, updatedUser);
                 },
                 child: Padding(

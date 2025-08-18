@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:my_dmtt/features/cart/bloc/cart_bloc.dart';
-import 'package:my_dmtt/features/cart/widgets/succees_order.dart';
-import 'package:my_dmtt/features/cart/widgets/empty_cart.dart';
+import 'package:bolajon_taminoti/features/cart/bloc/cart_bloc.dart';
+import 'package:bolajon_taminoti/features/cart/widgets/succees_order.dart';
+import 'package:bolajon_taminoti/features/cart/widgets/empty_cart.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';

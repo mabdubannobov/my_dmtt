@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
 
 class SettingsNotifications extends StatefulWidget {
   const SettingsNotifications({super.key});
@@ -52,7 +52,8 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
-                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    trackOutlineColor: WidgetStatePropertyAll(
+                        AppColors.greyscaleLight.shade300),
                     inactiveThumbColor: Colors.white,
                   )
                 ],
@@ -72,7 +73,8 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
-                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    trackOutlineColor: WidgetStatePropertyAll(
+                        AppColors.greyscaleLight.shade300),
                     inactiveThumbColor: Colors.white,
                   )
                 ],
@@ -92,7 +94,8 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
-                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    trackOutlineColor: WidgetStatePropertyAll(
+                        AppColors.greyscaleLight.shade300),
                     inactiveThumbColor: Colors.white,
                   )
                 ],
@@ -112,7 +115,8 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
-                    trackOutlineColor: WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
+                    trackOutlineColor: WidgetStatePropertyAll(
+                        AppColors.greyscaleLight.shade300),
                     inactiveThumbColor: Colors.white,
                   )
                 ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
 
 import 'app_text_styles.dart';
 

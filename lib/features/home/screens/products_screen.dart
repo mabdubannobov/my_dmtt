@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/features/home/screens/home.dart';
-import 'package:my_dmtt/features/home/widgets/product_dialog.dart';
-import 'package:my_dmtt/models/product_model.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/features/home/screens/home.dart';
+import 'package:bolajon_taminoti/features/home/widgets/product_dialog.dart';
+import 'package:bolajon_taminoti/models/product_model.dart';
 
 import '../../../constants/app_assets.dart';
 

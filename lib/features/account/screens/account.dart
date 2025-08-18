@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/cubit/theme_cubit.dart';
-import 'package:my_dmtt/features/account/bloc/account_bloc.dart';
-import 'package:my_dmtt/features/account/screens/notifications.dart';
-import 'package:my_dmtt/features/account/screens/user_data.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/cubit/theme_cubit.dart';
+import 'package:bolajon_taminoti/features/account/bloc/account_bloc.dart';
+import 'package:bolajon_taminoti/features/account/screens/notifications.dart';
+import 'package:bolajon_taminoti/features/account/screens/user_data.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_text_styles.dart';

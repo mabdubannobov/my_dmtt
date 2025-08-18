@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
-import 'package:my_dmtt/features/signin/screens/sign_in.dart';
-import 'package:my_dmtt/features/walkthrough/widgets/carousel_item.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_text_styles.dart';
+import 'package:bolajon_taminoti/features/signin/screens/sign_in.dart';
+import 'package:bolajon_taminoti/features/walkthrough/widgets/carousel_item.dart';
 
 class WalkthroughScreen extends StatefulWidget {
   const WalkthroughScreen({super.key});
@@ -87,20 +87,26 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                 onPressed: () {
                   _currentPage == 2
                       ? Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => const SignInScreen()))
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignInScreen()))
                       : _pageController.nextPage(
                           duration: const Duration(milliseconds: 250),
                           curve: Curves.easeOut,
                         );
                 },
                 style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
-                  fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 32)),
-                  padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 16)),
+                  backgroundColor:
+                      WidgetStatePropertyAll(AppColors.primaryLight),
+                  fixedSize: WidgetStatePropertyAll(
+                      Size.fromWidth(MediaQuery.of(context).size.width - 32)),
+                  padding: const WidgetStatePropertyAll(
+                      EdgeInsets.symmetric(vertical: 16)),
                 ),
                 child: Text(
                   _currentPage == 2 ? "Qani ketdik!" : "Keyingisi",
-                  style: AppTextStyles.boldStyle.copyWith(fontSize: 16, color: Colors.white),
+                  style: AppTextStyles.boldStyle
+                      .copyWith(fontSize: 16, color: Colors.white),
                 ),
               ),
             ),

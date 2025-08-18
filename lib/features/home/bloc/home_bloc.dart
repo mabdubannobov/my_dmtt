@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_dmtt/features/home/domain/data/home_service.dart';
-import 'package:my_dmtt/models/product_model.dart';
+import 'package:bolajon_taminoti/features/home/domain/data/home_service.dart';
+import 'package:bolajon_taminoti/models/product_model.dart';
 
 import '../../../models/dmtt_model.dart';
 import '../../../models/user_model.dart';

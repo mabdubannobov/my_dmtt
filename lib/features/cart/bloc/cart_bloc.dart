@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_dmtt/features/cart/domain/data/cart_service.dart';
+import 'package:bolajon_taminoti/features/cart/domain/data/cart_service.dart';
 
 import '../../../models/product_model.dart';
 

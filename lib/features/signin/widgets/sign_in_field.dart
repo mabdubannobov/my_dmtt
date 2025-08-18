@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
 
 import '../../../constants/app_colors.dart';
 
@@ -56,7 +56,9 @@ class _SignInFieldState extends State<SignInField> {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         filled: true,
-        fillColor: _isFocused ? Theme.of(context).focusColor : Theme.of(context).primaryColorDark,
+        fillColor: _isFocused
+            ? Theme.of(context).focusColor
+            : Theme.of(context).primaryColorDark,
         prefixIconConstraints: const BoxConstraints(maxHeight: 20),
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 20, right: 12),
@@ -79,7 +81,9 @@ class _SignInFieldState extends State<SignInField> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: SvgPicture.asset(
-                    _isObscure ? AppAssets.icons.hide : AppAssets.icons.hideActive,
+                    _isObscure
+                        ? AppAssets.icons.hide
+                        : AppAssets.icons.hideActive,
                     width: 20,
                   ),
                 ),

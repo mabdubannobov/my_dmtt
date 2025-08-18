@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:my_dmtt/constants/labels.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
-import 'package:my_dmtt/features/cart/screens/cart.dart';
-import 'package:my_dmtt/features/home/screens/products_screen.dart';
-import 'package:my_dmtt/models/product_model.dart';
+import 'package:bolajon_taminoti/constants/labels.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
+import 'package:bolajon_taminoti/features/cart/screens/cart.dart';
+import 'package:bolajon_taminoti/features/home/screens/products_screen.dart';
+import 'package:bolajon_taminoti/models/product_model.dart';
 
 import '../../../models/dmtt_model.dart';
 import '../../../models/user_model.dart';

@@ -3,12 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/constants/app_assets.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
-import 'package:my_dmtt/features/main_screen.dart';
-import 'package:my_dmtt/features/signin/screens/sign_in.dart';
-import 'package:my_dmtt/features/walkthrough/screens/welcome.dart';
+import 'package:bolajon_taminoti/constants/app_assets.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_text_styles.dart';
+import 'package:bolajon_taminoti/features/main_screen.dart';
+import 'package:bolajon_taminoti/features/signin/screens/sign_in.dart';
+import 'package:bolajon_taminoti/features/walkthrough/screens/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {

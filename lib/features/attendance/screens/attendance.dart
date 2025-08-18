@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
-import 'package:my_dmtt/features/attendance/bloc/attendance_bloc.dart';
-import 'package:my_dmtt/features/cart/widgets/succees_order.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_text_styles.dart';
+import 'package:bolajon_taminoti/features/attendance/bloc/attendance_bloc.dart';
+import 'package:bolajon_taminoti/features/cart/widgets/succees_order.dart';
 import '../../../constants/app_assets.dart';
 
 class AttendanceScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/constants/app_colors.dart';
-import 'package:my_dmtt/constants/app_text_styles.dart';
+import 'package:bolajon_taminoti/constants/app_colors.dart';
+import 'package:bolajon_taminoti/constants/app_text_styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants/sharedprefrences.dart';
@@ -47,8 +47,11 @@ class ExitBottomSheet extends StatelessWidget {
               children: [
                 TextButton(
                   style: ButtonStyle(
-                    fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 38) / 2),
-                    backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight.shade100),
+                    fixedSize: WidgetStatePropertyAll(
+                        Size.fromWidth(MediaQuery.of(context).size.width - 38) /
+                            2),
+                    backgroundColor:
+                        WidgetStatePropertyAll(AppColors.primaryLight.shade100),
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -68,11 +71,15 @@ class ExitBottomSheet extends StatelessWidget {
                 ),
                 TextButton(
                   style: ButtonStyle(
-                    fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 38) / 2),
-                    backgroundColor: const WidgetStatePropertyAll(AppColors.error),
+                    fixedSize: WidgetStatePropertyAll(
+                        Size.fromWidth(MediaQuery.of(context).size.width - 38) /
+                            2),
+                    backgroundColor:
+                        const WidgetStatePropertyAll(AppColors.error),
                   ),
                   onPressed: () async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
                     prefs.remove(Shared.accessToken);
                     prefs.setBool('is_authenticated', false);
                     // ignore: use_build_context_synchronously

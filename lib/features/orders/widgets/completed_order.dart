@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/features/orders/screens/orders_detail_screen.dart';
-import 'package:my_dmtt/models/order_model.dart';
+import 'package:bolajon_taminoti/features/orders/screens/orders_detail_screen.dart';
+import 'package:bolajon_taminoti/models/order_model.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';

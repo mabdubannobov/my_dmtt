@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/features/attendance/screens/attendance.dart';
-import 'package:my_dmtt/features/receipt/screens/receipt.dart';
+import 'package:bolajon_taminoti/features/attendance/screens/attendance.dart';
+import 'package:bolajon_taminoti/features/receipt/screens/receipt.dart';
 
 import '../features/account/screens/account.dart';
 import '../features/home/screens/home.dart';

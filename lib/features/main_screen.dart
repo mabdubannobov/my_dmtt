@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_dmtt/constants/labels.dart';
+import 'package:bolajon_taminoti/constants/labels.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

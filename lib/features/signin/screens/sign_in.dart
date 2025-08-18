@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_dmtt/features/main_screen.dart';
-import 'package:my_dmtt/features/signin/bloc/sign_in_bloc.dart';
+import 'package:bolajon_taminoti/features/main_screen.dart';
+import 'package:bolajon_taminoti/features/signin/bloc/sign_in_bloc.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -107,11 +107,14 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   child: TextButton(
                     style: ButtonStyle(
-                      fixedSize: WidgetStatePropertyAll(Size.fromWidth(MediaQuery.of(context).size.width - 48)),
-                      backgroundColor: const WidgetStatePropertyAll(AppColors.disabledButton),
+                      fixedSize: WidgetStatePropertyAll(Size.fromWidth(
+                          MediaQuery.of(context).size.width - 48)),
+                      backgroundColor: const WidgetStatePropertyAll(
+                          AppColors.disabledButton),
                     ),
                     onPressed: () {
-                      if (userController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+                      if (userController.text.isNotEmpty &&
+                          passwordController.text.isNotEmpty) {
                         context.read<SignInBloc>().add(
                               SignInEnterEvent(
                                 userController.text,
