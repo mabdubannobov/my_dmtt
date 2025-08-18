@@ -86,10 +86,10 @@ class _SplashScreenState extends State<SplashScreen>
               const Spacer(),
               SvgPicture.asset(
                 AppAssets.icons.appBarLogo,
-                width: 60,
-                height: 60,
+                width: 100,
+                height: 100,
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 32),
               Text(
                 "Bolajon Taminoti",
                 style: AppTextStyles.boldStyle.copyWith(fontSize: 40),

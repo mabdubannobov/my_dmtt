@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bolajon_taminoti/features/attendance/widgets/success_attendance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +7,6 @@ import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:bolajon_taminoti/constants/app_colors.dart';
 import 'package:bolajon_taminoti/constants/app_text_styles.dart';
 import 'package:bolajon_taminoti/features/attendance/bloc/attendance_bloc.dart';
-import 'package:bolajon_taminoti/features/cart/widgets/succees_order.dart';
 import '../../../constants/app_assets.dart';
 
 class AttendanceScreen extends StatefulWidget {
@@ -39,15 +39,15 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day,
-      16,
-      0,
+      8,
+      30,
       0,
     );
     final endTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day,
-      17,
+      10,
       0,
       0,
     );
@@ -107,7 +107,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           childCountController.clear();
           showDialog(
             context: context,
-            builder: (_) => const SuccessOrderDialog(),
+            builder: (_) => const SuccessAttendanceDialog(),
           );
         }
         if (state is TodayAttendanceLoadedState) {
@@ -277,7 +277,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         ),
                         const SizedBox(height: 6),
                         const Text(
-                          "⏰ 9:00 - 10:00 orasida kiritilishi lozim",
+                          "⏰ 08:30 - 10:00 orasida kiritilishi lozim",
                           style: TextStyle(color: Colors.black87),
                         ),
                         const SizedBox(height: 16),

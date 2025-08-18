@@ -1,4 +1,4 @@
-package com.valleycoders.bolajon_taminoti
+package com.valleycoders.bolajontaminoti
 
 import io.flutter.embedding.android.FlutterActivity
 
