@@ -48,35 +48,34 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                   Switch(
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
                     trackOutlineColor: WidgetStatePropertyAll(
-                        AppColors.greyscaleLight.shade300),
+                      AppColors.greyscaleLight.shade300,
+                    ),
                     inactiveThumbColor: Colors.white,
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
               Row(
                 children: [
-                  Text(
-                    "Ovoz",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  Text("Ovoz", style: Theme.of(context).textTheme.bodyLarge),
                   const Spacer(),
                   Switch(
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
                     trackOutlineColor: WidgetStatePropertyAll(
-                        AppColors.greyscaleLight.shade300),
+                      AppColors.greyscaleLight.shade300,
+                    ),
                     inactiveThumbColor: Colors.white,
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -90,14 +89,15 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                   Switch(
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
                     trackOutlineColor: WidgetStatePropertyAll(
-                        AppColors.greyscaleLight.shade300),
+                      AppColors.greyscaleLight.shade300,
+                    ),
                     inactiveThumbColor: Colors.white,
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -111,16 +111,17 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
                   Switch(
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: AppColors.primaryLight.shade500,
                     inactiveTrackColor: AppColors.greyscaleLight.shade300,
                     trackOutlineWidth: const WidgetStatePropertyAll(0),
                     trackOutlineColor: WidgetStatePropertyAll(
-                        AppColors.greyscaleLight.shade300),
+                      AppColors.greyscaleLight.shade300,
+                    ),
                     inactiveThumbColor: Colors.white,
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

@@ -37,8 +37,9 @@ class _AccountScreenState extends State<AccountScreen> {
             SnackBar(
               content: Text(
                 "Ma'lumotlaringiz muvaffaqiyatli yangilandi!",
-                style:
-                    AppTextStyles.semiBoldStyle.copyWith(color: Colors.white),
+                style: AppTextStyles.semiBoldStyle.copyWith(
+                  color: Colors.white,
+                ),
               ),
               backgroundColor: AppColors.primaryLight,
               duration: const Duration(seconds: 3),
@@ -48,9 +49,7 @@ class _AccountScreenState extends State<AccountScreen> {
       },
       builder: (context, state) {
         if (state is AccountLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return Center(child: CircularProgressIndicator());
         }
 
         UserModel userModel = UserModel(
@@ -86,16 +85,18 @@ class _AccountScreenState extends State<AccountScreen> {
                     child: CachedNetworkImage(
                       width: 80,
                       height: 80,
-                      imageUrl: userModel.imageUrl ??
+                      imageUrl:
+                          userModel.imageUrl ??
                           "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) => const Icon(
-                        Icons.person,
-                        size: 80,
-                        color: Colors.grey,
-                      ),
+                      placeholder:
+                          (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                      errorWidget:
+                          (context, url, error) => const Icon(
+                            Icons.person,
+                            size: 80,
+                            color: Colors.grey,
+                          ),
                     ),
                   ),
                   const SizedBox(width: 20),
@@ -125,8 +126,9 @@ class _AccountScreenState extends State<AccountScreen> {
                         final updatedUser = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                UserDataScreen(userData: userModel),
+                            builder:
+                                (context) =>
+                                    UserDataScreen(userData: userModel),
                           ),
                         );
 
@@ -185,21 +187,23 @@ class _AccountScreenState extends State<AccountScreen> {
               leadingIcon: AppAssets.icons.show,
               title: 'Tungi rejim',
               trailingIcon: BlocBuilder<ThemeCubit, ThemeMode>(
-                  builder: (context, themeMode) {
-                return Switch(
-                  value: themeMode == ThemeMode.dark,
-                  onChanged: (value) {
-                    context.read<ThemeCubit>().toggleTheme(value);
-                  },
-                  activeColor: Colors.white,
-                  activeTrackColor: AppColors.primaryLight.shade500,
-                  inactiveTrackColor: AppColors.greyscaleLight.shade300,
-                  trackOutlineWidth: const WidgetStatePropertyAll(0),
-                  trackOutlineColor:
-                      WidgetStatePropertyAll(AppColors.greyscaleLight.shade300),
-                  inactiveThumbColor: Colors.white,
-                );
-              }),
+                builder: (context, themeMode) {
+                  return Switch(
+                    value: themeMode == ThemeMode.dark,
+                    onChanged: (value) {
+                      context.read<ThemeCubit>().toggleTheme(value);
+                    },
+                    activeThumbColor: Colors.white,
+                    activeTrackColor: AppColors.primaryLight.shade500,
+                    inactiveTrackColor: AppColors.greyscaleLight.shade300,
+                    trackOutlineWidth: const WidgetStatePropertyAll(0),
+                    trackOutlineColor: WidgetStatePropertyAll(
+                      AppColors.greyscaleLight.shade300,
+                    ),
+                    inactiveThumbColor: Colors.white,
+                  );
+                },
+              ),
               onTap: () {},
             ),
             SettingsItem(
@@ -221,7 +225,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   },
                 );
               },
-            )
+            ),
           ],
         );
       },
