@@ -5,6 +5,7 @@ class UserModel {
   String? username;
   String? district;
   String? imageUrl;
+  String? role; // YANGI QO'SHILDI
 
   UserModel({
     this.firstName,
@@ -13,6 +14,7 @@ class UserModel {
     this.username,
     this.district,
     this.imageUrl,
+    this.role, // YANGI QO'SHILDI
   });
 
   factory UserModel.defaultModel() {
@@ -23,6 +25,7 @@ class UserModel {
       imageUrl:
           'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
       phoneNumber: '+998000000000',
+      role: 'user', // Default rol
     );
   }
 
@@ -33,6 +36,7 @@ class UserModel {
     username = json['username'];
     district = json['district'];
     imageUrl = json['image_url'];
+    role = json['role']; // JSON dan o'qish
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +47,7 @@ class UserModel {
     data['username'] = username;
     data['district'] = district;
     data['image_url'] = imageUrl;
+    data['role'] = role; // JSON ga yozish
     return data;
   }
 }
