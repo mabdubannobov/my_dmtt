@@ -14,7 +14,7 @@ class DmttModel {
   });
 
   factory DmttModel.defaultModel() {
-    return DmttModel(name: "?");
+    return DmttModel(name: '?');
   }
 
   DmttModel.fromJson(Map<String, dynamic> json) {

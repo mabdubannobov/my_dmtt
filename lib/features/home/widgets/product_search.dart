@@ -4,14 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants/app_assets.dart';
 
 class ProductSearch extends StatelessWidget {
-  const ProductSearch({
-    super.key,
-  });
+  const ProductSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       decoration: BoxDecoration(
         color: Theme.of(context).secondaryHeaderColor,
         borderRadius: BorderRadius.circular(16),
@@ -25,11 +23,11 @@ class ProductSearch extends StatelessWidget {
               BlendMode.srcIn,
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Text(
             'Sizga qaysi mahsulot kerak?',
             style: Theme.of(context).textTheme.labelSmall,
-          )
+          ),
         ],
       ),
     );

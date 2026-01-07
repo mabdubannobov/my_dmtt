@@ -9,11 +9,11 @@ import '../features/orders/screens/orders.dart';
 import 'app_assets.dart';
 
 List<String> bottomNavBarTitles = [
-  "Asosiy",
-  "Buyurtmalar",
-  "Taomnoma",
-  "Davomat",
-  "Hisob",
+  'Asosiy',
+  'Buyurtmalar',
+  'Taomnoma',
+  'Davomat',
+  'Hisob',
 ];
 
 List<Widget> bottomNavBarIcons = [
@@ -52,12 +52,12 @@ List<String> categoryImages = [
 ];
 
 List<String> categoryNames = [
-  "Sabzavot",
-  "Un mahs..",
-  "Yormalar",
+  'Sabzavot',
+  'Un mahs..',
+  'Yormalar',
   "Go'sht",
-  "Qandolat",
-  "Sut mah..",
-  "Mevalar",
-  "Boshqa",
+  'Qandolat',
+  'Sut mah..',
+  'Mevalar',
+  'Boshqa',
 ];

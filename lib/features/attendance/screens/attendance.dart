@@ -85,7 +85,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     final hours = twoDigits(duration.inHours);
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
-    return "$hours:$minutes:$seconds";
+    return '$hours:$minutes:$seconds';
   }
 
   @override
@@ -134,7 +134,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               ),
             ),
             EasyDateTimeLine(
-              locale: "uz",
+              locale: 'uz',
               initialDate: selectedDate,
               onDateChange: (date) {
                 setState(() {
@@ -154,7 +154,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 activeDayStyle: DayStyle(
                   decoration: BoxDecoration(
                     color: AppColors.primaryLight,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
                   ),
                   dayNumStyle: const TextStyle(
                     color: Colors.white,
@@ -173,9 +173,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 inactiveDayStyle: DayStyle(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    border:
-                        Border.all(color: AppColors.greyscaleLight.shade200),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    border: Border.all(
+                      color: AppColors.greyscaleLight.shade200,
+                    ),
                   ),
                   dayNumStyle: const TextStyle(
                     color: Colors.black,
@@ -192,7 +193,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   ),
                 ),
               ),
-              timeLineProps: EasyTimeLineProps(
+              timeLineProps: const EasyTimeLineProps(
                 separatorPadding: 12,
                 hPadding: 24,
               ),
@@ -204,7 +205,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 16),
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [Color(0xFF246BFD), Color(0xFF5089FF)],
@@ -218,7 +221,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         const Icon(Icons.people, color: Colors.white, size: 28),
                         const SizedBox(width: 12),
                         Text(
-                          "$todayCount",
+                          '$todayCount',
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -235,16 +238,18 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       color: const Color(0xFFEAF2FA),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Row(
+                    child: const Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(Icons.info, color: AppColors.info),
-                        const SizedBox(width: 8),
-                        const Expanded(
+                        SizedBox(width: 8),
+                        Expanded(
                           child: Text(
                             "Davomatni o'z vaqtida yuklang. Agar o'z vaqtida yuklashdan xavotir olsangiz, bog'changizning jami tarbiyalanuvchilar sonini standart davomat bo'limida kiriting. Standart davomat sizning jami davomatingizni anglatadi.",
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.black87),
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
+                            ),
                           ),
                         ),
                       ],
@@ -254,7 +259,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 16),
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFF4E5),
                       borderRadius: BorderRadius.circular(16),
@@ -265,11 +272,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         Center(
                           child: Text(
                             canSubmit
-                                ? "Davomat kiritish vaqti boshlandi"
+                                ? 'Davomat kiritish vaqti boshlandi'
                                 : timeEnded
-                                    ? "Davomat vaqti tugadi"
-                                    : "Davomat kiritish vaqti kelmagan",
-                            style: TextStyle(
+                                ? 'Davomat vaqti tugadi'
+                                : 'Davomat kiritish vaqti kelmagan',
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppColors.warning,
                             ),
@@ -277,22 +284,26 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         ),
                         const SizedBox(height: 6),
                         const Text(
-                          "⏰ 08:30 - 10:00 orasida kiritilishi lozim",
+                          '⏰ 08:30 - 10:00 orasida kiritilishi lozim',
                           style: TextStyle(color: Colors.black87),
                         ),
                         const SizedBox(height: 16),
                         if (!canSubmit && !timeEnded)
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 12),
+                              vertical: 10,
+                              horizontal: 12,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                  color: AppColors.warning, width: 1),
+                                color: AppColors.warning,
+                                width: 1,
+                              ),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Center(
                               child: Text(
-                                "Boshlanishiga qolgan vaqt: ${_formatDuration(remainingTime)}",
+                                'Boshlanishiga qolgan vaqt: ${_formatDuration(remainingTime)}',
                                 style: const TextStyle(
                                   color: AppColors.warning,
                                   fontWeight: FontWeight.bold,
@@ -303,17 +314,21 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         if (canSubmit)
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 12),
+                              vertical: 10,
+                              horizontal: 12,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white38,
                               border: Border.all(
-                                  color: AppColors.warning, width: 1),
+                                color: AppColors.warning,
+                                width: 1,
+                              ),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Center(
                               child: Text(
-                                "Tugashigacha qolgan: ${_formatDuration(remainingTime)}",
-                                style: TextStyle(
+                                'Tugashigacha qolgan: ${_formatDuration(remainingTime)}',
+                                style: const TextStyle(
                                   color: AppColors.warning,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -326,17 +341,20 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   const SizedBox(height: 16),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 16),
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: canSubmit
-                          ? AppColors.primaryLight.shade100
-                          : AppColors.greyscaleLight.shade100,
+                      color:
+                          canSubmit
+                              ? AppColors.primaryLight.shade100
+                              : AppColors.greyscaleLight.shade100,
                     ),
                     child: Column(
                       children: [
                         Text(
-                          "Davomat kiritish",
+                          'Davomat kiritish',
                           style: AppTextStyles.boldStyle.copyWith(fontSize: 20),
                         ),
                         const SizedBox(height: 16),
@@ -345,7 +363,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                           keyboardType: TextInputType.number,
                           enabled: canSubmit,
                           decoration: InputDecoration(
-                            hintText: "Bolalar soni",
+                            hintText: 'Bolalar soni',
                             hintStyle: AppTextStyles.mediumStyle.copyWith(
                               color: AppColors.greyscaleLight.shade500,
                             ),
@@ -364,19 +382,21 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
-                          onPressed: isButtonEnabled
-                              ? () {
-                                  final text = childCountController.text.trim();
-                                  if (text.isNotEmpty) {
-                                    final count = int.tryParse(text) ?? 0;
-                                    context.read<AttendanceBloc>().add(
-                                          CreateAttendanceEvent(
-                                            childCount: count,
-                                          ),
-                                        );
+                          onPressed:
+                              isButtonEnabled
+                                  ? () {
+                                    final text =
+                                        childCountController.text.trim();
+                                    if (text.isNotEmpty) {
+                                      final count = int.tryParse(text) ?? 0;
+                                      context.read<AttendanceBloc>().add(
+                                        CreateAttendanceEvent(
+                                          childCount: count,
+                                        ),
+                                      );
+                                    }
                                   }
-                                }
-                              : null,
+                                  : null,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primaryLight,
                             minimumSize: const Size(double.infinity, 48),
@@ -385,8 +405,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                             isButtonEnabled
                                 ? "Jo'natish"
                                 : attendanceGiven
-                                    ? "Qabul qilingan"
-                                    : "Hozir davomat vaqti emas",
+                                ? 'Qabul qilingan'
+                                : 'Hozir davomat vaqti emas',
                             style: AppTextStyles.boldStyle.copyWith(
                               fontSize: 16,
                               color: Colors.white,

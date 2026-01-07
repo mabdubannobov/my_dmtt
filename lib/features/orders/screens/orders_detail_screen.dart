@@ -7,10 +7,7 @@ import '../../../constants/app_text_styles.dart';
 import '../../../models/order_model.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({
-    required this.currentOrder,
-    super.key,
-  });
+  const OrderDetailsScreen({required this.currentOrder, super.key});
 
   final OrderModel currentOrder;
 
@@ -21,7 +18,7 @@ class OrderDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Buyurtma - #${currentOrder.id}"),
+        title: Text('Buyurtma - #${currentOrder.id}'),
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -59,7 +56,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Yetkazib beruvchi",
+                    'Yetkazib beruvchi',
                     style: AppTextStyles.boldStyle.copyWith(
                       fontSize: 20,
                       color: AppColors.greyscaleLight.shade900,
@@ -67,9 +64,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Divider(
-                      color: AppColors.greyscaleLight.shade200,
-                    ),
+                    child: Divider(color: AppColors.greyscaleLight.shade200),
                   ),
                   Row(
                     children: [
@@ -86,7 +81,7 @@ class OrderDetailsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Supply Foods MCHJ",
+                            'Supply Foods MCHJ',
                             style: AppTextStyles.boldStyle.copyWith(
                               fontSize: 18,
                               color: AppColors.greyscaleLight.shade900,
@@ -94,7 +89,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            "Muhammadqodir - +998 (90) 369-80-08",
+                            'Muhammadqodir - +998 (90) 369-80-08',
                             style: AppTextStyles.mediumStyle.copyWith(
                               fontSize: 14,
                               color: AppColors.greyscaleLight.shade700,
@@ -124,7 +119,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Mahsulotlar",
+                    'Mahsulotlar',
                     style: AppTextStyles.boldStyle.copyWith(
                       fontSize: 20,
                       color: AppColors.greyscaleLight.shade900,
@@ -146,10 +141,11 @@ class OrderDetailsScreen extends StatelessWidget {
                               height: 80,
                               width: 80,
                               imageUrl: item.productImage,
-                              placeholder: (context, url) => Padding(
-                                padding: EdgeInsets.all(20),
-                                child: CircularProgressIndicator(),
-                              ),
+                              placeholder:
+                                  (context, url) => const Padding(
+                                    padding: EdgeInsets.all(20),
+                                    child: CircularProgressIndicator(),
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Column(
@@ -162,7 +158,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 12),
                                 Text(
-                                  "${item.count} ${item.measure}",
+                                  '${item.count} ${item.measure}',
                                   style: AppTextStyles.boldStyle.copyWith(
                                     fontSize: 18,
                                     color: AppColors.primaryLight,

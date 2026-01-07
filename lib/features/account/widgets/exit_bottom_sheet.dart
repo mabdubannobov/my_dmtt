@@ -7,9 +7,7 @@ import '../../../constants/sharedprefrences.dart';
 import '../../signin/screens/sign_in.dart';
 
 class ExitBottomSheet extends StatelessWidget {
-  const ExitBottomSheet({
-    super.key,
-  });
+  const ExitBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class ExitBottomSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Chiqish",
+              'Chiqish',
               style: AppTextStyles.boldStyle.copyWith(
                 color: AppColors.error,
                 fontSize: 24,
@@ -38,7 +36,7 @@ class ExitBottomSheet extends StatelessWidget {
               child: Divider(),
             ),
             Text(
-              "Ilovani tark etmoqchimisiz?",
+              'Ilovani tark etmoqchimisiz?',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 24),
@@ -48,10 +46,12 @@ class ExitBottomSheet extends StatelessWidget {
                 TextButton(
                   style: ButtonStyle(
                     fixedSize: WidgetStatePropertyAll(
-                        Size.fromWidth(MediaQuery.of(context).size.width - 38) /
-                            2),
-                    backgroundColor:
-                        WidgetStatePropertyAll(AppColors.primaryLight.shade100),
+                      Size.fromWidth(MediaQuery.of(context).size.width - 38) /
+                          2,
+                    ),
+                    backgroundColor: WidgetStatePropertyAll(
+                      AppColors.primaryLight.shade100,
+                    ),
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -72,10 +72,12 @@ class ExitBottomSheet extends StatelessWidget {
                 TextButton(
                   style: ButtonStyle(
                     fixedSize: WidgetStatePropertyAll(
-                        Size.fromWidth(MediaQuery.of(context).size.width - 38) /
-                            2),
-                    backgroundColor:
-                        const WidgetStatePropertyAll(AppColors.error),
+                      Size.fromWidth(MediaQuery.of(context).size.width - 38) /
+                          2,
+                    ),
+                    backgroundColor: const WidgetStatePropertyAll(
+                      AppColors.error,
+                    ),
                   ),
                   onPressed: () async {
                     SharedPreferences prefs =
@@ -84,15 +86,16 @@ class ExitBottomSheet extends StatelessWidget {
                     prefs.setBool('is_authenticated', false);
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
-                        ),
-                        (Route route) => false);
+                      MaterialPageRoute(
+                        builder: (context) => const SignInScreen(),
+                      ),
+                      (Route route) => false,
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     child: Text(
-                      "Ha",
+                      'Ha',
                       style: AppTextStyles.boldStyle.copyWith(
                         color: Colors.white,
                         fontSize: 16,

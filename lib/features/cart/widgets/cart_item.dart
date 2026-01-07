@@ -43,10 +43,11 @@ class CartItem extends StatelessWidget {
             height: 80,
             width: 80,
             imageUrl: photoUrl,
-            placeholder: (context, url) => Padding(
-              padding: EdgeInsets.all(20),
-              child: CircularProgressIndicator(),
-            ),
+            placeholder:
+                (context, url) => const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: CircularProgressIndicator(),
+                ),
           ),
           const SizedBox(width: 16),
           Padding(
@@ -55,12 +56,9 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text(name, style: Theme.of(context).textTheme.headlineSmall),
                 Text(
-                  name,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                Text(
-                  "${formatNumber(count)} $measure",
+                  '${formatNumber(count)} $measure',
                   style: AppTextStyles.boldStyle.copyWith(
                     fontSize: 18,
                     color: AppColors.primaryLight,

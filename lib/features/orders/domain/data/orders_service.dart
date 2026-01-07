@@ -23,13 +23,15 @@ class OrdersService {
       accepted,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
 
     if (result.statusCode == 200) {
-      acceptedOrders = [for (final item in result.data) OrderModel.fromJson(item)];
+      acceptedOrders = [
+        for (final item in result.data) OrderModel.fromJson(item),
+      ];
       return acceptedOrders;
     } else {
       throw Exception();
@@ -42,13 +44,15 @@ class OrdersService {
       inProgress,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
 
     if (result.statusCode == 200) {
-      inProgressOrders = [for (final item in result.data) OrderModel.fromJson(item)];
+      inProgressOrders = [
+        for (final item in result.data) OrderModel.fromJson(item),
+      ];
       return inProgressOrders;
     } else {
       throw Exception();
@@ -61,13 +65,15 @@ class OrdersService {
       pending,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
 
     if (result.statusCode == 200) {
-      pendingOrders = [for (final item in result.data) OrderModel.fromJson(item)];
+      pendingOrders = [
+        for (final item in result.data) OrderModel.fromJson(item),
+      ];
       return pendingOrders;
     } else {
       throw Exception();
@@ -80,13 +86,15 @@ class OrdersService {
       rejected,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
 
     if (result.statusCode == 200) {
-      rejectedOrders = [for (final item in result.data) OrderModel.fromJson(item)];
+      rejectedOrders = [
+        for (final item in result.data) OrderModel.fromJson(item),
+      ];
       return rejectedOrders;
     } else {
       throw Exception();

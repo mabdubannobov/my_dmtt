@@ -22,9 +22,7 @@ class ActiveOrder extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColorLight,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(28),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(28)),
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF04060F).withValues(alpha: 0.05),
@@ -42,9 +40,7 @@ class ActiveOrder extends StatelessWidget {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(24),
-                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(24)),
                   image: DecorationImage(
                     image: AssetImage(AppAssets.images.acceptedOrder),
                   ),
@@ -67,7 +63,10 @@ class ActiveOrder extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColorLight,
-                      border: Border.all(width: 1, color: AppColors.primaryLight),
+                      border: Border.all(
+                        width: 1,
+                        color: AppColors.primaryLight,
+                      ),
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),
                     padding: const EdgeInsets.symmetric(
@@ -76,11 +75,14 @@ class ActiveOrder extends StatelessWidget {
                     ),
                     child: Text(
                       'Bajarilmoqda',
-                      style: AppTextStyles.semiBoldStyle.copyWith(color: AppColors.primaryLight, fontSize: 10),
+                      style: AppTextStyles.semiBoldStyle.copyWith(
+                        color: AppColors.primaryLight,
+                        fontSize: 10,
+                      ),
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
           const Padding(
@@ -98,12 +100,14 @@ class ActiveOrder extends StatelessWidget {
                         side: const BorderSide(color: AppColors.error),
                       ),
                     ),
-                    padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 6)),
+                    padding: const WidgetStatePropertyAll(
+                      EdgeInsets.symmetric(vertical: 6),
+                    ),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
                   onPressed: () {},
                   child: Text(
-                    "Bekor qilish",
+                    'Bekor qilish',
                     style: AppTextStyles.semiBoldStyle.copyWith(
                       fontSize: 14,
                       color: AppColors.error,
@@ -116,19 +120,23 @@ class ActiveOrder extends StatelessWidget {
                 child: TextButton(
                   style: ButtonStyle(
                     fixedSize: const WidgetStatePropertyAll(Size.infinite),
-                    backgroundColor: WidgetStatePropertyAll(AppColors.primaryLight),
+                    backgroundColor: WidgetStatePropertyAll(
+                      AppColors.primaryLight,
+                    ),
                     shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
                         side: BorderSide(color: AppColors.primaryLight),
                       ),
                     ),
-                    padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 6)),
+                    padding: const WidgetStatePropertyAll(
+                      EdgeInsets.symmetric(vertical: 6),
+                    ),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
                   onPressed: () {},
                   child: Text(
-                    "Kuzatish",
+                    'Kuzatish',
                     style: AppTextStyles.semiBoldStyle.copyWith(
                       fontSize: 14,
                       color: Colors.white,

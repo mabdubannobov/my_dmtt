@@ -74,8 +74,9 @@ class _UserDataScreenState extends State<UserDataScreen> {
                 child: CachedNetworkImage(
                   width: 100,
                   height: 100,
-                  imageUrl: userData.imageUrl ??
-                      "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                  imageUrl:
+                      userData.imageUrl ??
+                      'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
                 ),
               ),
               UserDataField(controller: userName),
@@ -85,9 +86,11 @@ class _UserDataScreenState extends State<UserDataScreen> {
               TextButton(
                 style: ButtonStyle(
                   fixedSize: WidgetStatePropertyAll(
-                      Size.fromWidth(MediaQuery.of(context).size.width - 48)),
-                  backgroundColor:
-                      const WidgetStatePropertyAll(AppColors.disabledButton),
+                    Size.fromWidth(MediaQuery.of(context).size.width - 48),
+                  ),
+                  backgroundColor: const WidgetStatePropertyAll(
+                    AppColors.disabledButton,
+                  ),
                 ),
                 onPressed: () {
                   final updatedUser = UserModel(
@@ -96,15 +99,15 @@ class _UserDataScreenState extends State<UserDataScreen> {
                     phoneNumber: userNumber.text,
                   );
 
-                  context
-                      .read<AccountBloc>()
-                      .add(UpdateUserDataEvent(userData: updatedUser));
+                  context.read<AccountBloc>().add(
+                    UpdateUserDataEvent(userData: updatedUser),
+                  );
                   Navigator.pop(context, updatedUser);
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Text(
-                    "Yangilash",
+                    'Yangilash',
                     style: AppTextStyles.boldStyle.copyWith(
                       color: Colors.white,
                       fontSize: 16,

@@ -7,10 +7,7 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 
 class CompletedOrder extends StatelessWidget {
-  const CompletedOrder({
-    required this.currentOrder,
-    super.key,
-  });
+  const CompletedOrder({required this.currentOrder, super.key});
 
   final OrderModel currentOrder;
 
@@ -20,9 +17,7 @@ class CompletedOrder extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColorLight,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(28),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(28)),
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF04060F).withValues(alpha: 0.05),
@@ -40,9 +35,7 @@ class CompletedOrder extends StatelessWidget {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(24),
-                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(24)),
                   image: DecorationImage(
                     image: AssetImage(AppAssets.images.completedOrder),
                   ),
@@ -65,8 +58,10 @@ class CompletedOrder extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: AppColors.primaryLight,
-                      border:
-                          Border.all(width: 1, color: AppColors.primaryLight),
+                      border: Border.all(
+                        width: 1,
+                        color: AppColors.primaryLight,
+                      ),
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                     ),
                     padding: const EdgeInsets.symmetric(
@@ -75,19 +70,19 @@ class CompletedOrder extends StatelessWidget {
                     ),
                     child: Text(
                       'Bajarilgan',
-                      style: AppTextStyles.semiBoldStyle
-                          .copyWith(color: Colors.white, fontSize: 10),
+                      style: AppTextStyles.semiBoldStyle.copyWith(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 16),
-            child: Divider(
-              height: 1,
-            ),
+            child: Divider(height: 1),
           ),
           Row(
             children: [
@@ -101,12 +96,13 @@ class CompletedOrder extends StatelessWidget {
                       ),
                     ),
                     padding: const WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(vertical: 6)),
+                      EdgeInsets.symmetric(vertical: 6),
+                    ),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
                   onPressed: () {},
                   child: Text(
-                    "Shikoyat qilish",
+                    'Shikoyat qilish',
                     style: AppTextStyles.semiBoldStyle.copyWith(
                       fontSize: 14,
                       color: AppColors.error,
@@ -119,8 +115,9 @@ class CompletedOrder extends StatelessWidget {
                 child: TextButton(
                   style: ButtonStyle(
                     fixedSize: const WidgetStatePropertyAll(Size.infinite),
-                    backgroundColor:
-                        WidgetStatePropertyAll(AppColors.primaryLight),
+                    backgroundColor: WidgetStatePropertyAll(
+                      AppColors.primaryLight,
+                    ),
                     shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
@@ -128,21 +125,22 @@ class CompletedOrder extends StatelessWidget {
                       ),
                     ),
                     padding: const WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(vertical: 6)),
+                      EdgeInsets.symmetric(vertical: 6),
+                    ),
                     minimumSize: const WidgetStatePropertyAll(Size.zero),
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OrderDetailsScreen(
-                          currentOrder: currentOrder,
-                        ),
+                        builder:
+                            (context) =>
+                                OrderDetailsScreen(currentOrder: currentOrder),
                       ),
                     );
                   },
                   child: Text(
-                    "Tafsilotlar",
+                    'Tafsilotlar',
                     style: AppTextStyles.semiBoldStyle.copyWith(
                       fontSize: 14,
                       color: Colors.white,
@@ -151,7 +149,7 @@ class CompletedOrder extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

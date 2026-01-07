@@ -42,9 +42,7 @@ class _OrdersScreenState extends State<OrdersScreen>
       listener: (context, state) {},
       builder: (context, state) {
         if (state is OrdersLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
 
         List<OrderModel> acceptedOrders = [];
@@ -72,8 +70,9 @@ class _OrdersScreenState extends State<OrdersScreen>
                   TextButton(
                     style: ButtonStyle(
                       fixedSize: const WidgetStatePropertyAll(Size.infinite),
-                      backgroundColor:
-                          WidgetStatePropertyAll(AppColors.primaryLight),
+                      backgroundColor: WidgetStatePropertyAll(
+                        AppColors.primaryLight,
+                      ),
                       shape: WidgetStatePropertyAll(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
@@ -81,12 +80,13 @@ class _OrdersScreenState extends State<OrdersScreen>
                         ),
                       ),
                       padding: const WidgetStatePropertyAll(
-                          EdgeInsets.symmetric(vertical: 6, horizontal: 10)),
+                        EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                      ),
                       minimumSize: const WidgetStatePropertyAll(Size.zero),
                     ),
                     onPressed: () {},
                     child: Text(
-                      "2025, Mart",
+                      '2025, Mart',
                       style: AppTextStyles.semiBoldStyle.copyWith(
                         fontSize: 14,
                         color: Colors.white,
@@ -117,66 +117,57 @@ class _OrdersScreenState extends State<OrdersScreen>
                 controller: _tabController,
                 children: [
                   activeOrders.isEmpty
-                      ? const EmptyOrder(
-                          orderTitle: "faol",
-                        )
+                      ? const EmptyOrder(orderTitle: 'faol')
                       : Center(
-                          child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-                            itemCount: activeOrders.length,
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return const SizedBox(height: 24);
-                            },
-                            itemBuilder: (BuildContext context, int index) {
-                              return ActiveOrder(
-                                idOrder: activeOrders[index].id,
-                                itemsCount: activeOrders[index].items.length,
-                                orderDate: activeOrders[index].orderDate,
-                              );
-                            },
-                          ),
+                        child: ListView.separated(
+                          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                          itemCount: activeOrders.length,
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const SizedBox(height: 24);
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return ActiveOrder(
+                              idOrder: activeOrders[index].id,
+                              itemsCount: activeOrders[index].items.length,
+                              orderDate: activeOrders[index].orderDate,
+                            );
+                          },
                         ),
+                      ),
                   acceptedOrders.isEmpty
-                      ? const EmptyOrder(
-                          orderTitle: "bajarilgan",
-                        )
+                      ? const EmptyOrder(orderTitle: 'bajarilgan')
                       : Center(
-                          child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-                            itemCount: acceptedOrders.length,
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return const SizedBox(height: 24);
-                            },
-                            itemBuilder: (BuildContext context, int index) {
-                              return CompletedOrder(
-                                currentOrder: acceptedOrders[index],
-                              );
-                            },
-                          ),
+                        child: ListView.separated(
+                          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                          itemCount: acceptedOrders.length,
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const SizedBox(height: 24);
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return CompletedOrder(
+                              currentOrder: acceptedOrders[index],
+                            );
+                          },
                         ),
+                      ),
                   rejectedOrders.isEmpty
-                      ? const EmptyOrder(
-                          orderTitle: "rad etilgan",
-                        )
+                      ? const EmptyOrder(orderTitle: 'rad etilgan')
                       : Center(
-                          child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-                            itemCount: rejectedOrders.length,
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return const SizedBox(height: 24);
-                            },
-                            itemBuilder: (BuildContext context, int index) {
-                              return RejectedOrder(
-                                idOrder: rejectedOrders[index].id,
-                                itemsCount: rejectedOrders[index].items.length,
-                                orderDate: rejectedOrders[index].orderDate,
-                              );
-                            },
-                          ),
+                        child: ListView.separated(
+                          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                          itemCount: rejectedOrders.length,
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const SizedBox(height: 24);
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return RejectedOrder(
+                              idOrder: rejectedOrders[index].id,
+                              itemsCount: rejectedOrders[index].items.length,
+                              orderDate: rejectedOrders[index].orderDate,
+                            );
+                          },
                         ),
+                      ),
                 ],
               ),
             ),

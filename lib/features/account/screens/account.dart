@@ -49,14 +49,14 @@ class _AccountScreenState extends State<AccountScreen> {
       },
       builder: (context, state) {
         if (state is AccountLoadingState) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         UserModel userModel = UserModel(
-          firstName: "?",
+          firstName: '?',
           lastName: 'Aniqlanmadi',
           district: 'Aniqlanmadi',
-          phoneNumber: "+998000000000",
+          phoneNumber: '+998000000000',
         );
 
         if (state is AccountLoadedState) {
@@ -87,7 +87,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       height: 80,
                       imageUrl:
                           userModel.imageUrl ??
-                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                          'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
                       placeholder:
                           (context, url) =>
                               const Center(child: CircularProgressIndicator()),
@@ -105,13 +105,13 @@ class _AccountScreenState extends State<AccountScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${userModel.firstName} ${userModel.lastName}",
+                          '${userModel.firstName} ${userModel.lastName}',
                           style: Theme.of(context).textTheme.headlineSmall,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          "${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}",
+                          '${userModel.phoneNumber!.substring(0, 4)} (${userModel.phoneNumber!.substring(4, 6)}) ${userModel.phoneNumber!.substring(6, 9)}-${userModel.phoneNumber!.substring(9, 11)}-${userModel.phoneNumber!.substring(11, 13)}',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],

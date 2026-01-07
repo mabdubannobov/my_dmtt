@@ -23,17 +23,14 @@ class CartService {
         data: dataList,
         options: Options(
           headers: {
-            "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+            'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
           },
           contentType: 'application/json',
         ),
-        queryParameters: {
-          'deadline': orderDate.toIso8601String(),
-        },
+        queryParameters: {'deadline': orderDate.toIso8601String()},
       );
     } catch (e) {
       log('Exception occurred while posting data: $e');
     }
-    
   }
 }

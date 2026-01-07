@@ -6,16 +6,12 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 
 class SuccessOrderDialog extends StatelessWidget {
-  const SuccessOrderDialog({
-    super.key,
-  });
+  const SuccessOrderDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(32),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
       backgroundColor: const DialogThemeData().backgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(32),
@@ -34,7 +30,7 @@ class SuccessOrderDialog extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              "Sizning _-sonli buyurtmangiz muvvafaqiyatli yuborildi.",
+              'Sizning _-sonli buyurtmangiz muvvafaqiyatli yuborildi.',
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
@@ -43,8 +39,9 @@ class SuccessOrderDialog extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(AppColors.primaryLight),
+                  backgroundColor: WidgetStatePropertyAll(
+                    AppColors.primaryLight,
+                  ),
                   padding: const WidgetStatePropertyAll(
                     EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
@@ -53,7 +50,7 @@ class SuccessOrderDialog extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Text(
-                  "OK",
+                  'OK',
                   style: AppTextStyles.boldStyle.copyWith(
                     fontSize: 16,
                     color: Colors.white,

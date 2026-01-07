@@ -14,8 +14,9 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
   primaryColorDark: AppColors.greyscaleLight.shade50,
-  progressIndicatorTheme:
-      ProgressIndicatorThemeData(color: AppColors.primaryLight),
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: AppColors.primaryLight,
+  ),
   secondaryHeaderColor: AppColors.greyscaleLight.shade100,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
@@ -29,9 +30,7 @@ final ThemeData lightTheme = ThemeData(
       color: AppColors.greyscaleLight,
     ),
   ),
-  bottomSheetTheme: BottomSheetThemeData(
-    backgroundColor: Colors.white,
-  ),
+  bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 0,
     showUnselectedLabels: true,
@@ -53,8 +52,9 @@ final ThemeData lightTheme = ThemeData(
     indicatorColor: AppColors.primaryLight,
     dividerColor: AppColors.greyscaleLight.shade200,
     unselectedLabelColor: AppColors.greyscaleLight.shade500,
-    overlayColor:
-        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+    overlayColor: WidgetStateProperty.resolveWith<Color?>((
+      Set<WidgetState> states,
+    ) {
       return states.contains(WidgetState.focused) ? null : Colors.transparent;
     }),
   ),
@@ -146,7 +146,7 @@ final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.dark1,
   focusColor: AppColors.primaryLight.withValues(alpha: 0.08),
   primaryColorDark: AppColors.dark2,
-  progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.white),
+  progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
   secondaryHeaderColor: AppColors.dark2,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.dark1,
@@ -170,10 +170,7 @@ final ThemeData darkTheme = ThemeData(
     selectedItemColor: AppColors.primaryLight,
     unselectedItemColor: AppColors.greyscaleLight.shade500,
   ),
-  dividerTheme: const DividerThemeData(
-    color: AppColors.dark3,
-    thickness: 1.0,
-  ),
+  dividerTheme: const DividerThemeData(color: AppColors.dark3, thickness: 1.0),
   tabBarTheme: TabBarThemeData(
     dividerHeight: 2,
     labelColor: AppColors.primaryLight,
@@ -181,8 +178,9 @@ final ThemeData darkTheme = ThemeData(
     indicatorColor: AppColors.primaryLight,
     dividerColor: AppColors.greyscaleLight.shade700,
     unselectedLabelColor: AppColors.greyscaleLight.shade700,
-    overlayColor:
-        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+    overlayColor: WidgetStateProperty.resolveWith<Color?>((
+      Set<WidgetState> states,
+    ) {
       return states.contains(WidgetState.focused) ? null : Colors.transparent;
     }),
   ),
@@ -260,7 +258,7 @@ final ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
   ),
-  bottomSheetTheme: BottomSheetThemeData(
+  bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: AppColors.dark2,
   ),
   dialogTheme: const DialogThemeData(backgroundColor: AppColors.dark2),

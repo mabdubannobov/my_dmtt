@@ -17,7 +17,7 @@ class AttendanceService {
         attendanceUrl,
         options: Options(
           headers: {
-            "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+            'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
           },
         ),
       );
@@ -28,12 +28,12 @@ class AttendanceService {
         final today = DateTime.now().toIso8601String().substring(0, 10);
 
         final todayData = data.firstWhere(
-          (item) => item["date"] == today,
+          (item) => item['date'] == today,
           orElse: () => null,
         );
 
         if (todayData != null) {
-          return todayData["morning_child_count"] ?? 0;
+          return todayData['morning_child_count'] ?? 0;
         }
       }
       return 0; // Ma'lumot topilmasa
@@ -49,13 +49,10 @@ class AttendanceService {
     try {
       await dio.post(
         attendanceUrl,
-        data: {
-          "morning_child_count": childCount,
-          "afternoon_child_count": 0,
-        },
+        data: {'morning_child_count': childCount, 'afternoon_child_count': 0},
         options: Options(
           headers: {
-            "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+            'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
           },
           contentType: 'application/json',
         ),

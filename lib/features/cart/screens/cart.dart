@@ -63,11 +63,11 @@ class _CartScreenState extends State<CartScreen> {
     if (selectedDate != null) {
       // ignore: use_build_context_synchronously
       context.read<CartBloc>().add(
-            CreateOrderEvent(
-              products: myDataBox.values.toList(),
-              date: selectedDate,
-            ),
-          );
+        CreateOrderEvent(
+          products: myDataBox.values.toList(),
+          date: selectedDate,
+        ),
+      );
       await myDataBox.clear();
     }
   }
@@ -76,7 +76,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Savat'),
+        title: const Text('Savat'),
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -109,27 +109,29 @@ class _CartScreenState extends State<CartScreen> {
                       children: [
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.all(20),
-                            margin: EdgeInsets.symmetric(horizontal: 24),
+                            padding: const EdgeInsets.all(20),
+                            margin: const EdgeInsets.symmetric(horizontal: 24),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                      Color(0XFF04060F).withValues(alpha: 0.05),
+                                  color: const Color(
+                                    0XFF04060F,
+                                  ).withValues(alpha: 0.05),
                                   blurRadius: 60,
                                   spreadRadius: 0,
-                                  offset: Offset(0, 4),
-                                )
+                                  offset: const Offset(0, 4),
+                                ),
                               ],
                             ),
                             child: ListView.builder(
-                              physics: BouncingScrollPhysics(),
+                              physics: const BouncingScrollPhysics(),
                               itemCount: box.length,
                               itemBuilder: (context, index) {
                                 final item = box.getAt(
-                                    index); // Index bo‘yicha mahsulotni olamiz
+                                  index,
+                                ); // Index bo‘yicha mahsulotni olamiz
 
                                 return Column(
                                   children: [
@@ -140,69 +142,79 @@ class _CartScreenState extends State<CartScreen> {
                                       count: item.value,
                                       measure: item.measure,
                                       photoUrl: item.imageUrl,
-                                      onDelete: () => _deleteItem(
-                                          index), // Index orqali o‘chiramiz
+                                      onDelete:
+                                          () => _deleteItem(
+                                            index,
+                                          ), // Index orqali o‘chiramiz
                                     ),
-                                    if (index != box.length - 1) Divider(),
+                                    if (index != box.length - 1)
+                                      const Divider(),
                                   ],
                                 );
                               },
                             ),
                           ),
                         ),
-                        SizedBox(height: 28),
+                        const SizedBox(height: 28),
                         Container(
-                            width: MediaQuery.of(context).size.width,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 24, vertical: 24),
+                          width: MediaQuery.of(context).size.width,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 24,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            border: Border(
+                              top: BorderSide(
+                                color: Theme.of(context).dividerColor,
+                                width: 1.0,
+                              ),
+                            ),
+                          ),
+                          child: Container(
                             decoration: BoxDecoration(
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              border: Border(
-                                top: BorderSide(
-                                  color: Theme.of(context).dividerColor,
-                                  width: 1.0,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.primaryLight.withValues(
+                                    alpha: 0.25,
+                                  ),
+                                  spreadRadius: 0,
+                                  blurRadius: 24,
+                                  offset: const Offset(4, 8),
+                                ),
+                              ],
+                            ),
+                            child: TextButton(
+                              style: ButtonStyle(
+                                fixedSize: WidgetStatePropertyAll(
+                                  Size.fromWidth(
+                                    MediaQuery.of(context).size.width - 32,
+                                  ),
+                                ),
+                                backgroundColor: WidgetStatePropertyAll(
+                                  AppColors.primaryLight,
+                                ),
+                              ),
+                              onPressed: () {
+                                _onOrderButtonPressed(context);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8,
+                                ),
+                                child: Text(
+                                  'Buyurtma berish',
+                                  style: AppTextStyles.boldStyle.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    letterSpacing: 0.2,
+                                    height: 1.4,
+                                  ),
                                 ),
                               ),
                             ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: AppColors.primaryLight
-                                        .withValues(alpha: 0.25),
-                                    spreadRadius: 0,
-                                    blurRadius: 24,
-                                    offset: Offset(4, 8),
-                                  ),
-                                ],
-                              ),
-                              child: TextButton(
-                                style: ButtonStyle(
-                                  fixedSize: WidgetStatePropertyAll(
-                                      Size.fromWidth(
-                                          MediaQuery.of(context).size.width -
-                                              32)),
-                                  backgroundColor: WidgetStatePropertyAll(
-                                      AppColors.primaryLight),
-                                ),
-                                onPressed: () {
-                                  _onOrderButtonPressed(context);
-                                },
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    "Buyurtma berish",
-                                    style: AppTextStyles.boldStyle.copyWith(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      letterSpacing: 0.2,
-                                      height: 1.4,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )),
+                          ),
+                        ),
                       ],
                     );
                   },
@@ -217,7 +229,7 @@ class _CartScreenState extends State<CartScreen> {
                 );
               }
             },
-          )
+          ),
         ],
       ),
     );

@@ -29,10 +29,9 @@ class _SignInScreenState extends State<SignInScreen> {
           listener: (context, state) {
             if (state is SignInLoadedState) {
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => const MainScreen(),
-                  ),
-                  (Route route) => false);
+                MaterialPageRoute(builder: (context) => const MainScreen()),
+                (Route route) => false,
+              );
             } else if (state is SignInErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -55,22 +54,17 @@ class _SignInScreenState extends State<SignInScreen> {
           },
           builder: (context, state) {
             if (state is SignInLoadingState) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+              return const Center(child: CircularProgressIndicator());
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 48),
-                SvgPicture.asset(
-                  AppAssets.icons.appBarLogo,
-                  width: 120,
-                ),
+                SvgPicture.asset(AppAssets.icons.appBarLogo, width: 120),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 48),
                   child: Text(
-                    "Hisobga kirish",
+                    'Hisobga kirish',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
@@ -101,32 +95,34 @@ class _SignInScreenState extends State<SignInScreen> {
                         color: AppColors.primaryLight.withValues(alpha: 0.25),
                         spreadRadius: 0,
                         blurRadius: 24,
-                        offset: Offset(4, 8),
+                        offset: const Offset(4, 8),
                       ),
                     ],
                   ),
                   child: TextButton(
                     style: ButtonStyle(
-                      fixedSize: WidgetStatePropertyAll(Size.fromWidth(
-                          MediaQuery.of(context).size.width - 48)),
+                      fixedSize: WidgetStatePropertyAll(
+                        Size.fromWidth(MediaQuery.of(context).size.width - 48),
+                      ),
                       backgroundColor: const WidgetStatePropertyAll(
-                          AppColors.disabledButton),
+                        AppColors.disabledButton,
+                      ),
                     ),
                     onPressed: () {
                       if (userController.text.isNotEmpty &&
                           passwordController.text.isNotEmpty) {
                         context.read<SignInBloc>().add(
-                              SignInEnterEvent(
-                                userController.text,
-                                passwordController.text,
-                              ),
-                            );
+                          SignInEnterEvent(
+                            userController.text,
+                            passwordController.text,
+                          ),
+                        );
                       }
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(
-                        "Kirish",
+                        'Kirish',
                         style: AppTextStyles.boldStyle.copyWith(
                           color: Colors.white,
                           fontSize: 16,

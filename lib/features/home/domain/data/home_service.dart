@@ -20,7 +20,7 @@ class HomeService {
       getuserData,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
@@ -44,16 +44,14 @@ class HomeService {
       getDMTTName,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
 
     if (result.statusCode == 200) {
       final Map data = result.data;
-      return DmttModel(
-        name: data['name'],
-      );
+      return DmttModel(name: data['name']);
     } else {
       throw Exception();
     }
@@ -62,10 +60,10 @@ class HomeService {
   Future<List<ProductModel>> getProducts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final result = await dio.get(
-      "$productsUrl?company_id=2",
+      '$productsUrl?company_id=2',
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
@@ -73,7 +71,9 @@ class HomeService {
     if (result.statusCode == 200) {
       List<ProductModel> allProducts;
 
-      allProducts = [for (final item in result.data) ProductModel.fromJson(item)];
+      allProducts = [
+        for (final item in result.data) ProductModel.fromJson(item),
+      ];
       return allProducts;
     } else {
       throw Exception();

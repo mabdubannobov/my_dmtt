@@ -62,9 +62,10 @@ class _ProductDialogState extends State<ProductDialog> {
 
     // Agar mahsulot bo‘lsa, uning qiymatini chiqaramiz, aks holda bo‘sh qoldiramiz
     textController = TextEditingController(
-      text: existingProduct != null
-          ? formatNumber(existingProduct.value!).toString()
-          : '',
+      text:
+          existingProduct != null
+              ? formatNumber(existingProduct.value!).toString()
+              : '',
     );
 
     setState(() {}); // UI ni yangilash uchun
@@ -73,9 +74,7 @@ class _ProductDialogState extends State<ProductDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(32),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
       backgroundColor: const DialogThemeData().backgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(32),
@@ -83,9 +82,7 @@ class _ProductDialogState extends State<ProductDialog> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(58, 8, 58, 32),
-              child: CachedNetworkImage(
-                imageUrl: widget.productImage,
-              ),
+              child: CachedNetworkImage(imageUrl: widget.productImage),
             ),
             Text(
               'Miqdorni kiriting',
@@ -128,8 +125,9 @@ class _ProductDialogState extends State<ProductDialog> {
             const SizedBox(height: 24),
             TextButton(
               style: const ButtonStyle(
-                backgroundColor:
-                    WidgetStatePropertyAll(AppColors.disabledButton),
+                backgroundColor: WidgetStatePropertyAll(
+                  AppColors.disabledButton,
+                ),
                 padding: WidgetStatePropertyAll(
                   EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
@@ -142,7 +140,7 @@ class _ProductDialogState extends State<ProductDialog> {
                     const SnackBar(
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
-                      content: Text("Siz miqdorni kiritmadingiz!"),
+                      content: Text('Siz miqdorni kiritmadingiz!'),
                     ),
                   );
                   return;
@@ -179,7 +177,7 @@ class _ProductDialogState extends State<ProductDialog> {
                   Navigator.pop(context);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: AppColors.error,
                       content: Text("To'g'ri miqdorni kiriting!"),
@@ -202,8 +200,13 @@ class _ProductDialogState extends State<ProductDialog> {
   }
 }
 
-Future<void> storeData(String name, double count, int companyId, String measure,
-    String imageUrl) async {
+Future<void> storeData(
+  String name,
+  double count,
+  int companyId,
+  String measure,
+  String imageUrl,
+) async {
   final myDataBox = Hive.box<ProductModel>('productsBox');
 
   // Mahsulot allaqachon mavjudligini tekshiramiz

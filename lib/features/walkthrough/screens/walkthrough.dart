@@ -23,11 +23,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
     AppAssets.images.walk1,
   ];
 
-  List<String> titles = [
-    "Buyurtma berish",
-    "Oson boshqaruv",
-    "Tezkorlik",
-  ];
+  List<String> titles = ['Buyurtma berish', 'Oson boshqaruv', 'Tezkorlik'];
 
   List<String> descriptions = [
     "O'z ta'minotchilaringizga siz uchun kerak bo'lgan oziq-ovqat mahsulotlarini zarur vaqtda buyurtma bering",
@@ -48,9 +44,9 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -79,7 +75,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                     color: AppColors.primaryLight.withValues(alpha: 0.25),
                     spreadRadius: 0,
                     blurRadius: 24,
-                    offset: Offset(4, 8),
+                    offset: const Offset(4, 8),
                   ),
                 ],
               ),
@@ -87,26 +83,33 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                 onPressed: () {
                   _currentPage == 2
                       ? Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignInScreen()))
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
+                      )
                       : _pageController.nextPage(
-                          duration: const Duration(milliseconds: 250),
-                          curve: Curves.easeOut,
-                        );
+                        duration: const Duration(milliseconds: 250),
+                        curve: Curves.easeOut,
+                      );
                 },
                 style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(AppColors.primaryLight),
+                  backgroundColor: WidgetStatePropertyAll(
+                    AppColors.primaryLight,
+                  ),
                   fixedSize: WidgetStatePropertyAll(
-                      Size.fromWidth(MediaQuery.of(context).size.width - 32)),
+                    Size.fromWidth(MediaQuery.of(context).size.width - 32),
+                  ),
                   padding: const WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(vertical: 16)),
+                    EdgeInsets.symmetric(vertical: 16),
+                  ),
                 ),
                 child: Text(
-                  _currentPage == 2 ? "Qani ketdik!" : "Keyingisi",
-                  style: AppTextStyles.boldStyle
-                      .copyWith(fontSize: 16, color: Colors.white),
+                  _currentPage == 2 ? 'Qani ketdik!' : 'Keyingisi',
+                  style: AppTextStyles.boldStyle.copyWith(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

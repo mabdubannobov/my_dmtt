@@ -8,15 +8,13 @@ class LoginService {
   final Dio dio = Dio(BaseOptions(baseUrl: baseURLNew));
   final String login = '/api/token/';
 
-  Future<String> loginWithUserName(
-      {required String password, required String number}) async {
+  Future<String> loginWithUserName({
+    required String password,
+    required String number,
+  }) async {
     final result = await dio.post(
       login,
-      data: {
-        "username": number,
-        "password": password,
-        "fcm_token": "string",
-      },
+      data: {'username': number, 'password': password, 'fcm_token': 'string'},
     );
 
     if (result.statusCode == 200) {
@@ -24,7 +22,7 @@ class LoginService {
       prefs.setString(Shared.accessToken, result.data['access']);
       await prefs.setBool('is_authenticated', true);
 
-      return "Success";
+      return 'Success';
     } else {
       throw Exception();
     }

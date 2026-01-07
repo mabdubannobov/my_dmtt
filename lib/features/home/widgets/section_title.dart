@@ -4,11 +4,7 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({
-    super.key,
-    required this.title,
-    required this.onTap,
-  });
+  const SectionTitle({super.key, required this.title, required this.onTap});
 
   final String title;
   final Function() onTap;
@@ -26,7 +22,7 @@ class SectionTitle extends StatelessWidget {
               InkWell(
                 onTap: onTap,
                 child: Text(
-                  "Hammasi",
+                  'Hammasi',
                   style: AppTextStyles.boldStyle.copyWith(
                     fontSize: 16,
                     height: 1.4,

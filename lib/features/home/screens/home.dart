@@ -39,26 +39,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state is HomeErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       builder: (context, state) {
         if (state is HomeLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
-        UserModel userModel = state is HomeLoadedState
-            ? state.userModel
-            : UserModel.defaultModel();
-        DmttModel dmttModel = state is HomeLoadedState
-            ? state.dmttModel
-            : DmttModel.defaultModel();
-        List<ProductModel> products = state is HomeLoadedState
-            ? state.products
-            : [ProductModel.defaultModel()];
+        UserModel userModel =
+            state is HomeLoadedState
+                ? state.userModel
+                : UserModel.defaultModel();
+        DmttModel dmttModel =
+            state is HomeLoadedState
+                ? state.dmttModel
+                : DmttModel.defaultModel();
+        List<ProductModel> products =
+            state is HomeLoadedState
+                ? state.products
+                : [ProductModel.defaultModel()];
 
         return CustomScrollView(
           scrollDirection: Axis.vertical,
@@ -71,20 +72,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 expandedHeight: 56,
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: CachedNetworkImage(
-                    imageUrl: userModel.imageUrl!,
-                  ),
+                  child: CachedNetworkImage(imageUrl: userModel.imageUrl!),
                 ),
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "${userModel.firstName} ${userModel.lastName}",
+                      '${userModel.firstName} ${userModel.lastName}',
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                     Text(
-                      "${dmttModel.name}, ${userModel.district}",
+                      '${dmttModel.name}, ${userModel.district}',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],
@@ -92,10 +91,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 actions: [
                   ActionButton(
                     icon: AppAssets.icons.bag,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartScreen()),
-                    ),
+                    onTap:
+                        () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CartScreen(),
+                          ),
+                        ),
                   ),
                   const SizedBox(width: 16),
                   ActionButton(
@@ -107,14 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverPersistentHeader(
               pinned: true,
-              delegate: PersistentHeader(
-                widget: const ProductSearch(),
-              ),
+              delegate: PersistentHeader(widget: const ProductSearch()),
             ),
-            SectionTitle(
-              title: "Yangiliklar 🔥",
-              onTap: () {},
-            ),
+            SectionTitle(title: 'Yangiliklar 🔥', onTap: () {}),
             SliverList(
               delegate: SliverChildListDelegate([
                 Container(
@@ -140,29 +137,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisSpacing: 16,
                   childAspectRatio: 0.8,
                 ),
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Image.asset(
-                          width: 48,
-                          height: 58,
-                          categoryImages[index],
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          categoryNames[index],
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                      ],
-                    );
-                  },
-                  childCount: 8,
-                ),
+                delegate: SliverChildBuilderDelegate((
+                  BuildContext context,
+                  int index,
+                ) {
+                  return Column(
+                    children: [
+                      Image.asset(width: 48, height: 58, categoryImages[index]),
+                      const SizedBox(height: 8),
+                      Text(
+                        categoryNames[index],
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    ],
+                  );
+                }, childCount: 8),
               ),
             ),
             SectionTitle(
-              title: "Mahsulotlar 👌",
+              title: 'Mahsulotlar 👌',
               onTap: () {
                 Navigator.push(
                   context,
@@ -176,43 +169,46 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SizedBox(
                 height: 330,
                 child: ValueListenableBuilder(
-                    valueListenable: cartDataBox.listenable(),
-                    builder: (context, Box<ProductModel> box, _) {
-                      return ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: products.length,
-                        clipBehavior: Clip.none,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          List<ProductModel> cartElements =
-                              cartDataBox.values.toList();
-                          double cartData = 0;
+                  valueListenable: cartDataBox.listenable(),
+                  builder: (context, Box<ProductModel> box, _) {
+                    return ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: products.length,
+                      clipBehavior: Clip.none,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        List<ProductModel> cartElements =
+                            cartDataBox.values.toList();
+                        double cartData = 0;
 
-                          for (var element in cartElements) {
-                            if (element.name == products[index].name) {
-                              cartData = element.value!;
-                            }
+                        for (var element in cartElements) {
+                          if (element.name == products[index].name) {
+                            cartData = element.value!;
                           }
+                        }
 
-                          return ProductHomeContainer(
-                            productImage: products[index].imageUrl ??
-                                "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                            productTitle: products[index].name,
-                            productQuantity:
-                                safeParseDouble(products[index].count),
-                            productMeasure: products[index].measure,
-                            productPrice: products[index].price ?? 0,
-                            companyName: "Supply Foods MCHJ",
-                            companyId: 2,
-                            cartData: cartData,
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const SizedBox(width: 16);
-                        },
-                        padding: const EdgeInsets.all(16),
-                      );
-                    }),
+                        return ProductHomeContainer(
+                          productImage:
+                              products[index].imageUrl ??
+                              'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
+                          productTitle: products[index].name,
+                          productQuantity: safeParseDouble(
+                            products[index].count,
+                          ),
+                          productMeasure: products[index].measure,
+                          productPrice: products[index].price ?? 0,
+                          companyName: 'Supply Foods MCHJ',
+                          companyId: 2,
+                          cartData: cartData,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(width: 16);
+                      },
+                      padding: const EdgeInsets.all(16),
+                    );
+                  },
+                ),
               ),
             ),
           ],

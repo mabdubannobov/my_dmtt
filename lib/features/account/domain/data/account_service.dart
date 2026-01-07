@@ -17,7 +17,7 @@ class AccountService {
       userDataUrl,
       options: Options(
         headers: {
-          "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+          'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
         },
       ),
     );
@@ -44,7 +44,7 @@ class AccountService {
         data: userData.toJson(),
         options: Options(
           headers: {
-            "Authorization": "Bearer ${prefs.getString(Shared.accessToken)}",
+            'Authorization': 'Bearer ${prefs.getString(Shared.accessToken)}',
           },
           contentType: 'application/json',
         ),

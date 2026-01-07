@@ -50,15 +50,16 @@ class _SignInFieldState extends State<SignInField> {
     return TextField(
       controller: widget.controller,
       focusNode: _focusNode,
-      obscureText: widget.hintText == "Xavfsizlik paroli" ? _isObscure : false,
-      obscuringCharacter: "*",
+      obscureText: widget.hintText == 'Xavfsizlik paroli' ? _isObscure : false,
+      obscuringCharacter: '*',
       style: Theme.of(context).textTheme.displaySmall,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         filled: true,
-        fillColor: _isFocused
-            ? Theme.of(context).focusColor
-            : Theme.of(context).primaryColorDark,
+        fillColor:
+            _isFocused
+                ? Theme.of(context).focusColor
+                : Theme.of(context).primaryColorDark,
         prefixIconConstraints: const BoxConstraints(maxHeight: 20),
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 20, right: 12),
@@ -66,29 +67,30 @@ class _SignInFieldState extends State<SignInField> {
             _isFocused
                 ? widget.activeIcon
                 : widget.controller.text.isEmpty
-                    ? widget.icon
-                    : widget.filledIcon,
+                ? widget.icon
+                : widget.filledIcon,
           ),
         ),
         suffixIconConstraints: const BoxConstraints(maxHeight: 20),
-        suffixIcon: widget.hintText == "Xavfsizlik paroli"
-            ? GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _isObscure = !_isObscure;
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: SvgPicture.asset(
-                    _isObscure
-                        ? AppAssets.icons.hide
-                        : AppAssets.icons.hideActive,
-                    width: 20,
+        suffixIcon:
+            widget.hintText == 'Xavfsizlik paroli'
+                ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isObscure = !_isObscure;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: SvgPicture.asset(
+                      _isObscure
+                          ? AppAssets.icons.hide
+                          : AppAssets.icons.hideActive,
+                      width: 20,
+                    ),
                   ),
-                ),
-              )
-            : const SizedBox(),
+                )
+                : const SizedBox(),
         hintText: widget.hintText,
         hintStyle: Theme.of(context).textTheme.labelSmall,
         border: OutlineInputBorder(

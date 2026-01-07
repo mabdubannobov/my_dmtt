@@ -15,7 +15,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bildirishnomalar"),
+        title: const Text('Bildirishnomalar'),
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -41,7 +41,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
               Row(
                 children: [
                   Text(
-                    "Asosiy bildirishnomalar",
+                    'Asosiy bildirishnomalar',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
@@ -62,7 +62,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
               const SizedBox(height: 24),
               Row(
                 children: [
-                  Text("Ovoz", style: Theme.of(context).textTheme.bodyLarge),
+                  Text('Ovoz', style: Theme.of(context).textTheme.bodyLarge),
                   const Spacer(),
                   Switch(
                     value: true,
@@ -82,7 +82,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
               Row(
                 children: [
                   Text(
-                    "Tebranish",
+                    'Tebranish',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),
@@ -104,7 +104,7 @@ class _SettingsNotificationsState extends State<SettingsNotifications> {
               Row(
                 children: [
                   Text(
-                    "Yangiliklar",
+                    'Yangiliklar',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Spacer(),

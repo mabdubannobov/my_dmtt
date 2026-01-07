@@ -38,9 +38,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mahsulotlar"),
+        title: const Text('Mahsulotlar'),
         leading: Padding(
-          padding: EdgeInsets.only(left: 24),
+          padding: const EdgeInsets.only(left: 24),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -65,7 +65,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               ProductModel currentItem = widget.allProducts[index];
               List<ProductModel> cartElements = cartDataBox.values.toList();
               double cartData = 0;
-              String cartMeasure = "";
+              String cartMeasure = '';
 
               for (var element in cartElements) {
                 if (element.name == currentItem.name) {
@@ -75,20 +75,22 @@ class _ProductsScreenState extends State<ProductsScreen> {
               }
 
               return InkWell(
-                onTap: () => showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ProductDialog(
-                      productImage: currentItem.imageUrl ??
-                          "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
-                      productTitle: currentItem.name,
-                      productQuantity: safeParseDouble(currentItem.count),
-                      productMeasure: currentItem.measure,
-                      companyId: 2,
-                      productID: 2,
-                    );
-                  },
-                ),
+                onTap:
+                    () => showDialog(
+                      context: context,
+                      builder: (context) {
+                        return ProductDialog(
+                          productImage:
+                              currentItem.imageUrl ??
+                              'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
+                          productTitle: currentItem.name,
+                          productQuantity: safeParseDouble(currentItem.count),
+                          productMeasure: currentItem.measure,
+                          companyId: 2,
+                          productID: 2,
+                        );
+                      },
+                    ),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   padding: const EdgeInsets.all(14),
@@ -110,44 +112,52 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       Stack(
                         children: [
                           CachedNetworkImage(
-                            imageUrl: currentItem.imageUrl ??
-                                "https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953",
+                            imageUrl:
+                                currentItem.imageUrl ??
+                                'https://ik.imagekit.io/rjt7sz5ns/noPhoto.png?updatedAt=1714584632953',
                             width: 120,
                             height: 120,
                           ),
                           cartData != 0
                               ? Padding(
-                                  padding: EdgeInsets.only(left: 12, top: 12),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: AppColors.primaryLight,
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 6),
-                                    child: Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          AppAssets.icons.bagActive,
-                                          colorFilter: ColorFilter.mode(
-                                              Colors.white, BlendMode.srcIn),
-                                          width: 12,
-                                          height: 12,
-                                        ),
-                                        SizedBox(width: 8),
-                                        Text(
-                                          '${formatNumber(cartData)} $cartMeasure',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                padding: const EdgeInsets.only(
+                                  left: 12,
+                                  top: 12,
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primaryLight,
+                                    borderRadius: BorderRadius.circular(6),
                                   ),
-                                )
-                              : SizedBox(),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 6,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppAssets.icons.bagActive,
+                                        colorFilter: const ColorFilter.mode(
+                                          Colors.white,
+                                          BlendMode.srcIn,
+                                        ),
+                                        width: 12,
+                                        height: 12,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '${formatNumber(cartData)} $cartMeasure',
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                              : const SizedBox(),
                         ],
                       ),
                       const SizedBox(width: 16),
@@ -164,10 +174,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             Row(
                               children: [
                                 SvgPicture.asset(AppAssets.icons.delivey),
-                                SizedBox(width: 6),
+                                const SizedBox(width: 6),
                                 Expanded(
                                   child: Text(
-                                    "Supply Foods MCHJ",
+                                    'Supply Foods MCHJ',
                                     style:
                                         Theme.of(context).textTheme.bodySmall,
                                     overflow: TextOverflow.ellipsis,
@@ -177,7 +187,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -15,28 +15,37 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'features/home/bloc/home_bloc.dart';
 import 'models/product_model.dart';
 
+// O'zgarmaslar uchun alohida fayl qilish yaxshi, lekin hozircha shu yerda konstant sifatida belgilaymiz
+const String kProductsBox = 'productsBox';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(ProductModelAdapter());
-  await Hive.openBox<ProductModel>('productsBox');
-  runApp(MainApp(home: const SplashScreen()));
-}
 
-class MainApp extends StatelessWidget {
-  const MainApp({required this.home, super.key});
-
-  final dynamic home;
-
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  // UI sozlamalari (Status bar va Navigation bar) shu yerda bir marta o'rnatiladi
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.transparent,
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
-    ));
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    ),
+  );
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
+  await Hive.initFlutter();
+  Hive.registerAdapter(ProductModelAdapter());
+  await Hive.openBox<ProductModel>(kProductsBox);
+
+  runApp(const MainApp(home: SplashScreen()));
+}
+
+class MainApp extends StatelessWidget {
+  // dynamic o'rniga aniq Widget turi ishlatildi
+  final Widget home;
+
+  const MainApp({required this.home, super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: MultiBlocProvider(
@@ -48,26 +57,26 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => CartBloc()),
           BlocProvider(create: (context) => AttendanceBloc()),
         ],
-        child:
-            BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, themeMode) {
-          return MaterialApp(
-            supportedLocales: const [
-              Locale('en', ''),
-              Locale('uz', ''),
-            ],
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            locale: const Locale('uz'),
-            debugShowCheckedModeBanner: false,
-            home: home,
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: themeMode,
-          );
-        }),
+        child: BlocBuilder<ThemeCubit, ThemeMode>(
+          builder: (context, themeMode) {
+            return MaterialApp(
+              supportedLocales: const [Locale('en', ''), Locale('uz', '')],
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              // Eslatma: Agar ilovada tilni o'zgartirish imkoniyati bo'lsa,
+              // 'locale' qiymatini ham Cubit yoki state orqali boshqarish kerak bo'ladi.
+              locale: const Locale('uz'),
+              debugShowCheckedModeBanner: false,
+              home: home,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: themeMode,
+            );
+          },
+        ),
       ),
     );
   }

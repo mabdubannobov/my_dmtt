@@ -42,7 +42,8 @@ class _SplashScreenState extends State<SplashScreen>
     final bool isAuthenticated = prefs.getBool('is_authenticated') ?? false;
 
     await Future.delayed(
-        const Duration(seconds: 2)); // Splash Screen animatsiyasi
+      const Duration(seconds: 2),
+    ); // Splash Screen animatsiyasi
 
     if (isFirstLaunch) {
       await prefs.setBool('first_launch', false);
@@ -91,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
               const SizedBox(width: 32),
               Text(
-                "Bolajon Taminoti",
+                'Bolajon Taminoti',
                 style: AppTextStyles.boldStyle.copyWith(fontSize: 40),
               ),
               const Spacer(),
@@ -120,9 +121,10 @@ class BubblePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.primaryLight
-      ..style = PaintingStyle.fill;
+    final paint =
+        Paint()
+          ..color = AppColors.primaryLight
+          ..style = PaintingStyle.fill;
 
     double centerX = size.width / 2;
     double centerY = size.height / 2;

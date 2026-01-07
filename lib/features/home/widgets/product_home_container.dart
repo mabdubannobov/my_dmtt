@@ -44,19 +44,20 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showDialog(
-        context: context,
-        builder: (context) {
-          return ProductDialog(
-            productImage: widget.productImage,
-            productTitle: widget.productTitle,
-            productQuantity: widget.productQuantity,
-            productMeasure: widget.productMeasure,
-            companyId: widget.companyId,
-            productID: 2,
-          );
-        },
-      ),
+      onTap:
+          () => showDialog(
+            context: context,
+            builder: (context) {
+              return ProductDialog(
+                productImage: widget.productImage,
+                productTitle: widget.productTitle,
+                productQuantity: widget.productQuantity,
+                productMeasure: widget.productMeasure,
+                companyId: widget.companyId,
+                productID: 2,
+              );
+            },
+          ),
       child: Container(
         width: 220,
         padding: const EdgeInsets.fromLTRB(14, 14, 14, 16),
@@ -84,41 +85,45 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
                 ),
                 widget.cartData != 0
                     ? Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 12, top: 12),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: AppColors.primaryLight,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 6),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    AppAssets.icons.bagActive,
-                                    colorFilter: ColorFilter.mode(
-                                        Colors.white, BlendMode.srcIn),
-                                    width: 12,
-                                    height: 12,
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text(
-                                    '${formatNumber(widget.cartData)} ${widget.productMeasure}',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  )
-                                ],
-                              ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12, top: 12),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryLight,
+                              borderRadius: BorderRadius.circular(6),
                             ),
-                          )
-                        ],
-                      )
-                    : SizedBox(),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  AppAssets.icons.bagActive,
+                                  colorFilter: const ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  ),
+                                  width: 12,
+                                  height: 12,
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '${formatNumber(widget.cartData)} ${widget.productMeasure}',
+                                  style: const TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                    : const SizedBox(),
               ],
             ),
             const SizedBox(height: 14),
@@ -131,7 +136,7 @@ class _ProductHomeContainerState extends State<ProductHomeContainer> {
             Row(
               children: [
                 SvgPicture.asset(AppAssets.icons.delivey),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     widget.companyName,

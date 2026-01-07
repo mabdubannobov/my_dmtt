@@ -27,37 +27,37 @@ class SettingsItem extends StatelessWidget {
         leadingIcon,
         width: 28,
         height: 28,
-        colorFilter: title == "Chiqish"
-            ? const ColorFilter.mode(
-                AppColors.error,
-                BlendMode.srcIn,
-              )
-            : ColorFilter.mode(
-                Theme.of(context).primaryColor,
-                BlendMode.srcIn,
-              ),
+        colorFilter:
+            title == 'Chiqish'
+                ? const ColorFilter.mode(AppColors.error, BlendMode.srcIn)
+                : ColorFilter.mode(
+                  Theme.of(context).primaryColor,
+                  BlendMode.srcIn,
+                ),
       ),
       title: Row(
         children: [
           Text(
             title,
-            style: title == "Chiqish"
-                ? const TextStyle(
-                    fontSize: 18,
-                    letterSpacing: 0.2,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.error,
-                  )
-                : Theme.of(context).textTheme.bodyLarge,
+            style:
+                title == 'Chiqish'
+                    ? const TextStyle(
+                      fontSize: 18,
+                      letterSpacing: 0.2,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.error,
+                    )
+                    : Theme.of(context).textTheme.bodyLarge,
           ),
           const Spacer(),
           Text(
-            title == "Ilova tili" ? "O'zbek" : "",
+            title == 'Ilova tili' ? "O'zbek" : '',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       ),
-      trailing: trailingIcon ??
+      trailing:
+          trailingIcon ??
           SvgPicture.asset(
             AppAssets.icons.arrowRight,
             colorFilter: ColorFilter.mode(
